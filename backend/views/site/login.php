@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\BaseHtml;
 use yii\widgets\ActiveForm;
 
 /**
@@ -9,22 +10,33 @@ use yii\widgets\ActiveForm;
  */
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
+\backend\assets\smartIndexBundle::register($this);
+Yii::$app->controller->layout = '/login';
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
-
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-                <?= $form->field($model, 'username') ?>
-                <?= $form->field($model, 'password')->passwordInput() ?>
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            <?php $form = ActiveForm::begin(['id' => 'login-form','options' => ['class' => 'smart-form client-form']]); ?>
+                                            <header>
+                                    Log In
+                                </header>
+            <fieldset>
+                <section>
+                <label class="label">Username</label>
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+                <?= BaseHtml::activeTextInput($model, 'username'); ?>
+                <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter your username</b></label>
+                </section>
+                <section>
+                <label class="label">Password</label>
+                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                <?= BaseHtml::activePasswordInput($model, 'password'); ?>
+                <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b> </label>
+                <div class="note">
+                    <a href="forgotpassword.html">Forgot password?</a>
                 </div>
+                </section>
+            </fieldset>
+                <footer>
+                    <?= Html::submitButton('Login', ['class' => 'btn btn-success', 'name' => 'login-button']) ?>
+                </footer>
             <?php ActiveForm::end(); ?>
-        </div>
-    </div>
-</div>
+

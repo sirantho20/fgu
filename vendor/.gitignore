@@ -1,2 +1,11 @@
 *
 !.gitignore
+!/cebe/
+!/composer/
+!/bin/
+!/yiisoft/
+!/swiftmailer/
+!/autoload.php
+!/twbs/
+!/phpspec/
+!/ezyang/

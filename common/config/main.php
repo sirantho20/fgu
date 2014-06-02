@@ -7,8 +7,16 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
         'urlManager' => [
-        'enablePrettyUrl' => true,
-        'showScriptName' => false,
+        'enablePrettyUrl' => false,
+        'showScriptName' => true,
+        ],
+        
+            'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=fgu',
+            'username' => 'root',
+            'password' => '',
+            'charset' => 'utf8',
         ],
     ],
 ];
