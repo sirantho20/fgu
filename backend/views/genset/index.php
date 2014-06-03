@@ -9,7 +9,7 @@ use yii\grid\GridView;
  * @var app\models\GensetSearch $searchModel
  */
 
-$this->title = 'Gensets';
+$this->title = 'Manage Gensets';
 $this->params['breadcrumbs'][] = $this->title;
 backend\assets\smartIndexBundle::register($this);
 ?>
@@ -19,7 +19,7 @@ backend\assets\smartIndexBundle::register($this);
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Genset', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('New Genset', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

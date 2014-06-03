@@ -7,7 +7,7 @@ use yii\helpers\Html;
  * @var app\models\Genset $model
  */
 
-$this->title = 'Create Genset';
+$this->title = 'New Genset';
 $this->params['breadcrumbs'][] = ['label' => 'Gensets', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

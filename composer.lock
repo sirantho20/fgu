@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a87660d1c569a3777d25b2cf2d841ab8",
+    "hash": "c39c86abf66d7239888789a7a363f7e7",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -116,12 +116,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "975da5d3df50bcfad23e79f0492c16fa5e38970f"
+                "reference": "be8c5cb1f02a1613f21093625b79aa5776ad27c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/975da5d3df50bcfad23e79f0492c16fa5e38970f",
-                "reference": "975da5d3df50bcfad23e79f0492c16fa5e38970f",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/be8c5cb1f02a1613f21093625b79aa5776ad27c6",
+                "reference": "be8c5cb1f02a1613f21093625b79aa5776ad27c6",
                 "shasum": ""
             },
             "type": "library",
@@ -152,7 +152,7 @@
                 "preview",
                 "upload"
             ],
-            "time": "2014-05-23 16:10:15"
+            "time": "2014-06-03 10:41:25"
         },
         {
             "name": "kartik-v/bootstrap-star-rating",
@@ -396,12 +396,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "5a1614466d02f1379287b8053a19fa90117ea7a8"
+                "reference": "c0ba4622c1f55b6b1994efc9d24401a782644ba5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/5a1614466d02f1379287b8053a19fa90117ea7a8",
-                "reference": "5a1614466d02f1379287b8053a19fa90117ea7a8",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/c0ba4622c1f55b6b1994efc9d24401a782644ba5",
+                "reference": "c0ba4622c1f55b6b1994efc9d24401a782644ba5",
                 "shasum": ""
             },
             "type": "library",
@@ -436,7 +436,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2014-05-29 00:21:58"
+            "time": "2014-06-02 20:02:27"
         },
         {
             "name": "yiisoft/jquery",
@@ -493,12 +493,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "319bc3519fa8c5833a9c90595ffa382227787af7"
+                "reference": "25d35a5201ada2bc37f8c38f62270ae94eb59aad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/319bc3519fa8c5833a9c90595ffa382227787af7",
-                "reference": "319bc3519fa8c5833a9c90595ffa382227787af7",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/25d35a5201ada2bc37f8c38f62270ae94eb59aad",
+                "reference": "25d35a5201ada2bc37f8c38f62270ae94eb59aad",
                 "shasum": ""
             },
             "require": {
@@ -563,7 +563,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2014-06-02 13:38:15"
+            "time": "2014-06-02 16:13:48"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -653,6 +653,49 @@
                 "yii2"
             ],
             "time": "2014-05-23 14:58:21"
+        },
+        {
+            "name": "yiisoft/yii2-jui",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-jui.git",
+                "reference": "44f7cd8e59a8616b29cd434e28ab852b4036057a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-jui/zipball/44f7cd8e59a8616b29cd434e28ab852b4036057a",
+                "reference": "44f7cd8e59a8616b29cd434e28ab852b4036057a",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii\\jui\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Qiang Xue",
+                    "email": "qiang.xue@gmail.com",
+                    "homepage": "http://www.yiiframework.com/",
+                    "role": "Founder and project lead"
+                }
+            ],
+            "description": "The Jquery UI extension for the Yii framework",
+            "keywords": [
+                "jQuery UI",
+                "renderer",
+                "yii2"
+            ],
+            "time": "2014-05-04 15:11:10"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
