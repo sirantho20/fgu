@@ -2,6 +2,8 @@
 
 namespace backend\models;
 use app\models\Genset;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 
 use Yii;
@@ -11,6 +13,7 @@ use Yii;
  *
  * @property string $site_id
  * @property string $genset_id
+ * @property string $date_added
  *
  * @property Gensets $genset
  * @property Site $site
@@ -24,6 +27,19 @@ class SiteGenset extends \yii\db\ActiveRecord
     {
         return 'site_genset';
     }
+    
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => 'yii\behaviors\TimestampBehavior',
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['date_added'],
+                ],
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -32,6 +48,7 @@ class SiteGenset extends \yii\db\ActiveRecord
     {
         return [
             [['site_id', 'genset_id'], 'required'],
+            [['date_added'], 'safe'],
             [['site_id', 'genset_id'], 'string', 'max' => 50]
         ];
     }
@@ -44,6 +61,7 @@ class SiteGenset extends \yii\db\ActiveRecord
         return [
             'site_id' => 'Site ID',
             'genset_id' => 'Genset ID',
+            'date_added' => 'Date Added',
         ];
     }
 

@@ -1,5 +1,8 @@
 		<!-- Left panel : Navigation area -->
 		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+                <?php
+                use yii\web\UrlManager;
+                ?>
 		<aside id="left-panel">
 
 			<!-- User info -->
@@ -31,14 +34,28 @@
 				-->
 
 				<ul>
+                                    <li>
+                                        <a href="#" title="Sites"><i class="fa fa-lg fa-fw fa-magnet"></i> <span class="menu-item-parent">Sites</span></a>
+                                        <ul>
+                                            <li>
+                                                <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['sites']) ?>" title="Manage Sites">Manage Sites</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['sites/attachgenset']) ?>" title="Attach Gensets">Attach Genset</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" title="Attach Meter">Attach Meter</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" title="Swap Gensets">Swap Gensets</a>
+                                            </li>
+                                        </ul>
+                                    </li>
 					<li class="">
                                             <a href="#" title="Manage Gensets"><i class="fa fa-lg fa-fw fa-magnet"></i> <span class="menu-item-parent">Gensets</span></a>
                                             <ul>
                                                 <li>
-                                                    <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['genset']) ?>">Manage Gensets</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Genset Swap</a>
+                                                    <a href="<?= (new UrlManager())->createAbsoluteUrl(['genset']) ?>">Manage Gensets</a>
                                                 </li>
                                             </ul>
 					</li>

@@ -95,19 +95,15 @@ class SitesController extends Controller
         }
     }
     
-    public function actionAttachgenset()
+    public function actionAttachgenset($site)
     {
         $model = new \backend\models\attachGensetForm();
         if($model->load(Yii::$app->request->post()) && $model->attachGenset())
         {
             Yii::$app->session->setFlash('success', 'Genset successfully attached.');
-            return $this->redirect(['update', 'id'=>$model->site_id]);
+            return $this->redirect(['view', 'id'=>$model->site_id]);
         }
-        else 
-        {
-            Yii::$app->session->setFlash('error', 'Sorry, there was error attaching genset. Please try again.');
-            return $this->redirect(['update', 'id'=>$model->site_id]);
-        }
+        return $this->render('_attachGenset',['model'=>$model]);
     }
 
     /**

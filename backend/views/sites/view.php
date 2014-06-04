@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
 
 <!-- NEW COL START -->
-<article class="col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 15px;">
+<article class="col-sm-12 col-md-12 col-lg-8" style="margin-bottom: 15px;">
 
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
         -->
        <header><span class="widget-icon"> <i class="fa fa-edit"></i> </span><h2>Utility Meter</h2></header>
         <!-- widget div-->
-        <div>
+        <div style="box-shadow: 5px 5px 5px lightgray;">
 
                 <!-- widget edit box -->
                 <div class="jarviswidget-editbox">
@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <!-- widget content -->
                 <div class="widget-body no-padding">
-                    
+         
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -62,7 +62,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'city_town',
         ],
     ]) ?>
-                    <div style="padding: 5px; border-top: 2px solid lightgray; margin: 15px;">
+
+                    <div class="clear" style="margin: 15px;">            
 <?= Tabs::widget([
     'headerOptions' => ['class'=>'warning'],
     'itemOptions' => ['class'=>'danger'],
@@ -83,7 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ]); 
      
 ?>
-                        
+                    </div>         
                   
                     </div>
 

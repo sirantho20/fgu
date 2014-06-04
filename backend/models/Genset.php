@@ -16,6 +16,8 @@ use Yii;
  * @property string $fuel_tank_height
  * @property string $fuel_tank_breadth
  * @property integer $start_run_hours
+ * @property string $date_added 
+ * @property string $date_modified 
  *
  * @property SiteGenset $siteGenset
  * @property Site[] $sites
@@ -38,7 +40,7 @@ class Genset extends \yii\db\ActiveRecord
         return [
             [['genset_id', 'supplier', 'kva', 'engine_used', 'fuel_tank_width', 'purchase_date', 'fuel_tank_height', 'fuel_tank_breadth', 'start_run_hours'], 'required'],
             [['kva'], 'number'],
-            [['purchase_date'], 'safe'],
+            [['purchase_date', 'date_added', 'date_modified'], 'safe'],
             [['start_run_hours'], 'integer'],
             [['genset_id', 'supplier'], 'string', 'max' => 50],
             [['engine_used', 'fuel_tank_width'], 'string', 'max' => 10],
@@ -61,6 +63,8 @@ class Genset extends \yii\db\ActiveRecord
             'fuel_tank_height' => 'Fuel Tank Height',
             'fuel_tank_breadth' => 'Fuel Tank Breadth',
             'start_run_hours' => 'Start Run Hours',
+            'date_added' => 'Date Added', 
+            'date_modified' => 'Date Modified',
         ];
     }
 
