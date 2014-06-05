@@ -76,13 +76,11 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'label' => 'Utility Meter',
-            'content' => 'Anim pariatur cliche...',
-            'headerOptions' => [],
-            'options' => ['id' => 'myveryownID'],
+            'content' => $this->render('_siteMeters',['model'=>$model]),
         ],
     ],
 ]); 
-     
+     $this->registerJs('$(".gensetDetachButton").on("click",function(){$(".gensetDetachButton").confirm({text:"Are you sure you want to detach genset?"})});');
 ?>
                     </div>         
                   

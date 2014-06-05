@@ -4,10 +4,15 @@
 
 if($model->siteGenset)
 {
-$record = $model->siteGenset->genset->genset_id;
-//die($record);
-$provider = new \yii\data\ActiveDataProvider([
-    'query' => \app\models\Genset::find()->where(['genset_id'=>$record])
+$site_id = $model->site_id;
+
+$query = new yii\db\Query();
+$query->from('site_genset')->where(['site_id'=>$site_id])->select('genset_id')->all();
+
+$record = $model->siteGenset->getGenset();
+
+$provider = new \yii\data\ArrayDataProvider([
+    'allModels' => \app\models\Genset::findAll($query)
 ]);
 
 ?>
@@ -35,7 +40,7 @@ $provider = new \yii\data\ActiveDataProvider([
              'buttons' =>[
                  'delete' => function($url, $model)
                                 {
-                                    return yii\helpers\Html::a('<i class="fa fa-chain-broken"></i> Detach Genset', Yii::$app->urlManager->createUrl(['siteactions/detachgensetfromsite','genset'=>$model->genset_id]),['title'=>'Detach Genset','class'=>'btn btn-warning btn-sm']);
+                                    return yii\helpers\Html::a('<i class="fa fa-chain-broken"></i> Detach Genset', Yii::$app->urlManager->createUrl(['siteactions/detachgensetfromsite','genset'=>$model->genset_id]),['title'=>'Detach Genset','class'=>'gensetDetachButton btn btn-warning btn-sm']);
                                 },
                   'view' => function($url,$model){return '';},
                   'update' => function($url,$model){return '';}
@@ -55,6 +60,6 @@ else
     echo yii\helpers\Html::tag('span', 'No genset on site', ['class'=>'warning']);
 
 }
-
+        
     ?>
 

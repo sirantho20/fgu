@@ -33,4 +33,20 @@ class SiteactionsController extends Controller {
             Yii::$app->session->setFlash('error', 'Sorry, genset was not detached');
         }
     }
+    
+    public function actionDetachmeterfromsite($meter)
+    {
+        $model = \backend\models\MeterSite::findOne(['meter_id'=>$meter]);
+       
+        $site = $model->site_id;
+        if($model->delete())
+        {
+            Yii::$app->session->setFlash('success', 'Meter successfully detached');
+            return $this->redirect(['sites/view', 'id' => $site]);
+        }
+        else 
+        {
+            Yii::$app->session->setFlash('error', 'Sorry, meter was not detached');
+        }
+    }
 }

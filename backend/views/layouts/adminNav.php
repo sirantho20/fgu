@@ -10,9 +10,9 @@
 				<span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
 					
 					<a href="javascript:void(0);" id="show-shortcut">
-						<img src="img/avatars/sunny.png" alt="me" class="online" /> 
+						<img src="smartadmin/img/avatars/male.png" alt="me" class="online" /> 
 						<span>
-							john.doe 
+							<?= Yii::$app->user->identity->username ?>
 						</span>
 						<i class="fa fa-angle-down"></i>
 					</a> 
@@ -39,12 +39,6 @@
                                         <ul>
                                             <li>
                                                 <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['sites']) ?>" title="Manage Sites">Manage Sites</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['sites/attachgenset']) ?>" title="Attach Gensets">Attach Genset</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Attach Meter">Attach Meter</a>
                                             </li>
                                             <li>
                                                 <a href="#" title="Swap Gensets">Swap Gensets</a>

@@ -27,6 +27,7 @@ class smartadminBundle extends AssetBundle {
                     'js/plugin/msie-fix/jquery.mb.browser.min.js',
                     'js/plugin/fastclick/fastclick.js',
                     'js/app.js',
+                    'js/jquery.confirm.min.js',
                     
                 ];
     public $depends = [ 'backend\assets\AppAsset'];

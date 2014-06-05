@@ -8,6 +8,7 @@ use app\models\SiteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\attachMeterForm;
 
 /**
  * SitesController implements the CRUD actions for Site model.
@@ -95,7 +96,7 @@ class SitesController extends Controller
         }
     }
     
-    public function actionAttachgenset($site)
+    public function actionAttachgenset()
     {
         $model = new \backend\models\attachGensetForm();
         if($model->load(Yii::$app->request->post()) && $model->attachGenset())
@@ -104,6 +105,17 @@ class SitesController extends Controller
             return $this->redirect(['view', 'id'=>$model->site_id]);
         }
         return $this->render('_attachGenset',['model'=>$model]);
+    }
+    
+    public function actionAttachmeter()
+    {
+        $model = new attachMeterForm();
+        if($model->load(Yii::$app->request->post()) && $model->attachMeter())
+        {
+            Yii::$app->session->setFlash('success', 'Meter successfully attached.');
+            return $this->redirect(['view', 'id'=>$model->site_id]);
+        }
+        return $this->render('_attachMeter',['model'=>$model]);
     }
 
     /**
