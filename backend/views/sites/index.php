@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
         data-widget-sortable="false"
 
         -->
-       <header><span class="widget-icon"> <i class="fa fa-table"></i> </span><h2>Utility Meter</h2></header>
+       <header><span class="widget-icon"> <i class="fa fa-table"></i> </span><h2>Sites</h2></header>
         <!-- widget div-->
         <div style="box-shadow: 5px 5px 5px lightgray;">
 
@@ -54,6 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options' => ['class'=>'table table-striped table-hover table-bordered smart-form'],
         'columns' => [
 
             'site_id',

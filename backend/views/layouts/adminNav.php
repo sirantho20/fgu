@@ -60,16 +60,16 @@
                                                 </a>
 					</li>
 					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Graphs</span></a>
+						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">MC Reports</span></a>
 						<ul>
 							<li>
-								<a href="flot.html">Flot Chart</a>
+								<a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['gensetreading']) ?>">Genset Readings</a>
 							</li>
 							<li>
-								<a href="morris.html">Morris Charts</a>
+								<a href="morris.html">Power Readings</a>
 							</li>
 							<li>
-								<a href="inline-charts.html">Inline Charts</a>
+								<a href="inline-charts.html">Fueling</a>
 							</li>
 						</ul>
 					</li>

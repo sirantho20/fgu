@@ -6,24 +6,23 @@ use yii\grid\GridView;
 /**
  * @var yii\web\View $this
  * @var yii\data\ActiveDataProvider $dataProvider
- * @var app\models\UtilitymeterSearch $searchModel
+ * @var app\models\GensetReadingSearch $searchModel
  */
 
-$this->title = 'Manage Utility Meters';
+$this->title = 'Genset Readings';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="utilitymeter-index">
+<div class="genset-reading-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('New Utility Meter', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Genset Reading', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <div id="content">
+        <div id="content">
     <!-- widget grid -->
     <section id="widget-grid" class="">
-
             <!-- row -->
             <div class="row">
 
@@ -44,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     -->
                                     <header>
                                             <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                                            <h2>Utility Meters</h2>
+                                            <h2>Genset Readings</h2>
 
                                     </header>
 
@@ -60,43 +59,36 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                             <!-- widget content -->
                                             <div class="widget-body no-padding">
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'options' => ['class'=>'table table-striped table-hover table-bordered smart-form'],
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-                                                <?= GridView::widget([
-                                                    'dataProvider' => $dataProvider,
-                                                    'filterModel' => $searchModel,
-                                                    'options' => ['class'=>'table table-striped table-hover table-bordered smart-form',
-                                                                    'id' => 'datatable_fixed_column'],
-                                                    'columns' => [
-                                                        //['class' => 'yii\grid\SerialColumn'],
+            'genset_id',
+            'site_id',
+            'reading_date',
+            'fuel_level_cm',
+            'fuel_quantity_lts',
+            // 'genset_run_hours',
+            // 'entry_date',
+            // 'reading_by',
+            // 'entry_by',
+            // 'source_of_reading',
+            // 'date_modified',
+            // 'modified_by',
+            // 'days_from_last_reading',
+            // 'access_code',
 
-                                                        'meter_id',
-                                                        'purchase_date',
-                                                        'meter_type',
-                                                        'utility_provider',
-                                                        'kwh_before_install',
-
-                                                        ['class' => 'yii\grid\ActionColumn'],
-                                                    ],
-                                                ]); ?>
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
                                             </div>
-                                            <!-- end widget content -->
-
                                     </div>
-                                    <!-- end widget div -->
-
                             </div>
-                            <!-- end widget -->
-
-                    </article>
-                    <!-- WIDGET END -->
-
             </div>
-
-            <!-- end row -->
-
     </section>
-    <!-- end widget grid -->
-    </div>
-
+        </div>
 </div>
