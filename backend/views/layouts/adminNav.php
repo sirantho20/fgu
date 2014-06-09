@@ -63,13 +63,18 @@
 						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">MC Reports</span></a>
 						<ul>
 							<li>
-								<a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['gensetreading']) ?>">Genset Readings</a>
+                                                            <a href="#" class="menu-item-parent">Genset Readings</a>
+                                                                <ul>
+                                                                    <li>
+                                                                        <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['gensetreading']) ?>">Current Week</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['gensetreading/historic']) ?>">Historic Readings</a>
+                                                                    </li>
+                                                                </ul>
 							</li>
 							<li>
-								<a href="morris.html">Power Readings</a>
-							</li>
-							<li>
-								<a href="inline-charts.html">Fueling</a>
+								<a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['fuelling']) ?>">Fueling</a>
 							</li>
 						</ul>
 					</li>

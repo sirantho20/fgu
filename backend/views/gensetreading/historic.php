@@ -8,8 +8,8 @@ use yii\grid\GridView;
  * @var yii\data\ActiveDataProvider $dataProvider
  * @var app\models\GensetReadingSearch $searchModel
  */
-$date = new \DateTime("now");
-$this->title = 'Week '.$date->format("W").' - Genset Readings';
+
+$this->title = 'Genset Readings';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="genset-reading-index">
@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'genset_id',
             'site_id',
-            'reading_date',
+            //'reading_date',
             //'fuel_level_cm',
             'fuel_quantity_lts',
             'meter_reading',

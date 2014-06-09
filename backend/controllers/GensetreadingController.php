@@ -33,10 +33,24 @@ class GensetreadingController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new GensetReadingSearch;
+        $searchModel = new GensetReadingSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
-
+        
         return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+        ]);
+    }
+    
+    public function actionHistoric()
+    {
+        $searchModel = new GensetReadingSearch();
+        $dataProvider = new \yii\data\ActiveDataProvider([
+            'query' => GensetReading::find(),
+        ]);
+        
+        
+        return $this->render('historic', [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
         ]);
@@ -67,6 +81,7 @@ class GensetreadingController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'reading_date' => $model->reading_date, 'access_code' => $model->access_code]);
         } else {
+            
             return $this->render('create', [
                 'model' => $model,
             ]);

@@ -44,6 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'modified_by',
             'days_from_last_reading',
             'access_code',
+            'fuel_consumed',
+            'power_consumed'
         ],
     ]) ?>
 
