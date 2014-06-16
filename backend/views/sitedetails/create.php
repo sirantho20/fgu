@@ -4,14 +4,14 @@ use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var backend\models\GensetReading $model
+ * @var backend\models\Sitedetails $model
  */
 
-$this->title = 'FGU Reading';
-$this->params['breadcrumbs'][] = ['label' => 'Genset Readings', 'url' => ['index']];
+$this->title = 'Create Sitedetails';
+$this->params['breadcrumbs'][] = ['label' => 'Sitedetails', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="genset-reading-create">
+<div class="sitedetails-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

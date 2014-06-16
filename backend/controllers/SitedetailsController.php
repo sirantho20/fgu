@@ -3,18 +3,17 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Fuelling;
-use app\models\FuellingSearch;
+use backend\models\Sitedetails;
+use app\models\SitedetailsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * FuellingController implements the CRUD actions for Fuelling model.
+ * SitedetailsController implements the CRUD actions for Sitedetails model.
  */
-class FuellingController extends Controller
+class SitedetailsController extends Controller
 {
-    public $layout = '//adminMain';
     public function behaviors()
     {
         return [
@@ -28,12 +27,12 @@ class FuellingController extends Controller
     }
 
     /**
-     * Lists all Fuelling models.
+     * Lists all Sitedetails models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new FuellingSearch;
+        $searchModel = new SitedetailsSearch;
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
         return $this->render('index', [
@@ -43,56 +42,47 @@ class FuellingController extends Controller
     }
 
     /**
-     * Displays a single Fuelling model.
-     * @param string $delivery_date
-     * @param string $access_code
+     * Displays a single Sitedetails model.
+     * @param string $id
      * @return mixed
      */
-    public function actionView($delivery_date, $access_code)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($delivery_date, $access_code),
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Fuelling model.
+     * Creates a new Sitedetails model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Fuelling;
+        $model = new Sitedetails;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'delivery_date' => $model->delivery_date, 'access_code' => $model->access_code]);
+            return $this->redirect(['view', 'id' => $model->site_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
     }
-    
-    public function actionHistoric()
-    {
-        $dataProvider = new \yii\data\ActiveDataProvider(['query'=>  Fuelling::find()]);
-        
-        return $this->render('historic',['dataProvider'=>$dataProvider]);
-    }
 
     /**
-     * Updates an existing Fuelling model.
+     * Updates an existing Sitedetails model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $delivery_date
-     * @param string $access_code
+     * @param string $id
      * @return mixed
      */
-    public function actionUpdate($delivery_date, $access_code)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($delivery_date, $access_code);
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'delivery_date' => $model->delivery_date, 'access_code' => $model->access_code]);
+            return $this->redirect(['view', 'id' => $model->site_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -101,30 +91,28 @@ class FuellingController extends Controller
     }
 
     /**
-     * Deletes an existing Fuelling model.
+     * Deletes an existing Sitedetails model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $delivery_date
-     * @param string $access_code
+     * @param string $id
      * @return mixed
      */
-    public function actionDelete($delivery_date, $access_code)
+    public function actionDelete($id)
     {
-        $this->findModel($delivery_date, $access_code)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Fuelling model based on its primary key value.
+     * Finds the Sitedetails model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $delivery_date
-     * @param string $access_code
-     * @return Fuelling the loaded model
+     * @param string $id
+     * @return Sitedetails the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($delivery_date, $access_code)
+    protected function findModel($id)
     {
-        if (($model = Fuelling::findOne(['delivery_date' => $delivery_date, 'access_code' => $access_code])) !== null) {
+        if (($model = Sitedetails::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

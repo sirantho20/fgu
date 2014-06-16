@@ -59,10 +59,12 @@ class GensetReading extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['genset_id', 'site_id', 'reading_date', 'entry_date', 'access_code', 'meter_reading'], 'required'],
+            [['genset_id', 'site_id', 'reading_date', 'entry_date', 'access_code', 'meter_reading','fuel_level_cm'], 'required'],
             [['reading_date', 'entry_date', 'date_modified'], 'safe'],
             [['fuel_level_cm', 'fuel_quantity_lts', 'genset_run_hours', 'fuel_consumed', 'power_consumed'], 'number'],
             [['days_from_last_reading', 'meter_reading'], 'integer'],
+            [['meter_reading'],'validateKWH'],
+            [['genset_run_hours'],'validateRunHRS'],
             [['genset_id', 'site_id', 'reading_by', 'entry_by', 'source_of_reading', 'modified_by', 'access_code'], 'string', 'max' => 50]
         ];
     }
@@ -108,6 +110,7 @@ class GensetReading extends \yii\db\ActiveRecord
        $this->days_from_last_reading = $this->daysSinceLastReading($this->genset_id,$this->reading_date);
        $this->fuel_consumed = $this->fuelConsumed($this->genset_id, $this->fuel_quantity_lts);
        $this->power_consumed = $this->powerConsumed($this->genset_id, $this->meter_reading);
+       $this->fuel_quantity_lts = self::getFuelLtsfromCM($this->genset_id, $this->fuel_level_cm);
         //print_r($qr[0]['genset_id']);die();
        
         return parent::beforeValidate();
@@ -163,5 +166,53 @@ class GensetReading extends \yii\db\ActiveRecord
             $re = '0.00';
         }
         return $re;
+    }
+    
+    public function validateKWH($attribute, $params)
+    {
+        $model = GensetReading::find()->where(['genset_id'=>$this->genset_id])->orderBy('reading_date desc')->limit(1)->all();
+        if(count($model)>0)
+        {
+         $last_kwh = $model[0]['meter_reading'];
+         if($this->meter_reading < $last_kwh)
+         {
+             $this->addError($attribute,'Invalid meter reading. Check your data and try again.');
+         }
+        }
+    }
+    
+    public function validateRunHRS($attribute, $params)
+    {
+        $model = GensetReading::find()->where(['genset_id'=>$this->genset_id])->orderBy('reading_date desc')->limit(1)->all();
+        if(count($model)>0)
+        {
+         $last_kwh = $model[0]['genset_run_hours'];
+         if($this->meter_reading < $last_kwh)
+         {
+             $this->addError($attribute,'Invalid run hours. Check your data and try again.');
+         }
+        }
+    }
+    public static function getFuelLtsfromCM($genset, $level)
+    {
+        $gen = \app\models\Genset::find()->where(['genset_id'=>$genset])->all();
+        //print_r($gen); die($gen);
+        $site_genset = SiteGenset::find()->where(['genset_id'=>$genset])->all();
+        $site_id = $site_genset[0]['site_id'];
+        if($gen[0]['has_base_tank'] =='yes')
+        {
+            $lts = ($gen[0]['fuel_tank_width'] * $gen[0]['fuel_tank_breadth'] * $gen[0]['fuel_tank_height'] * $level)/1000;
+        }
+        else 
+        {
+            $site = Site::findOne($site_id);
+            $height = $site->siteDetails->tank_height;
+            $width = $site->siteDetails->tank_width;
+            $bredth = $site->siteDetails->tank_bredth;
+            
+            $lts = ($height * $width * $bredth * $level) / 1000;
+        }
+        
+        return $lts;
     }
 }

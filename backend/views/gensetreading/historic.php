@@ -83,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'access_code',
             
 
-            ['class' => 'yii\grid\ActionColumn'],
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

@@ -78,6 +78,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'label' => 'Utility Meter',
             'content' => $this->render('_siteMeters',['model'=>$model]),
         ],
+        [
+            'label' => 'Fuel Tank',
+            'content' => $this->render('_fuelTanks',['model'=>$model]),
+        ],
     ],
 ]); 
      $this->registerJs('$(".gensetDetachButton").on("click",function(){$(".gensetDetachButton").confirm({text:"Are you sure you want to detach genset?"})});');

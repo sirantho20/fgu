@@ -70,7 +70,9 @@ use yii\jui\DatePicker;
                     <?= $form->field($model, 'engine_used')->dropDownList(['y'=>'Yes','n'=>'No']) ?>
 
                     <?= $form->field($model, 'start_run_hours')->textInput()->hint('Run hours after testing and before comissioning') ?>
-
+                        
+                    <?= $form->field($model, 'has_base_tank')->dropDownList(['no'=>'No','yes'=>'Yes']); ?>
+                        
                     <?= $form->field($model, 'fuel_tank_width')->textInput(['maxlength' => 10]) ?>
 
                     <?= $form->field($model, 'fuel_tank_height')->textInput(['maxlength' => 53]) ?>

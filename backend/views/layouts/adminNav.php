@@ -12,7 +12,7 @@
 					<a href="javascript:void(0);" id="show-shortcut">
 						<img src="smartadmin/img/avatars/male.png" alt="me" class="online" /> 
 						<span>
-							<?= Yii::$app->user->identity->username ?>
+							<?= Yii::$app->user->identity->role ?>
 						</span>
 						<i class="fa fa-angle-down"></i>
 					</a> 
@@ -35,7 +35,7 @@
 
 				<ul>
                                     <li>
-                                        <a href="#" title="Sites"><i class="fa fa-lg fa-fw fa-magnet"></i> <span class="menu-item-parent">Sites</span></a>
+                                        <a href="#" title="Sites"><i class="fa fa-lg fa-fw fa-th"></i> <span class="menu-item-parent">Sites</span></a>
                                         <ul>
                                             <li>
                                                 <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['sites']) ?>" title="Manage Sites">Manage Sites</a>
@@ -63,7 +63,7 @@
 						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">MC Reports</span></a>
 						<ul>
 							<li>
-                                                            <a href="#" class="menu-item-parent">Genset Readings</a>
+                                                            <a href="#" class="menu-item-parent">FGU Readings</a>
                                                                 <ul>
                                                                     <li>
                                                                         <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['gensetreading']) ?>">Current Week</a>
@@ -74,7 +74,11 @@
                                                                 </ul>
 							</li>
 							<li>
-								<a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['fuelling']) ?>">Fueling</a>
+								<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Fueling</span></a>
+                                                                <ul>
+                                                                    <li><a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['fuelling']) ?>">Current Week</a></li>
+                                                                    <li><a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['fuelling/historic']) ?>">Historic</a></li>
+                                                                </ul>
 							</li>
 						</ul>
 					</li>

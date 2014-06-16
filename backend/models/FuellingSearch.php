@@ -28,7 +28,7 @@ class FuellingSearch extends Fuelling
 
     public function search($params)
     {
-        $query = Fuelling::find();
+        $query = Fuelling::find()->where(['week(entry_date,1)'=>new \yii\db\Expression('week(now(),1)')]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
