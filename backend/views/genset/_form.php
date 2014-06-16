@@ -14,7 +14,7 @@ use yii\jui\DatePicker;
 <div class="row">
 
 <!-- NEW COL START -->
-<article class="col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 15px;">
+<article class="col-sm-12 col-md-8 col-lg-8" style="margin-bottom: 15px;">
 
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">

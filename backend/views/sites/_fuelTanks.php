@@ -22,7 +22,7 @@ $provider = new \yii\data\ActiveDataProvider([
                     'buttons' =>[
                         'delete' => function($url, $model)
                                        {
-                                           return yii\helpers\Html::a('<i class="fa fa-edit"></i> Detach Meter', Yii::$app->urlManager->createUrl(['siteactions/detachmeterfromsite','meter'=>$model->site_id]),['title'=>'Detach Genset','class'=>'meterDetachButton btn btn-warning btn-sm']);
+                                           return '';//yii\helpers\Html::a('<i class="fa fa-edit"></i> Edit','#' /*Yii::$app->urlManager->createUrl(['siteactions/detachmeterfromsite','meter'=>$model->site_id])*/,['title'=>'Detach Genset','class'=>'meterDetachButton btn btn-warning btn-sm']);
                                        },
                          'view' => function($url,$model){return '';},
                          'update' => function($url,$model){return '';}

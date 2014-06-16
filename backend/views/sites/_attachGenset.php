@@ -75,7 +75,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= $form->field($model, 'genset_id')->widget(Select2::className(),['data'=>$data]); ?>
 </fieldset>
                 <footer>
-                    <?= Html::submitButton('Attach', ['class' => 'btn btn-success', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('<i class="fa fa-check-square-o"></i> Attach', ['class' => 'btn btn-success', 'name' => 'login-button']) ?>
+                    <?= Html::a('<i class="fa fa-angle-double-down"> Cancel</i>', yii\helpers\Url::to(['sites/view','id'=>  Yii::$app->request->get('site')]), ['class'=>'btn btn-warning']) ?>
+                    
                 </footer>
 <?php ActiveForm::end(); ?>
 

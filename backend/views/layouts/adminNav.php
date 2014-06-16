@@ -63,7 +63,7 @@
 						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">MC Reports</span></a>
 						<ul>
 							<li>
-                                                            <a href="#" class="menu-item-parent">FGU Readings</a>
+                                                            <a href="#" class="menu-item-parent"><i class="fa fa-lg fa-fw fa-calendar"></i><span class="menu-item-parent">FGU Readings</span></a>
                                                                 <ul>
                                                                     <li>
                                                                         <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['gensetreading']) ?>">Current Week</a>
@@ -74,7 +74,7 @@
                                                                 </ul>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Fueling</span></a>
+								<a href="#"><i class="fa fa-lg fa-fw fa-tachometer"></i> <span class="menu-item-parent">Fueling</span></a>
                                                                 <ul>
                                                                     <li><a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['fuelling']) ?>">Current Week</a></li>
                                                                     <li><a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['fuelling/historic']) ?>">Historic</a></li>
