@@ -185,6 +185,7 @@ CREATE TABLE `meter_site` (
 
 LOCK TABLES `meter_site` WRITE;
 /*!40000 ALTER TABLE `meter_site` DISABLE KEYS */;
+INSERT INTO `meter_site` VALUES ('1003','233232','2014-06-16 18:45:39');
 /*!40000 ALTER TABLE `meter_site` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,6 +211,77 @@ LOCK TABLES `migration` WRITE;
 /*!40000 ALTER TABLE `migration` DISABLE KEYS */;
 INSERT INTO `migration` VALUES ('m000000_000000_base',1401707162),('m130524_201442_init',1401707406),('m140612_084545_gensetTankTypeFlag',1402564059),('m140612_091507_gensetTankDimensionsNotRequired',1402564921),('m140612_092709_siteDetailsTankDetailsColumns',1402565464),('m140616_093910_addMCAndFSFlags',1402912289),('m140616_111557_addGensetID',1402917420);
 /*!40000 ALTER TABLE `migration` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `postpaid_meter_sites`
+--
+
+DROP TABLE IF EXISTS `postpaid_meter_sites`;
+/*!50001 DROP VIEW IF EXISTS `postpaid_meter_sites`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `postpaid_meter_sites` (
+  `site_id` tinyint NOT NULL,
+  `site_name` tinyint NOT NULL,
+  `region` tinyint NOT NULL,
+  `city_town` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `prepaid_meter_sites`
+--
+
+DROP TABLE IF EXISTS `prepaid_meter_sites`;
+/*!50001 DROP VIEW IF EXISTS `prepaid_meter_sites`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `prepaid_meter_sites` (
+  `site_id` tinyint NOT NULL,
+  `site_name` tinyint NOT NULL,
+  `region` tinyint NOT NULL,
+  `city_town` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `prepaid_reload`
+--
+
+DROP TABLE IF EXISTS `prepaid_reload`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `prepaid_reload` (
+  `site_id` varchar(20) NOT NULL,
+  `meter_id` varchar(45) NOT NULL,
+  `reload_amount` float NOT NULL,
+  `reload_date` datetime NOT NULL,
+  `balance_before_reload` float NOT NULL,
+  `kwh_readings` int(11) DEFAULT NULL,
+  `kwh_consumed` int(11) DEFAULT NULL,
+  `amount_consumed` float DEFAULT NULL,
+  `entry_date` datetime DEFAULT NULL,
+  `entry_by` varchar(45) DEFAULT NULL,
+  `mc` varchar(45) DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `modified_by` varchar(45) DEFAULT NULL,
+  `days_since_last_reload` int(11) DEFAULT NULL,
+  PRIMARY KEY (`reload_date`,`meter_id`,`site_id`),
+  KEY `site_id_site_idx` (`site_id`),
+  KEY `meter_meter_id_idx` (`meter_id`),
+  CONSTRAINT `meter_meter_id` FOREIGN KEY (`meter_id`) REFERENCES `utility_meter` (`meter_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `site_id_site` FOREIGN KEY (`site_id`) REFERENCES `site` (`site_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `prepaid_reload`
+--
+
+LOCK TABLES `prepaid_reload` WRITE;
+/*!40000 ALTER TABLE `prepaid_reload` DISABLE KEYS */;
+/*!40000 ALTER TABLE `prepaid_reload` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -299,7 +371,7 @@ CREATE TABLE `site_genset` (
 
 LOCK TABLES `site_genset` WRITE;
 /*!40000 ALTER TABLE `site_genset` DISABLE KEYS */;
-INSERT INTO `site_genset` VALUES ('1003','4334344','2014-06-12 13:23:07'),('1003','443443','2014-06-16 12:42:21');
+INSERT INTO `site_genset` VALUES ('1003','4334344','2014-06-12 13:23:07');
 /*!40000 ALTER TABLE `site_genset` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,6 +468,44 @@ LOCK TABLES `utility_meter` WRITE;
 INSERT INTO `utility_meter` VALUES ('233232','2014-05-05 00:00:00','prepaid','ecg',22),('45545','2014-01-12 00:00:00','credit','vra',300);
 /*!40000 ALTER TABLE `utility_meter` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `postpaid_meter_sites`
+--
+
+/*!50001 DROP TABLE IF EXISTS `postpaid_meter_sites`*/;
+/*!50001 DROP VIEW IF EXISTS `postpaid_meter_sites`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `postpaid_meter_sites` AS select `sites`.`site_id` AS `site_id`,`sites`.`site_name` AS `site_name`,`sites`.`region` AS `region`,`sites`.`city_town` AS `city_town` from ((`site` `sites` join `meter_site` `metersite` on((`sites`.`site_id` = `metersite`.`site_id`))) join `utility_meter` on((`utility_meter`.`meter_id` = `metersite`.`meter_id`))) where (`utility_meter`.`meter_type` = 'postpaid') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `prepaid_meter_sites`
+--
+
+/*!50001 DROP TABLE IF EXISTS `prepaid_meter_sites`*/;
+/*!50001 DROP VIEW IF EXISTS `prepaid_meter_sites`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `prepaid_meter_sites` AS select `sites`.`site_id` AS `site_id`,`sites`.`site_name` AS `site_name`,`sites`.`region` AS `region`,`sites`.`city_town` AS `city_town` from ((`site` `sites` join `meter_site` `metersite` on((`sites`.`site_id` = `metersite`.`site_id`))) join `utility_meter` on((`utility_meter`.`meter_id` = `metersite`.`meter_id`))) where (`utility_meter`.`meter_type` = 'prepaid') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -406,4 +516,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-16 16:34:58
+-- Dump completed on 2014-06-19 11:26:52
