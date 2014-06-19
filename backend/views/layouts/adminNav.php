@@ -80,6 +80,12 @@
                                                                     <li><a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['fuelling/historic']) ?>">Historic</a></li>
                                                                 </ul>
 							</li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-lg fa-fw fa-tachometer"></i> <span class="menu-item-parent">Prepaid Reload</span></a>
+                                                            <ul>
+                                                                <li><a href="<?= \yii\helpers\Url::to(['prepaid-reload']) ?>">Current Week</a></li>
+                                                            </ul>
+                                                        </li>
 						</ul>
 					</li>
 			
