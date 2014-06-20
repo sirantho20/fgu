@@ -22,6 +22,7 @@ use backend\models\GensetReading;
  * @property string $htg_fs_present,
  * @property string $entry_date 
  * @property string $entry_by
+ * @property string $mc
  *
  * @property Site $site
  */
@@ -46,7 +47,7 @@ class Fuelling extends \yii\db\ActiveRecord
             [['quantity_delivered_cm', 'quantity_delivered_lts', 'quantity_before_delivery_cm', 'quantity_before_delivery_lts', 'quantity_after_delivery_cm', 'quantity_after_delivery_lts'], 'number'],
             [['site_id', 'access_code', 'htg_fs_present'], 'string', 'max' => 50],
             [['emergency_fuelling'], 'string', 'max' => 10],
-            [['genset_id'], 'string', 'max' => 255],
+            [['genset_id', 'mc'], 'string', 'max' => 255],
             [['entry_by'], 'string', 'max' => 45]
         ];
     }
@@ -71,6 +72,7 @@ class Fuelling extends \yii\db\ActiveRecord
             'genset_id' =>'Genset',
             'entry_date' => 'Entry Date',
             'entry_by' => 'Entry By',
+            'mc' => 'Maintenance Contractor',
         ];
     }
 
@@ -89,6 +91,7 @@ class Fuelling extends \yii\db\ActiveRecord
         $this->quantity_before_delivery_lts = GensetReading::getFuelLtsfromCM($this->genset_id, $this->quantity_before_delivery_cm);
         $this->entry_date = new \yii\db\Expression('now()');
         $this->entry_by = Yii::$app->user->identity->username;
+        $this->mc = Yii::$app->user->identity->company;
         
         return parent::beforeValidate();
     }

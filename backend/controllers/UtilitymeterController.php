@@ -7,6 +7,7 @@ use backend\models\Utilitymeter;
 use app\models\UtilitymeterSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use backend\models\UserAccess;
 use yii\filters\VerbFilter;
 
 /**
@@ -24,6 +25,14 @@ class UtilitymeterController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+            'class' => \yii\filters\AccessControl::className(),
+            'rules' => [
+                [
+                    'allow' => (new UserAccess())->accessCheck('htg')
+                ]
+            ]
+            ]
         ];
     }
 

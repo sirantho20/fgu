@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Utilitymeter;
+use backend\models\UtilityMeter;
 
 /**
  * UtilitymeterSearch represents the model behind the search form about `backend\models\Utilitymeter`.
  */
-class UtilitymeterSearch extends Utilitymeter
+class UtilitymeterSearch extends UtilityMeter
 {
     public function rules()
     {

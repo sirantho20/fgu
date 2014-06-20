@@ -27,7 +27,7 @@ class SiteSearch extends Site
 
     public function search($params)
     {
-        $query = Site::find();
+        $query = Site::find();//findBySql('select sites.* from site as sites inner join site_details on sites.site_id = site_details.site_id where site_details.maintenance_contractor = :comp',[':comp'=>  \Yii::$app->user->identity->company]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

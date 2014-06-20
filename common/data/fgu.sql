@@ -492,8 +492,6 @@ UNLOCK TABLES;
 -- Final view structure for view `prepaid_meter_sites`
 --
 
-/*!50001 DROP TABLE IF EXISTS `prepaid_meter_sites`*/;
-/*!50001 DROP VIEW IF EXISTS `prepaid_meter_sites`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;

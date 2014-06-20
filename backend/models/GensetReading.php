@@ -26,6 +26,7 @@ use yii\db\Expression;
  * @property integer $meter_reading
  * @property double $fuel_consumed 
  * @property double $power_consumed 
+ * @property string $mc
  *
  * @property Site $site
  */
@@ -92,6 +93,7 @@ class GensetReading extends \yii\db\ActiveRecord
             'meter_reading' => 'ECG Meter Reading(KWH)',
             'fuel_consumed' => 'Fuel Consumed',
             'power_consumed' => 'Power Consumed',
+            'mc' => 'Maintenance Contractor',
         ];
     }
 
@@ -111,6 +113,7 @@ class GensetReading extends \yii\db\ActiveRecord
        $this->fuel_consumed = $this->fuelConsumed($this->genset_id, $this->fuel_quantity_lts);
        $this->power_consumed = $this->powerConsumed($this->genset_id, $this->meter_reading);
        $this->fuel_quantity_lts = self::getFuelLtsfromCM($this->genset_id, $this->fuel_level_cm);
+       $this->mc = Yii::$app->user->identity->company;
         //print_r($qr[0]['genset_id']);die();
        
         return parent::beforeValidate();

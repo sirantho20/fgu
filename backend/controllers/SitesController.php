@@ -8,6 +8,7 @@ use app\models\SiteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\UserAccess;
 use backend\models\attachMeterForm;
 
 /**
@@ -26,6 +27,15 @@ class SitesController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            
+            'access' => [
+            'class' => \yii\filters\AccessControl::className(),
+            'rules' => [
+                [
+                    'allow' => (new UserAccess())->accessCheck('htg')
+                ]
+            ]
+            ]
         ];
     }
 

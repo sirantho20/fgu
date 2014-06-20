@@ -41,6 +41,17 @@ class PrepaidReloadController extends Controller
             'searchModel' => $searchModel,
         ]);
     }
+    
+    public function actionHistoric()
+    {
+        $dataProvider = new \yii\data\ActiveDataProvider([
+            'query' => PrepaidReload::find()->where(['mc'=>  \Yii::$app->user->identity->company]),
+        ]);
+
+        return $this->render('historic', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
     /**
      * Displays a single PrepaidReload model.

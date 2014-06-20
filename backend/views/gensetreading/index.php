@@ -9,7 +9,7 @@ use yii\grid\GridView;
  * @var app\models\GensetReadingSearch $searchModel
  */
 $date = new \DateTime("now");
-$this->title = 'Week '.$date->format("W").' - Genset Readings';
+$this->title = 'FGU Readings - '.'Week '.$date->format("W");
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="genset-reading-index">

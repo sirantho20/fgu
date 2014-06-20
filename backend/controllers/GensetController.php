@@ -8,6 +8,7 @@ use app\models\GensetSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\UserAccess;
 
 /**
  * GensetController implements the CRUD actions for Genset model.
@@ -25,6 +26,15 @@ class GensetController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => (new UserAccess())->accessCheck('htg')
+                    ]
+                ]
+            ]
         ];
     }
 

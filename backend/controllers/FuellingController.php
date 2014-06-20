@@ -75,7 +75,9 @@ class FuellingController extends Controller
     
     public function actionHistoric()
     {
-        $dataProvider = new \yii\data\ActiveDataProvider(['query'=>  Fuelling::find()]);
+        $dataProvider = new \yii\data\ActiveDataProvider([
+            'query'=>  Fuelling::find()->where(['mc'=>  \Yii::$app->user->identity->company]),
+                ]);
         
         return $this->render('historic',['dataProvider'=>$dataProvider]);
     }

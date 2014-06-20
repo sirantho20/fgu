@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'fieldConfig'=>['labelOptions'=>['class'=>'label', 'style'=>'font-weight:bold;'],'options'=>['tag'=>'section']]
     ]);
 
-    $query = \backend\models\Utilitymeter::findBySql('select * from utility_meter where meter_id not in (select distinct meter_id from meter_site)')->all();
+    $query = \backend\models\UtilityMeter::findBySql('select * from utility_meter where meter_id not in (select distinct meter_id from meter_site)')->all();
     if(count($query)<1)
     {
         $data = [''=>'No Gensets available'];

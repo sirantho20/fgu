@@ -12,7 +12,7 @@
 					<a href="javascript:void(0);" id="show-shortcut">
 						<img src="smartadmin/img/avatars/male.png" alt="me" class="online" /> 
 						<span>
-							<?= Yii::$app->user->identity->role ?>
+							<?= Yii::$app->user->identity->username ?>
 						</span>
 						<i class="fa fa-angle-down"></i>
 					</a> 
@@ -34,6 +34,7 @@
 				-->
 
 				<ul>
+                                    <?php if(Yii::$app->user->identity->role < 6): ?>
                                     <li>
                                         <a href="#" title="Sites"><i class="fa fa-lg fa-fw fa-th"></i> <span class="menu-item-parent">Sites</span></a>
                                         <ul>
@@ -59,6 +60,7 @@
                                                     <span class="menu-item-parent">Utility Meters</span>
                                                 </a>
 					</li>
+                                        <?php endif; ?>
 					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">MC Reports</span></a>
 						<ul>
@@ -81,9 +83,10 @@
                                                                 </ul>
 							</li>
                                                         <li>
-                                                            <a href="#"><i class="fa fa-lg fa-fw fa-tachometer"></i> <span class="menu-item-parent">Prepaid Reload</span></a>
+                                                            <a href="#"><i class="fa fa-lg fa-fw fa-usd"></i> <span class="menu-item-parent">Prepaid Reload</span></a>
                                                             <ul>
-                                                                <li><a href="<?= \yii\helpers\Url::to(['prepaid-reload']) ?>">Current Week</a></li>
+                                                                <li><a href="<?= \yii\helpers\Url::to(['prepaid-reload/index']) ?>">Current Week</a></li>
+                                                                <li><a href="<?= \yii\helpers\Url::to(['prepaid-reload/historic']) ?>">Historic</a></li>
                                                             </ul>
                                                         </li>
 						</ul>

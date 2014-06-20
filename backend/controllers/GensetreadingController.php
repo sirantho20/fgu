@@ -46,7 +46,7 @@ class GensetreadingController extends Controller
     {
         $searchModel = new GensetReadingSearch();
         $dataProvider = new \yii\data\ActiveDataProvider([
-            'query' => GensetReading::find(),
+            'query' => GensetReading::find()->where(['mc'=>  \Yii::$app->user->identity->company]),
         ]);
         
         

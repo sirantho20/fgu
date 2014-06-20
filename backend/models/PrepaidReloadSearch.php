@@ -29,7 +29,7 @@ class PrepaidReloadSearch extends PrepaidReload
 
     public function search($params)
     {
-        $query = PrepaidReload::find();
+        $query = PrepaidReload::find()->where(['week(reload_date,1)'=>new \yii\db\Expression('week(now(),1)'),'mc'=>['mc'=>  \Yii::$app->user->identity->company]]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

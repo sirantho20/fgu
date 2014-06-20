@@ -30,10 +30,12 @@ use yii\helpers\Html;
                 <span id="logo"> <img src="/images/htg-logo.png" alt="HTG"> </span>
                 <!-- END LOGO PLACEHOLDER -->
         </div>
-
+    
         <!-- pulled right: nav area -->
         <div class="pull-right">
-
+            <div style="float: left; margin-top: 15px; margin-right: 10px;" class="btn-header">
+                <?= Html::a(' <i class="fa fa-power-off"> logout </i>', yii\helpers\Url::to(['site/logout']),['title'=>'Log Out']) ?>
+            </div>    
                 <!-- collapse menu button -->
                 <div id="hide-menu" class="btn-header pull-right">
                         <span> <a href="javascript:void(0);" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>

@@ -88,4 +88,76 @@ class PrepaidReload extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Site::className(), ['site_id' => 'site_id']);
     }
+    
+    public function beforeValidate() {
+        $this->entry_date = new \yii\db\Expression('now()');
+        $this->entry_by = Yii::$app->user->identity->username;
+        $this->amount_consumed = $this->amountConsumed($this->meter_id, $this->balance_before_reload);
+        $this->kwh_consumed = $this->kwhConsumed($this->meter_id, $this->kwh_readings);
+        $this->days_since_last_reload = $this->daysSinceLastReload($this->meter_id, $this->reload_date);
+        $this->mc = $this->entry_by = Yii::$app->user->identity->company;
+        
+        if(!$this->isNewRecord)
+        {
+            $this->date_modified = new yii\db\Expression('now()');
+            $this->modified_by = Yii::$app->user->identity->username;
+        }
+        
+        return parent::beforeValidate();
+    }
+
+    private function daysSinceLastReload($meter_id, $new_date)
+    {
+        
+        $qr = new \yii\db\Query();
+        $qr->from('prepaid_reload');
+        $qr->select('date(reload_date) as reload_date');
+        $qr->where(['meter_id'=>$meter_id]);
+        $qr->orderBy('reload_date desc');
+        $qr->limit(1);
+        $model = $qr->all();
+        if(count($model)>0)
+        {
+            $reading_date = $model[0]['reload_date'];
+            $date1 = new \DateTime($reading_date);
+        }
+        else 
+        {
+            $date1 = new \DateTime($new_date);
+        }
+        
+        $date2 = new \Datetime($new_date);
+        $diff = $date1->diff($date2);
+        //echo $diff->days.' '.$new_date.' '.$reading_date;        die();
+        return $diff->days;
+    }
+    
+    private function amountConsumed($meter_id, $before_reload)
+    {
+        $model = PrepaidReload::find()->where(['meter_id'=>$meter_id])->orderBy('reload_date desc')->limit(1)->all();
+        if(count($model)>0)
+        {
+            $re = ($model[0]['balance_before_reload'] + $model[0]['reload_amount']) - $before_reload;
+        }
+        else 
+        {
+            $re = '0.00';
+        }
+        return $re;
+    }
+    
+    private function kwhConsumed($meter_id, $current_kwh)
+    {
+        $model = PrepaidReload::find()->where(['meter_id'=>$meter_id])->orderBy('reload_date desc')->limit(1)->all();
+        if(count($model)>0)
+        {
+            $re = $current_kwh - $model[0]['kwh_readings'];
+        }
+        else 
+        {
+            $re = '0';
+        }
+        
+        return $re;
+    }
 }

@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
  * @var backend\models\PrepaidReload $model
  */
 
-$this->title = $model->site_id;
+$this->title = \backend\models\Site::findOne($model->site_id)->site_name.' - '.$model->site_id.', '.(new yii\base\Formatter())->asRelativeTime($model->reload_date);
 $this->params['breadcrumbs'][] = ['label' => 'Prepaid Reloads', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -26,7 +26,27 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+<div class="row">
 
+<!-- NEW COL START -->
+<article class="col-sm-12 col-md-8 col-lg-8" style="margin-bottom: 15px;">
+
+<!-- Widget ID (each widget will need unique ID)-->
+<div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+   
+       <header><span class="widget-icon"> <i class="fa fa-edit"></i> </span><h2>Genset</h2></header>
+        <!-- widget div-->
+        <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -47,4 +67,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+</div>
+        </div>
+</div>
+</article>
+</div>
 </div>

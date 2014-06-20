@@ -9,7 +9,7 @@ use yii\grid\GridView;
  * @var app\models\FuellingSearch $searchModel
  */
 
-$this->title = 'Fuellings';
+$this->title = 'Fuellings - '.'Week '.(new DateTime())->format("W");
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="fuelling-index">

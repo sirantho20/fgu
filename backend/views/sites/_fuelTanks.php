@@ -6,7 +6,7 @@
 
 //die($record);
 $provider = new \yii\data\ActiveDataProvider([
-    'query' => \backend\models\SiteDetails::find()->where(['site_id'=>$model->site_id])
+    'query' => \backend\models\Sitedetails::find()->where(['site_id'=>$model->site_id])
 ]);
 
 ?>
