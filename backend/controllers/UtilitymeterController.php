@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Utilitymeter;
+use backend\models\UtilityMeter;
 use app\models\UtilitymeterSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -70,7 +70,7 @@ class UtilitymeterController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Utilitymeter;
+        $model = new UtilityMeter;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->meter_id]);

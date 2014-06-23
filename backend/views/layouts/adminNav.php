@@ -1,7 +1,7 @@
 		<!-- Left panel : Navigation area -->
 		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
                 <?php
-                use yii\web\UrlManager;
+                use yii\helpers\Url;
                 ?>
 		<aside id="left-panel">
 
@@ -36,10 +36,16 @@
 				<ul>
                                     <?php if(Yii::$app->user->identity->role < 6): ?>
                                     <li>
+                                            <a href="<?= Url::to(['dashboard/index']) ?>">
+                                                    <i class="fa fa-lg fa-fw fa-coffee"></i> 
+                                                    <span class="menu-item-parent"> Dashboard</span>
+                                                </a>
+                                    </li>
+                                    <li>
                                         <a href="#" title="Sites"><i class="fa fa-lg fa-fw fa-th"></i> <span class="menu-item-parent">Sites</span></a>
                                         <ul>
                                             <li>
-                                                <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['sites']) ?>" title="Manage Sites">Manage Sites</a>
+                                                <a href="<?= Url::to(['sites/index']) ?>" title="Manage Sites">Manage Sites</a>
                                             </li>
                                             <li>
                                                 <a href="#" title="Swap Gensets">Swap Gensets</a>
@@ -50,12 +56,12 @@
                                             <a href="#" title="Manage Gensets"><i class="fa fa-lg fa-fw fa-magnet"></i> <span class="menu-item-parent">Gensets</span></a>
                                             <ul>
                                                 <li>
-                                                    <a href="<?= (new UrlManager())->createAbsoluteUrl(['genset']) ?>">Manage Gensets</a>
+                                                    <a href="<?= Url::to(['genset/index']) ?>">Manage Gensets</a>
                                                 </li>
                                             </ul>
 					</li>
 					<li>
-						<a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['utilitymeter']) ?>">
+                                            <a href="<?= Url::to(['utilitymeter/index']) ?>">
                                                     <i class="fa fa-lg fa-fw fa-inbox"></i> 
                                                     <span class="menu-item-parent">Utility Meters</span>
                                                 </a>
@@ -68,25 +74,25 @@
                                                             <a href="#" class="menu-item-parent"><i class="fa fa-lg fa-fw fa-calendar"></i><span class="menu-item-parent">FGU Readings</span></a>
                                                                 <ul>
                                                                     <li>
-                                                                        <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['gensetreading']) ?>">Current Week</a>
+                                                                        <a href="<?= Url::to(['gensetreading/index']) ?>">Current Week</a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['gensetreading/historic']) ?>">Historic Readings</a>
+                                                                        <a href="<?= Url::to(['gensetreading/historic']) ?>">Historic Readings</a>
                                                                     </li>
                                                                 </ul>
 							</li>
 							<li>
 								<a href="#"><i class="fa fa-lg fa-fw fa-tachometer"></i> <span class="menu-item-parent">Fueling</span></a>
                                                                 <ul>
-                                                                    <li><a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['fuelling']) ?>">Current Week</a></li>
-                                                                    <li><a href="<?= (new \yii\web\UrlManager())->createAbsoluteUrl(['fuelling/historic']) ?>">Historic</a></li>
+                                                                    <li><a href="<?= Url::to(['fuelling/index']) ?>">Current Week</a></li>
+                                                                    <li><a href="<?= Url::to(['fuelling/historic']) ?>">Historic</a></li>
                                                                 </ul>
 							</li>
                                                         <li>
                                                             <a href="#"><i class="fa fa-lg fa-fw fa-usd"></i> <span class="menu-item-parent">Prepaid Reload</span></a>
                                                             <ul>
-                                                                <li><a href="<?= \yii\helpers\Url::to(['prepaid-reload/index']) ?>">Current Week</a></li>
-                                                                <li><a href="<?= \yii\helpers\Url::to(['prepaid-reload/historic']) ?>">Historic</a></li>
+                                                                <li><a href="<?= Url::to(['prepaid-reload/index']) ?>">Current Week</a></li>
+                                                                <li><a href="<?= Url::to(['prepaid-reload/historic']) ?>">Historic</a></li>
                                                             </ul>
                                                         </li>
 						</ul>
