@@ -9,14 +9,33 @@ use yii\widgets\ActiveForm;
  * @var yii\widgets\ActiveForm $form
  */
 ?>
+<div class="row">
 
+<!-- NEW COL START -->
+<article class="col-sm-12 col-md-8 col-lg-8" style="margin-bottom: 15px;">
+
+<!-- Widget ID (each widget will need unique ID)-->
+<div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+
+       <header><span class="widget-icon"> <i class="fa fa-edit"></i> </span><h2>Site Details</h2></header>
+     
+        <div>
+                <div class="jarviswidget-editbox">
+
+                </div>
+
+                <div class="widget-body no-padding">
 <div class="sitedetails-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+                     'options'=>['class'=>'smart-form'],
+                     'fieldConfig'=>['labelOptions'=>['class'=>'label', 'style'=>'font-weight:bold;'],'options'=>['tag'=>'section']]
+                    ]); ?>
+    <fieldset>
 
-    <?= $form->field($model, 'site_id')->textInput(['maxlength' => 50]) ?>
+    <?= $form->field($model, 'site_id')->textInput(['maxlength' => 50, 'readonly'=>'readonly']) ?>
 
-    <?= $form->field($model, 'x3_site_id')->textInput(['maxlength' => 50]) ?>
+    <?= $form->field($model, 'x3_site_id')->textInput(['maxlength' => 50, 'readonly'=>'readonly']) ?>
 
     <?= $form->field($model, 'ownership')->textInput(['maxlength' => 50]) ?>
 
@@ -37,11 +56,22 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'tank_height')->textInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'tank_bredth')->textInput(['maxlength' => 255]) ?>
+    </fieldset>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+        <footer>
+            <button type="submit" class="btn btn-primary">
+                    Submit
+            </button>
+            <button type="button" class="btn btn-default" onclick="window.history.back();">
+                    Back
+            </button>
+    </footer>
 
     <?php ActiveForm::end(); ?>
 
+</div>
+                </div>
+        </div>
+</div>
+</article>
 </div>

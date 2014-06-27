@@ -118,4 +118,29 @@ class Site extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Gensets::className(), ['genset_id' => 'genset_id'])->viaTable('site_genset', ['site_id' => 'site_id']);
     }
+    public static function getMCSites($mc)
+    {
+        $qr = Site::findBySql('SELECT site.site_id,
+           site.site_name,
+           site.region,
+           site.city_town
+          FROM (site_genset site_genset
+            INNER JOIN site site ON (site_genset.site_id = site.site_id))
+           INNER JOIN site_details site_details
+              ON (site_details.site_id = site.site_id)
+         WHERE     (`site`.`site_id` IN (SELECT DISTINCT site_id FROM site_genset))
+           AND (site_details.maintenance_contractor = :mc)',[':mc'=>$mc]);
+        
+        return $qr->all();
+    }
+    public static function getMCPrepaidMeterSites($mc)
+    {
+        $qr = new \yii\db\Query();
+        $qr->from(['prepaid_meter_sites prepaid_meter_sites'])
+                ->innerJoin('site_details site_details', 'prepaid_meter_sites.site_id = site_details.site_id')
+                ->where(['site_details.maintenance_contractor'=>$mc])
+                ->select(['prepaid_meter_sites.*']);
+        
+        return $qr->all();
+    }
 }

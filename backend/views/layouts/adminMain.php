@@ -1,5 +1,5 @@
 <?php $this->beginContent('@app/views/layouts/adminBase.php'); ?>
-<?php \backend\assets\smartadminBundle::register($this); ?>
+<?php \backend\assets\smartIndexBundle::register($this); ?>
         
                 <?= $content ?>
 

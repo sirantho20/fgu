@@ -13,7 +13,7 @@ return [
         
             'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=fgu',
+            'dsn' => 'mysql:host=localhost;dbname=fgu1',
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',

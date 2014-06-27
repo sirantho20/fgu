@@ -14,6 +14,7 @@ use yii\filters\VerbFilter;
  */
 class SitedetailsController extends Controller
 {
+    public $layout = '/adminMain';
     public function behaviors()
     {
         return [

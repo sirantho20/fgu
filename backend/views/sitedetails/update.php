@@ -7,7 +7,7 @@ use yii\helpers\Html;
  * @var backend\models\Sitedetails $model
  */
 
-$this->title = 'Update Sitedetails: ' . ' ' . $model->site_id;
+$this->title = 'Update Site Details: ' . ' ' . $model->site_id;
 $this->params['breadcrumbs'][] = ['label' => 'Sitedetails', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->site_id, 'url' => ['view', 'id' => $model->site_id]];
 $this->params['breadcrumbs'][] = 'Update';

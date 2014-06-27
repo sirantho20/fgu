@@ -49,7 +49,7 @@ use yii\widgets\ActiveForm;
                      'fieldConfig'=>['labelOptions'=>['class'=>'label', 'style'=>'font-weight:bold;'],'options'=>['tag'=>'section']]
                     ]); ?>
                     <fieldset>
-    <?= $form->field($model, 'site_id')->dropDownList(yii\helpers\ArrayHelper::map((new yii\db\Query())->select(['site_id','site_name'])->from('prepaid_meter_sites')->all(), 'site_id', 'site_name'),['id'=>'site-id','prompt'=>'Select Site ID']) ?>
+    <?= $form->field($model, 'site_id')->dropDownList(yii\helpers\ArrayHelper::map(\backend\models\Site::getMCPrepaidMeterSites(Yii::$app->user->identity->company), 'site_id', 'site_name'),['id'=>'site-id','prompt'=>'Select Site ID']) ?>
 
     <?= $form->field($model, 'meter_id')->widget(\kartik\widgets\DepDrop::className(), [
      'options' => ['id'=>'genset-id'],

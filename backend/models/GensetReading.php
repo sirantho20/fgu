@@ -189,8 +189,8 @@ class GensetReading extends \yii\db\ActiveRecord
         $model = GensetReading::find()->where(['genset_id'=>$this->genset_id])->orderBy('reading_date desc')->limit(1)->all();
         if(count($model)>0)
         {
-         $last_kwh = $model[0]['genset_run_hours'];
-         if($this->meter_reading < $last_kwh)
+         $last_runHRS = $model[0]['genset_run_hours'];
+         if($this->genset_run_hours < $last_runHRS)
          {
              $this->addError($attribute,'Invalid run hours. Check your data and try again.');
          }
@@ -204,7 +204,7 @@ class GensetReading extends \yii\db\ActiveRecord
         $site_id = $site_genset[0]['site_id'];
         if($gen[0]['has_base_tank'] =='yes')
         {
-            $lts = ($gen[0]['fuel_tank_width'] * $gen[0]['fuel_tank_breadth'] * $gen[0]['fuel_tank_height'] * $level)/1000;
+            $lts = ($gen[0]['fuel_tank_width'] * $gen[0]['fuel_tank_breadth'] * $level)/1000;
         }
         else 
         {
@@ -213,7 +213,7 @@ class GensetReading extends \yii\db\ActiveRecord
             $width = $site->siteDetails->tank_width;
             $bredth = $site->siteDetails->tank_bredth;
             
-            $lts = ($height * $width * $bredth * $level) / 1000;
+            $lts = ($width * $bredth * $level) / 1000;
         }
         
         return $lts;

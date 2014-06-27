@@ -51,7 +51,7 @@ use yii\jui\AutoComplete;
                     ]); ?>
                     <fieldset>
     <?PHP // $form->field($model, 'site_id')->widget(\kartik\widgets\Select2::className(),['data'=> array_merge([''=>'Select Site'],\yii\helpers\ArrayHelper::map(\backend\models\Site::find()->select(['site_id as site_id','concat(concat(site_id,", "),site_name) as site_name'])->all(), 'site_id', 'site_name'))])    ?>
-    <?= $form->field($model, 'site_id')->dropdownlist(\yii\helpers\ArrayHelper::map(\backend\models\Site::findBySql('select * from site where site_id in (select distinct site_id from site_genset)')->all(), 'site_id', 'site_name'),['id'=>'site-id','prompt'=>'Select Site ID']) ?>
+    <?= $form->field($model, 'site_id')->dropdownlist(\yii\helpers\ArrayHelper::map(\backend\models\Site::getMCSites(Yii::$app->user->identity->company), 'site_id', 'site_name'),['id'=>'site-id','prompt'=>'Select Site ID']) ?>
     <?= $form->field($model, 'genset_id')->widget(\kartik\widgets\DepDrop::className(), [
      'options' => ['id'=>'genset-id'],
      'pluginOptions'=>[

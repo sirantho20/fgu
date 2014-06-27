@@ -58,10 +58,10 @@ class GensetController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($genset_id, $supplier, $kva)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => Genset::findOne(['genset_id' => $genset_id, 'kva'=>$kva, 'supplier'=>$supplier]),
         ]);
     }
 
@@ -89,9 +89,9 @@ class GensetController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($genset_id, $supplier, $kva)
     {
-        $model = $this->findModel($id);
+        $model = Genset::findOne(['genset_id' => $genset_id, 'kva'=>$kva, 'supplier'=>$supplier]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->genset_id]);
@@ -108,9 +108,9 @@ class GensetController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete($genset_id, $supplier, $kva)
     {
-        $this->findModel($id)->delete();
+        Genset::findOne(['genset_id' => $genset_id, 'kva'=>$kva, 'supplier'=>$supplier])->delete();
 
         return $this->redirect(['index']);
     }

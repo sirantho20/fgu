@@ -67,10 +67,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     'options' => ['class'=>'table table-striped table-hover table-bordered smart-form',
                                                                     'id' => 'datatable_fixed_column'],
                                                     'columns' => [
-                                                        //['class' => 'yii\grid\SerialColumn'],
+                                                        ['class' => 'yii\grid\SerialColumn'],
 
                                                         'meter_id',
-                                                        'purchase_date',
+                                                        //'purchase_date',
                                                         'meter_type',
                                                         'utility_provider',
                                                         'kwh_before_install',

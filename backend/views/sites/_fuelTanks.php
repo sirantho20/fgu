@@ -1,4 +1,4 @@
-<p><?= yii\helpers\Html::a(' Edit Dimensions', Yii::$app->urlManager->createUrl(['sites/attachmeter','site'=>$model->site_id]),['class'=>'btn btn-success btn-sm fa fa-link','style'=>'margin-top:10px;']); ?></p>   
+<p><?= yii\helpers\Html::a(' Edit Dimensions', Yii::$app->urlManager->createUrl(['sitedetails/update','id'=>$model->site_id]),['class'=>'btn btn-success btn-sm fa fa-link','style'=>'margin-top:10px;']); ?></p>   
 
 <?php
 
