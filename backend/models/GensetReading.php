@@ -27,6 +27,7 @@ use yii\db\Expression;
  * @property double $fuel_consumed 
  * @property double $power_consumed 
  * @property string $mc
+ * @property string $run_hours_for_period
  *
  * @property Site $site
  */
@@ -66,7 +67,8 @@ class GensetReading extends \yii\db\ActiveRecord
             [['days_from_last_reading', 'meter_reading'], 'integer'],
             [['meter_reading'],'validateKWH'],
             [['genset_run_hours'],'validateRunHRS'],
-            [['genset_id', 'site_id', 'reading_by', 'entry_by', 'source_of_reading', 'modified_by', 'access_code'], 'string', 'max' => 50]
+            [['genset_id', 'site_id', 'reading_by', 'entry_by', 'source_of_reading', 'modified_by', 'access_code'], 'string', 'max' => 50],
+            //[['mc', 'run_hours_for_period'], 'integer', 'max' => 255]
         ];
     }
 
@@ -94,6 +96,7 @@ class GensetReading extends \yii\db\ActiveRecord
             'fuel_consumed' => 'Fuel Consumed',
             'power_consumed' => 'Power Consumed',
             'mc' => 'Maintenance Contractor',
+            'run_hours_for_period' => 'Run Hours For Period',
         ];
     }
 
@@ -114,6 +117,7 @@ class GensetReading extends \yii\db\ActiveRecord
        $this->power_consumed = $this->powerConsumed($this->genset_id, $this->meter_reading);
        $this->fuel_quantity_lts = self::getFuelLtsfromCM($this->genset_id, $this->fuel_level_cm);
        $this->mc = Yii::$app->user->identity->company;
+       $this->run_hours_for_period = $this->runHrsSinceLastReading($this->genset_id, $this->genset_run_hours);
         //print_r($qr[0]['genset_id']);die();
        
         return parent::beforeValidate();
@@ -144,6 +148,29 @@ class GensetReading extends \yii\db\ActiveRecord
         return $diff->days;
         
     }
+    private function runHrsSinceLastReading($genset, $runHrs)
+    {
+        $qr = new \yii\db\Query();
+        $qr->from('genset_reading');
+        $qr->select('genset_run_hours');
+        $qr->where(['genset_id'=>$genset]);
+        $qr->orderBy('reading_date desc');
+        $qr->limit(1);
+        $model = $qr->all();
+        if(count($model)>0)
+        {
+            $last_runHrs = $model[0]['genset_run_hours'];
+            
+            $re = $runHrs - $last_runHrs;
+        }
+        else 
+        {
+            $re = 0;
+        }
+        
+        return $re;
+    }
+
     private function fuelConsumed($genset, $fuel_level)
     {
         $model = GensetReading::find()->where(['genset_id'=>$genset])->orderBy('reading_date desc')->limit(1)->all();
@@ -209,7 +236,6 @@ class GensetReading extends \yii\db\ActiveRecord
         else 
         {
             $site = Site::findOne($site_id);
-            $height = $site->siteDetails->tank_height;
             $width = $site->siteDetails->tank_width;
             $bredth = $site->siteDetails->tank_bredth;
             
@@ -218,4 +244,29 @@ class GensetReading extends \yii\db\ActiveRecord
         
         return $lts;
     }
+    
+    public static function getFuelTankCapacity($genset)
+    {
+        $gen = \app\models\Genset::find()->where(['genset_id'=>$genset])->all();
+        //print_r($gen); die($gen);
+        $site_genset = SiteGenset::find()->where(['genset_id'=>$genset])->all();
+        $site_id = $site_genset[0]['site_id'];
+        if($gen[0]['has_base_tank'] =='yes')
+        {
+            $lts = ($gen[0]['fuel_tank_width'] * $gen[0]['fuel_tank_breadth'] * $gen[0]['fuel_tank_height'])/1000;
+        }
+        else 
+        {
+            $site = Site::findOne($site_id);
+            $width = $site->siteDetails->tank_width;
+            $bredth = $site->siteDetails->tank_bredth;
+            $height = $site->siteDetails->tank_height;
+            
+            $lts = ($width * $bredth * $height) / 1000;
+        }
+        
+        return $lts;
+    }
+    
+    
 }

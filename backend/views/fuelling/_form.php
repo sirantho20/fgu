@@ -60,11 +60,13 @@ use yii\widgets\ActiveForm;
          ]
      ]) ?>
     
-    <?= $form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<'],'options'=>['class'=>'form-control']]) ?>
+    <?php //$form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<'],'options'=>['class'=>'form-control']]) ?>
     
     <?= $form->field($model, 'quantity_before_delivery_cm')->textInput() ?>
         
     <?= $form->field($model, 'quantity_delivered_cm')->textInput() ?>
+        
+    <?= $form->field($model, 'fuel_supplier')->dropDownList(['ai'=>'AI','champion'=>'Champion'], ['prompt'=>'Select supplier']) ?> 
         
     <?= $form->field($model, 'emergency_fuelling')->dropDownList(['yes'=>'Yes','no'=>'No']) ?>
 

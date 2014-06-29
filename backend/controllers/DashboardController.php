@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 class DashboardController extends \yii\web\Controller
 {
-    public $layout = 'adminMain';
+    public $layout = 'adminDashboard';
     
     public function actionIndex()
     {

@@ -23,6 +23,7 @@ use backend\models\GensetReading;
  * @property string $entry_date 
  * @property string $entry_by
  * @property string $mc
+ * @property string $fuel_supplier
  *
  * @property Site $site
  */
@@ -73,6 +74,7 @@ class Fuelling extends \yii\db\ActiveRecord
             'entry_date' => 'Entry Date',
             'entry_by' => 'Entry By',
             'mc' => 'Maintenance Contractor',
+            'fuel_supplier' => 'Fuel Supplier'
         ];
     }
 
@@ -92,6 +94,7 @@ class Fuelling extends \yii\db\ActiveRecord
         $this->entry_date = new \yii\db\Expression('now()');
         $this->entry_by = Yii::$app->user->identity->username;
         $this->mc = Yii::$app->user->identity->company;
+        $this->delivery_date = new \yii\db\Expression('now()');
         
         return parent::beforeValidate();
     }

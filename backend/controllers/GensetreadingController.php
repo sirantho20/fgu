@@ -79,7 +79,8 @@ class GensetreadingController extends Controller
         $model = new GensetReading;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'reading_date' => $model->reading_date, 'access_code' => $model->access_code]);
+            Yii::$app->session->setFlash('success', 'FGU reading successfully added');
+            return $this->redirect(['index']);
         } else {
             
             return $this->render('create', [
@@ -100,7 +101,8 @@ class GensetreadingController extends Controller
         $model = $this->findModel($reading_date, $access_code);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'reading_date' => $model->reading_date, 'access_code' => $model->access_code]);
+            Yii::$app->session->setFlash('success', 'Reading successfully updated');
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

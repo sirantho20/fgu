@@ -14,5 +14,13 @@
 namespace backend\assets;
 use backend\assets\smartadminBundle;
 class smartDashboardBundle extends smartadminBundle {
-    //put your code here
+    public $basePath = '@webroot';
+    public $baseUrl = '@web/smartadmin';
+    public $js = [
+        'js/dashboard.js',
+        'js/plugin/morris/morris.min.js',
+        'js/plugin/morris/morris-chart-settings.js',
+        'js/plugin/morris/raphael.2.1.0.min.js',
+    ];
+    public $depends = [ 'backend\assets\smartadminBundle'];
 }

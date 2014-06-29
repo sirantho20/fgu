@@ -65,7 +65,8 @@ class FuellingController extends Controller
         $model = new Fuelling;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'delivery_date' => $model->delivery_date, 'access_code' => $model->access_code]);
+            Yii::$app->session->setFlash('success',' Record successfully saved');
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
