@@ -176,7 +176,11 @@ class GensetReading extends \yii\db\ActiveRecord
         $model = GensetReading::find()->where(['genset_id'=>$genset])->orderBy('reading_date desc')->limit(1)->all();
         if(count($model)>0)
         {
-            $re = $model[0]['fuel_quantity_lts'] - $fuel_level;
+            $previous = $model[0]['fuel_quantity_lts'];
+            $previous_date = $model[0]['reading_date'];
+            
+            $refuel = Fuelling::getRefuelforPeriod($genset, $previous_date);
+            $re = $fuel_level - $refuel - $previous;
         }
         else 
         {

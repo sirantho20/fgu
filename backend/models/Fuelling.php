@@ -98,4 +98,69 @@ class Fuelling extends \yii\db\ActiveRecord
         
         return parent::beforeValidate();
     }
+    public static function getRefuelforPeriod($genset, $date)
+    {
+        //$model = Fuelling::findBySql('select sum(quantity_delivered_lts) as quantity from fgu_fuelling where week(delivery_date,1) = week(:date,1) and genset_id = :genset;',[':date'=>$date,':genset'=>$genset])->all();
+//        $model = Fuelling::find()->select('sum(quantity_delivered_lts)')->where('week(delivery_date,1) = week(:date,1)',[':date'=>$date])
+//                ->andWhere(['genset_id'=>$genset])->all();
+        $mod = new \yii\db\Query();
+        $mod->from('fgu_fuelling')
+                ->select('sum(quantity_delivered_lts) as quantity')
+                ->where('week(delivery_date,1) = week(:date,1)', [':date'=>$date])
+                ->andWhere(['genset_id'=>$genset]);
+        $model = $mod->all();
+        
+        if(count($model) > 0)
+        {
+            $re = $model[0]['quantity'];
+        }
+        else
+        {
+            $re = 0;
+        }
+        
+        return $re;
+    }
+    /**
+     * Get fueling quantity for week of $date
+     * @param string $genset Genset of ID for site
+     * @param date $date Date of last/current refuel
+     * @param boolean $wholeWeek Wether to calculate for whole week of $date or only for period after $date
+     */
+    public static function getWeeklyRefuel($genset, $date, $wholeWeek = FALSE)
+    {
+        if($wholeWeek)
+        {
+            $mod = new \yii\db\Query();
+            $mod->select('sum(quantity_delivered_lts) as quantity')
+                    ->from('fgu_fuelling')
+                    ->where('week(:date,1) = week(delivery_date,1)',[':date'=>$date])
+                    ->andWhere(['genset_id'=>$genset]);
+        }
+        else
+        {
+            $mod = new \yii\db\Query();
+            $mod->select('sum(quantity_delivered_lts) as quantity')
+                    ->from('fgu_fuelling')
+                    ->where('week(:date,1) = week(delivery_date,1)',[':date'=>$date])
+                    ->andWhere('delivery_date < :date',[':date'=>$date])
+                    ->andWhere(['genset_id'=>$genset]);
+        }
+        
+        $re = $mod->all();
+        
+        if(count($re) > 0)
+        {
+            print_r($re);die();
+            $out = $re[0]['quantity'];
+        }
+        else 
+        {
+            $out = 0;
+        }
+        
+        return $out;
+        
+    }
+
 }
