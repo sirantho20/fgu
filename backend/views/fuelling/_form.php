@@ -60,7 +60,7 @@ use yii\widgets\ActiveForm;
          ]
      ]) ?>
     
-    <?php //$form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<'],'options'=>['class'=>'form-control']]) ?>
+    <?= $form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<'],'options'=>['class'=>'form-control']]) ?>
     
     <?= $form->field($model, 'quantity_before_delivery_cm')->textInput() ?>
         
