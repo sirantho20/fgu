@@ -10,7 +10,7 @@
 				<span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
 					
 					<a href="javascript:void(0);" id="show-shortcut">
-						<img src="smartadmin/img/avatars/male.png" alt="me" class="online" /> 
+                                            <span class="fa fa-lg fa-fw fa-user menu-item-parent"></span> 
 						<span>
 							<?= Yii::$app->user->identity->username ?>
 						</span>

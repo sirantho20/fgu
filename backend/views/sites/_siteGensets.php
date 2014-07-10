@@ -24,7 +24,7 @@ $provider = new \yii\data\ArrayDataProvider([
             [
                 'format' => 'html',
                 'value' => function($data){
-                    return yii\helpers\Html::a($data->genset_id, Yii::$app->urlManager->createAbsoluteUrl(['genset/view','id'=>$data->genset_id]));
+                    return yii\helpers\Html::a($data->genset_id, Yii::$app->urlManager->createAbsoluteUrl(['genset/view','genset_id'=>$data->genset_id,'supplier'=>$data->supplier,'kva'=>$data->kva]));
                 }
             ],
             'supplier',

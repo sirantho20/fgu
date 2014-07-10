@@ -113,22 +113,23 @@ class GensetReading extends \yii\db\ActiveRecord
        $this->genset_id = $qr[0]['genset_id'];
        $this->entry_by = Yii::$app->user->identity->username;
        $this->days_from_last_reading = $this->daysSinceLastReading($this->genset_id,$this->reading_date);
+       $this->fuel_quantity_lts = self::getFuelLtsfromCM($this->genset_id, $this->fuel_level_cm);
        $this->fuel_consumed = $this->fuelConsumed($this->genset_id, $this->fuel_quantity_lts);
        $this->power_consumed = $this->powerConsumed($this->genset_id, $this->meter_reading);
-       $this->fuel_quantity_lts = self::getFuelLtsfromCM($this->genset_id, $this->fuel_level_cm);
        $this->mc = Yii::$app->user->identity->company;
        $this->run_hours_for_period = $this->runHrsSinceLastReading($this->genset_id, $this->genset_run_hours);
         //print_r($qr[0]['genset_id']);die();
        
         return parent::beforeValidate();
     }
-    
-    private function daysSinceLastReading($genset,$new_date)
+
+        private function daysSinceLastReading($genset,$new_date)
     {
         $qr = new \yii\db\Query();
         $qr->from('genset_reading');
         $qr->select('date(reading_date) as reading_date');
         $qr->where(['genset_id'=>$genset]);
+        $qr->andWhere('reading_date < :date',[':date'=>$this->reading_date]);
         $qr->orderBy('reading_date desc');
         $qr->limit(1);
         $model = $qr->all();
@@ -154,6 +155,7 @@ class GensetReading extends \yii\db\ActiveRecord
         $qr->from('genset_reading');
         $qr->select('genset_run_hours');
         $qr->where(['genset_id'=>$genset]);
+        $qr->andWhere('reading_date < :date',[':date'=>$this->reading_date]);
         $qr->orderBy('reading_date desc');
         $qr->limit(1);
         $model = $qr->all();
@@ -173,24 +175,28 @@ class GensetReading extends \yii\db\ActiveRecord
 
     private function fuelConsumed($genset, $fuel_level)
     {
-        $model = GensetReading::find()->where(['genset_id'=>$genset])->orderBy('reading_date desc')->limit(1)->all();
+        $model = GensetReading::find()->where(['genset_id'=>$genset])->andWhere('reading_date < :date',[':date'=>$this->reading_date])->orderBy('reading_date desc')->limit(1)->all();
         if(count($model)>0)
         {
             $previous = $model[0]['fuel_quantity_lts'];
             $previous_date = $model[0]['reading_date'];
             
             $refuel = Fuelling::getRefuelforPeriod($genset, $previous_date);
-            $re = $fuel_level - $refuel - $previous;
+            $re = $fuel_level - ($refuel + $previous);
         }
         else 
         {
             $re = '0.00';
         }
+        if($re < 0)
+        {
+            $re = $re * (-1);
+        }
         return $re;
     }
     private function powerConsumed($genset,$meter_reading) 
     {
-        $model = GensetReading::find()->where(['genset_id'=>$genset])->orderBy('reading_date desc')->limit(1)->all();
+        $model = GensetReading::find()->where(['genset_id'=>$genset])->andWhere('reading_date < :date',[':date'=>$this->reading_date])->orderBy('reading_date desc')->limit(1)->all();
         if(count($model)>0)
         {
             $re = $meter_reading - $model[0]['meter_reading'];
@@ -204,7 +210,7 @@ class GensetReading extends \yii\db\ActiveRecord
     
     public function validateKWH($attribute, $params)
     {
-        $model = GensetReading::find()->where(['genset_id'=>$this->genset_id])->orderBy('reading_date desc')->limit(1)->all();
+        $model = GensetReading::find()->where(['genset_id'=>$this->genset_id])->andWhere('reading_date < :date',[':date'=>$this->reading_date])->orderBy('reading_date desc')->limit(1)->all();
         if(count($model)>0)
         {
          $last_kwh = $model[0]['meter_reading'];
@@ -217,15 +223,15 @@ class GensetReading extends \yii\db\ActiveRecord
     
     public function validateRunHRS($attribute, $params)
     {
-        $model = GensetReading::find()->where(['genset_id'=>$this->genset_id])->orderBy('reading_date desc')->limit(1)->all();
-        if(count($model)>0)
-        {
-         $last_runHRS = $model[0]['genset_run_hours'];
-         if($this->genset_run_hours < $last_runHRS)
-         {
-             $this->addError($attribute,'Invalid run hours. Check your data and try again.');
-         }
-        }
+        $model = GensetReading::find()->where(['genset_id'=>$this->genset_id])->andWhere('reading_date < :date',[':date'=>$this->reading_date])->orderBy('reading_date desc')->limit(1)->all();
+            if(count($model)>0)
+            {
+                 $last_runHRS = $model[0]['genset_run_hours'];
+                 if($this->genset_run_hours < $last_runHRS)
+                 {
+                     $this->addError($attribute,'Invalid run hours. Check your data and try again.');
+                 }
+            }
     }
     public static function getFuelLtsfromCM($genset, $level)
     {

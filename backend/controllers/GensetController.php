@@ -75,7 +75,7 @@ class GensetController extends Controller
         $model = new Genset;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->genset_id]);
+            return $this->redirect(['view', 'genset_id' => $model->genset_id,'kva'=>$model->kva,'supplier'=>$model->supplier]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -94,7 +94,7 @@ class GensetController extends Controller
         $model = Genset::findOne(['genset_id' => $genset_id, 'kva'=>$kva, 'supplier'=>$supplier]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->genset_id]);
+            return $this->redirect(['view', 'genset_id' => $model->genset_id,'kva'=>$model->kva,'supplier'=>$model->supplier]);
         } else {
             return $this->render('update', [
                 'model' => $model,

@@ -121,7 +121,7 @@ class Site extends \yii\db\ActiveRecord
     public static function getMCSites($mc)
     {
         $qr = Site::findBySql('SELECT site.site_id,
-           site.site_name,
+           CONCAT(site.site_id,"-",site.site_name) as site_name,
            site.region,
            site.city_town
           FROM (site_genset site_genset
@@ -129,9 +129,33 @@ class Site extends \yii\db\ActiveRecord
            INNER JOIN site_details site_details
               ON (site_details.site_id = site.site_id)
          WHERE     (`site`.`site_id` IN (SELECT DISTINCT site_id FROM site_genset))
-           AND (site_details.maintenance_contractor = :mc)',[':mc'=>$mc]);
+           AND (site_details.maintenance_contractor = :mc) order by site.site_id ASC',[':mc'=>$mc]);
         
         return $qr->all();
+    }
+    
+    public static function getMCSitesAutoComplete($mc)
+    {
+        $query = new \yii\db\Query();
+        $query->from(['site_genset site_genset'])
+                ->innerJoin('site site', 'site_genset.site_id = site.site_id')
+                ->innerJoin('site_details site_details','site_details.site_id = site.site_id')
+                ->where('(`site`.`site_id` IN (SELECT DISTINCT site_id FROM site_genset))')
+                ->andWhere(['site_details.maintenance_contractor'=>$mc])
+                ->select(['site.site_id as value','site.site_name as label'])
+                ->orderBy(['site.site_id'=>SORT_ASC]);
+        return \yii\helpers\Json::encode($query->all());
+        
+//        $qr = Site::findBySql('SELECT site.site_id as value,
+//           CONCAT(site.site_id,"-",site.site_name) as `label`
+//          FROM (site_genset site_genset
+//            INNER JOIN site site ON (site_genset.site_id = site.site_id))
+//           INNER JOIN site_details site_details
+//              ON (site_details.site_id = site.site_id)
+//         WHERE     (`site`.`site_id` IN (SELECT DISTINCT site_id FROM site_genset))
+//           AND (site_details.maintenance_contractor = :mc) order by site.site_id ASC',[':mc'=>$mc]);
+//        
+//        return $qr->all();
     }
     public static function getMCPrepaidMeterSites($mc)
     {
@@ -139,7 +163,8 @@ class Site extends \yii\db\ActiveRecord
         $qr->from(['prepaid_meter_sites prepaid_meter_sites'])
                 ->innerJoin('site_details site_details', 'prepaid_meter_sites.site_id = site_details.site_id')
                 ->where(['site_details.maintenance_contractor'=>$mc])
-                ->select(['prepaid_meter_sites.*']);
+                ->select(['prepaid_meter_sites.site_id','CONCAT(prepaid_meter_sites.site_ID,"-",prepaid_meter_sites.site_name) AS site_name'])
+                ->orderBy(['site_id'=>SORT_ASC]);
         
         return $qr->all();
     }

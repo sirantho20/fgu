@@ -87,6 +87,7 @@ class Fuelling extends \yii\db\ActiveRecord
     }
     
     public function beforeValidate() {
+        $this->quantity_delivered_cm = $this->quantity_after_delivery_cm - $this->quantity_before_delivery_cm;
         $this->quantity_delivered_lts = GensetReading::getFuelLtsfromCM($this->genset_id, $this->quantity_delivered_cm);
         $this->quantity_after_delivery_cm = $this->quantity_before_delivery_cm + $this->quantity_delivered_cm;
         $this->quantity_after_delivery_lts = GensetReading::getFuelLtsfromCM($this->genset_id, $this->quantity_after_delivery_cm);

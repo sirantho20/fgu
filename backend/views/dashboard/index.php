@@ -72,7 +72,7 @@ data-widget-sortable="false"
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 show-stats">
 
-                                    <div class="row">
+                                    <!--<div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12"> <span class="text"> My Tasks <span class="pull-right">130/200</span> </span>
                                                     <div class="progress">
                                                             <div class="progress-bar bg-color-blueDark" style="width: 65%;"></div>
@@ -92,7 +92,7 @@ data-widget-sortable="false"
 
                                             
 
-                                    </div>
+                                    </div> -->
 
                             </div>
                     </div>

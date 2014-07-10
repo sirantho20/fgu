@@ -51,6 +51,7 @@ use yii\widgets\ActiveForm;
     <fieldset>
     <?= $form->field($model, 'site_id')->dropdownlist(\yii\helpers\ArrayHelper::map(\backend\models\Site::getMCSites(Yii::$app->user->identity->company), 'site_id', 'site_name'),['id'=>'site-id','prompt'=>'Select Site ID']) ?>
     
+
     <?= $form->field($model, 'genset_id')->widget(\kartik\widgets\DepDrop::className(), [
          'options' => ['id'=>'genset-id'],
          'pluginOptions'=>[
@@ -64,7 +65,7 @@ use yii\widgets\ActiveForm;
     
     <?= $form->field($model, 'quantity_before_delivery_cm')->textInput() ?>
         
-    <?= $form->field($model, 'quantity_delivered_cm')->textInput() ?>
+    <?= $form->field($model, 'quantity_after_delivery_cm')->textInput() ?>
         
     <?= $form->field($model, 'fuel_supplier')->dropDownList(['ai'=>'AI','champion'=>'Champion'], ['prompt'=>'Select supplier']) ?> 
         
