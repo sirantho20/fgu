@@ -8,6 +8,7 @@
 namespace yii\log;
 
 use Yii;
+use yii\helpers\VarDumper;
 
 /**
  * SyslogTarget writes log to syslog.
@@ -25,7 +26,7 @@ class SyslogTarget extends Target
     /**
      * @var integer syslog facility.
      */
-    public $facility = LOG_SYSLOG;
+    public $facility = LOG_USER;
 
     /**
      * @var array syslog levels
@@ -38,6 +39,7 @@ class SyslogTarget extends Target
         Logger::LEVEL_WARNING => LOG_WARNING,
         Logger::LEVEL_ERROR => LOG_ERR,
     ];
+
 
     /**
      * Writes log messages to syslog
@@ -59,11 +61,10 @@ class SyslogTarget extends Target
         list($text, $level, $category, $timestamp) = $message;
         $level = Logger::getLevelName($level);
         if (!is_string($text)) {
-            $text = var_export($text, true);
+            $text = VarDumper::export($text);
         }
 
-        $prefix = $this->prefix ? call_user_func($this->prefix, $message) : $this->getMessagePrefix($message);
-
+        $prefix = $this->getMessagePrefix($message);
         return "{$prefix}[$level][$category] $text";
     }
 }

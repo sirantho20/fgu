@@ -18,7 +18,7 @@
 		"yiisoft/yii2": "*",
 		"yiisoft/yii2-bootstrap": "*",
 		"yiisoft/yii2-swiftmailer": "*",
-                "kartik-v/yii2-widgets": "dev-master",
+                "kartik-v/yii2-widgets": "2.6.0.*@dev",
                 "yiisoft/yii2-jui": "*"
 	},
 	"require-dev": {

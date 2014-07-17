@@ -14,6 +14,6 @@ return array(
     'yii\\codeception\\' => array($vendorDir . '/yiisoft/yii2-codeception'),
     'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap'),
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
-    'kartik\\' => array($vendorDir . '/kartik-v/yii2-widgets', $vendorDir . '/kartik-v/yii2-field-range', $vendorDir . '/kartik-v/dependent-dropdown', $vendorDir . '/kartik-v/bootstrap-star-rating', $vendorDir . '/kartik-v/bootstrap-fileinput'),
+    'kartik\\' => array($vendorDir . '/kartik-v/dependent-dropdown', $vendorDir . '/kartik-v/bootstrap-fileinput', $vendorDir . '/kartik-v/bootstrap-star-rating', $vendorDir . '/kartik-v/yii2-field-range', $vendorDir . '/kartik-v/yii2-widgets'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
 );

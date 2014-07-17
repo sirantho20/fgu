@@ -7,6 +7,7 @@
 
 namespace yii\db\pgsql;
 
+use yii\db\Expression;
 use yii\db\TableSchema;
 use yii\db\ColumnSchema;
 
@@ -29,9 +30,9 @@ class Schema extends \yii\db\Schema
      * @see http://www.postgresql.org/docs/current/static/datatype.html#DATATYPE-TABLE
      */
     public $typeMap = [
-        'bit' => self::TYPE_STRING,
-        'bit varying' => self::TYPE_STRING,
-        'varbit' => self::TYPE_STRING,
+        'bit' => self::TYPE_INTEGER,
+        'bit varying' => self::TYPE_INTEGER,
+        'varbit' => self::TYPE_INTEGER,
 
         'bool' => self::TYPE_BOOLEAN,
         'boolean' => self::TYPE_BOOLEAN,
@@ -408,8 +409,16 @@ SQL;
                 }
                 $column->defaultValue = null;
             } elseif ($column->defaultValue) {
-                if (preg_match("/^'(.*?)'::/", $column->defaultValue, $matches) || preg_match("/^(.*?)::/", $column->defaultValue, $matches)) {
+                if ($column->type === 'timestamp' && $column->defaultValue === 'now()') {
+                    $column->defaultValue = new Expression($column->defaultValue);
+                } elseif (stripos($column->dbType, 'bit') === 0 || stripos($column->dbType, 'varbit') === 0) {
+                    $column->defaultValue = bindec(trim($column->defaultValue, 'B\''));
+                } elseif (preg_match("/^'(.*?)'::/", $column->defaultValue, $matches)) {
                     $column->defaultValue = $matches[1];
+                } elseif (preg_match("/^(.*?)::/", $column->defaultValue, $matches)) {
+                    $column->defaultValue = $column->phpTypecast($matches[1]);
+                } else {
+                    $column->defaultValue = $column->phpTypecast($column->defaultValue);
                 }
             }
         }
@@ -430,13 +439,13 @@ SQL;
         $column->comment = $info['column_comment'];
         $column->dbType = $info['data_type'];
         $column->defaultValue = $info['column_default'];
-        $column->enumValues = explode(',', str_replace(["''"], ["'"], $info['enum_values']));
+        $column->enumValues = ($info['enum_values'] !== null) ? explode(',', str_replace(["''"], ["'"], $info['enum_values'])) : null;
         $column->unsigned = false; // has no meaning in PG
         $column->isPrimaryKey = $info['is_pkey'];
         $column->name = $info['column_name'];
         $column->precision = $info['numeric_precision'];
         $column->scale = $info['numeric_scale'];
-        $column->size = $info['size'];
+        $column->size = $info['size'] === null ? null : (int)$info['size'];
         if (isset($this->typeMap[$column->dbType])) {
             $column->type = $this->typeMap[$column->dbType];
         } else {

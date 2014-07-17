@@ -30,9 +30,7 @@ Yii::$app->controller->layout = '/login';
                 <label class="input"> <i class="icon-append fa fa-lock"></i>
                 <?= BaseHtml::activePasswordInput($model, 'password'); ?>
                 <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b> </label>
-                <!--<div class="note">
-                    <a href="forgotpassword.html">Forgot password?</a>
-                </div>-->
+
                 </section>
             </fieldset>
                 <footer>

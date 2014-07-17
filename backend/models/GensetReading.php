@@ -182,7 +182,7 @@ class GensetReading extends \yii\db\ActiveRecord
             $previous_date = $model[0]['reading_date'];
             
             $refuel = Fuelling::getRefuelforPeriod($genset, $previous_date);
-            $re = $fuel_level - ($refuel + $previous);
+            $re = ($refuel + $previous) - $fuel_level;
         }
         else 
         {

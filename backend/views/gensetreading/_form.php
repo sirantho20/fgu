@@ -61,7 +61,17 @@ use yii\jui\AutoComplete;
             ]
         ]) 
     ?>
-    <?= $form->field($model, 'reading_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<'],'options'=>['class'=>'form-control']]) ?>
+    <?= $form->field($model, 'reading_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<',
+        'beforeShowDay' => new yii\web\JsExpression('function (date) {
+            var sunday = new Date();
+            var today = new Date();
+            sunday.setHours(0,0,0,0);
+            sunday.setDate(sunday.getDate() - (sunday.getDay() || 0));
+            var saturday = new Date(sunday.getTime());
+            saturday.setDate(sunday.getDate() + 6);
+            return [(date <= today), ""];
+        }'),
+        ],'options'=>['class'=>'form-control',/*'readonly'=>'readonly'*/]]) ?>
 
     <?= $form->field($model, 'access_code')->textInput(['maxlength' => 50]) ?>
 

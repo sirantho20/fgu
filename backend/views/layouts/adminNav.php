@@ -12,7 +12,7 @@
 					<a href="javascript:void(0);" id="show-shortcut">
                                             <span class="fa fa-lg fa-fw fa-user menu-item-parent"></span> 
 						<span>
-							<?= Yii::$app->user->identity->username ?>
+							<?= Yii::$app->user->identity->company ?>
 						</span>
 						<i class="fa fa-angle-down"></i>
 					</a> 

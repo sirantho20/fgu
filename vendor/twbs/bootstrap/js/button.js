@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: button.js v3.1.1
+ * Bootstrap: button.js v3.2.0
  * http://getbootstrap.com/javascript/#buttons
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -19,7 +19,7 @@
     this.isLoading = false
   }
 
-  Button.VERSION  = '3.1.1'
+  Button.VERSION  = '3.2.0'
 
   Button.DEFAULTS = {
     loadingText: 'loading...'
@@ -97,14 +97,30 @@
   }
 
 
+  // FOCUS SHIM (FOR BUTTON GROUPS)
+  // ==============================
+
+  function getBtnTarget(target) {
+    var $target = $(target)
+    return $target.hasClass('btn') ? $target : $target.parent('.btn')
+  }
+
+
   // BUTTON DATA-API
   // ===============
 
-  $(document).on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-    var $btn = $(e.target)
-    if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
-    Plugin.call($btn, 'toggle')
-    e.preventDefault()
-  })
+  $(document)
+    .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+      var $btn = $(e.target)
+      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
+      Plugin.call($btn, 'toggle')
+      e.preventDefault()
+    })
+    .on('focus.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+      getBtnTarget(e.target).addClass('focus')
+    })
+    .on('blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+      getBtnTarget(e.target).removeClass('focus')
+    })
 
 }(jQuery);

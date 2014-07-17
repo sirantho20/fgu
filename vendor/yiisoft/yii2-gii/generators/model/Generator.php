@@ -55,6 +55,8 @@ class Generator extends \yii\gii\Generator
     {
         return array_merge(parent::rules(), [
             [['db', 'ns', 'tableName', 'modelClass', 'baseClass'], 'filter', 'filter' => 'trim'],
+            [['ns'], 'filter', 'filter' => function($value) { return trim($value, '\\'); }],
+
             [['db', 'ns', 'tableName', 'baseClass'], 'required'],
             [['db', 'modelClass'], 'match', 'pattern' => '/^\w+$/', 'message' => 'Only word characters are allowed.'],
             [['ns', 'baseClass'], 'match', 'pattern' => '/^[\w\\\\]+$/', 'message' => 'Only word characters and backslashes are allowed.'],
@@ -320,10 +322,14 @@ class Generator extends \yii\gii\Generator
 
                 // Add relation for the referenced table
                 $hasMany = false;
-                foreach ($fks as $key) {
-                    if (!in_array($key, $table->primaryKey, true)) {
-                        $hasMany = true;
-                        break;
+                if (count($table->primaryKey) > count($fks)) {
+                    $hasMany = true;
+                } else {
+                    foreach ($fks as $key) {
+                        if (!in_array($key, $table->primaryKey, true)) {
+                            $hasMany = true;
+                            break;
+                        }
                     }
                 }
                 $link = $this->generateRelationLink($refs);

@@ -249,6 +249,22 @@ class BaseHtml
     }
 
     /**
+     * Generates the meta tags containing CSRF token information.
+     * @return string the generated meta tags
+     * @see Request::enableCsrfValidation
+     */
+    public static function csrfMetaTags()
+    {
+        $request = Yii::$app->getRequest();
+        if ($request instanceof Request && $request->enableCsrfValidation) {
+            return static::tag('meta', '', ['name' => 'csrf-param', 'content' => $request->csrfParam]) . "\n    "
+                . static::tag('meta', '', ['name' => 'csrf-token', 'content' => $request->getCsrfToken()]) . "\n";
+        } else {
+            return '';
+        }
+    }
+
+    /**
      * Generates a form start tag.
      * @param array|string $action the form action URL. This parameter will be processed by [[Url::to()]].
      * @param string $method the form submission method, such as "post", "get", "put", "delete" (case-insensitive).
@@ -806,7 +822,7 @@ class BaseHtml
      * @param string $name the name attribute of each checkbox.
      * @param string|array $selection the selected value(s).
      * @param array $items the data item used to generate the checkboxes.
-     * The array values are the labels, while the array keys are the corresponding checkbox values.
+     * The array keys are the checkbox values, while the array values are the corresponding labels.
      * @param array $options options (name => config) for the checkbox list container tag.
      * The following options are specially handled:
      *
@@ -879,7 +895,7 @@ class BaseHtml
      * @param string $name the name attribute of each radio button.
      * @param string|array $selection the selected value(s).
      * @param array $items the data item used to generate the radio buttons.
-     * The array values are the labels, while the array keys are the corresponding radio button values.
+     * The array keys are the radio button values, while the array values are the corresponding labels.
      * @param array $options options (name => config) for the radio button list. The following options are supported:
      *
      * - unselect: string, the value that should be submitted when none of the radio buttons is selected.
@@ -960,18 +976,20 @@ class BaseHtml
      *
      * See [[renderTagAttributes()]] for details on how attributes are being rendered.
      *
-     * @return string the generated unordered list. An empty string is returned if `$items` is empty.
+     * @return string the generated unordered list. An empty list tag will be returned if `$items` is empty.
      */
     public static function ul($items, $options = [])
     {
-        if (empty($items)) {
-            return '';
-        }
         $tag = isset($options['tag']) ? $options['tag'] : 'ul';
         $encode = !isset($options['encode']) || $options['encode'];
         $formatter = isset($options['item']) ? $options['item'] : null;
         $itemOptions = isset($options['itemOptions']) ? $options['itemOptions'] : [];
         unset($options['tag'], $options['encode'], $options['item'], $options['itemOptions']);
+
+        if (empty($items)) {
+            return static::tag($tag, '', $options);
+        }
+
         $results = [];
         foreach ($items as $index => $item) {
             if ($formatter !== null) {
@@ -1060,7 +1078,7 @@ class BaseHtml
             $models = [$models];
         }
         foreach ($models as $model) {
-            /** @var Model $model */
+            /* @var $model Model */
             foreach ($model->getFirstErrors() as $error) {
                 $lines[] = Html::encode($error);
             }
@@ -1412,7 +1430,7 @@ class BaseHtml
      * @param string $attribute the attribute name or expression. See [[getAttributeName()]] for the format
      * about attribute expression.
      * @param array $items the data item used to generate the checkboxes.
-     * The array values are the labels, while the array keys are the corresponding checkbox values.
+     * The array keys are the checkbox values, and the array values are the corresponding labels.
      * Note that the labels will NOT be HTML-encoded, while the values will.
      * @param array $options options (name => config) for the checkbox list. The following options are specially handled:
      *
@@ -1448,7 +1466,7 @@ class BaseHtml
      * @param string $attribute the attribute name or expression. See [[getAttributeName()]] for the format
      * about attribute expression.
      * @param array $items the data item used to generate the radio buttons.
-     * The array keys are the labels, while the array values are the corresponding radio button values.
+     * The array keys are the radio values, and the array values are the corresponding labels.
      * Note that the labels will NOT be HTML-encoded, while the values will.
      * @param array $options options (name => config) for the radio button list. The following options are specially handled:
      *
@@ -1484,7 +1502,7 @@ class BaseHtml
      * @param string $attribute the attribute name or expression. See [[getAttributeName()]] for the format
      * about attribute expression.
      * @param array $items the data item used to generate the input fields.
-     * The array keys are the labels, while the array values are the corresponding input values.
+     * The array keys are the input values, and the array values are the corresponding labels.
      * Note that the labels will NOT be HTML-encoded, while the values will.
      * @param array $options options (name => config) for the input list. The supported special options
      * depend on the input type specified by `$type`.
