@@ -1,3 +1,4 @@
+Select meter_id, purchase_date, meter_type, utility_provider, kwh_before_install from fgu1.utility_meter
 USE fgu1;
 
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1003-27311467',null,'Prepaid','ECG',0);
@@ -557,7 +558,6 @@ insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_pro
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1858-27315284',null,'Postpaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1859-29300868',null,'Postpaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1860-27324760',null,'Postpaid','ECG',0);
-insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1861-28312323',null,'Postpaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1862-28304270',null,'Postpaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1863-27324880',null,'Postpaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1865-28303430',null,'Postpaid','ECG',0);
@@ -645,7 +645,6 @@ insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_pro
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('3205-28301095',null,'Postpaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('3219-28307569',null,'Postpaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('3220-89141223',null,'Prepaid','ECG',0);
-insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('3226-79136884',null,'Unknown','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('3279-69129889',null,'Postpaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('3280-28307537',null,'Postpaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('3281-24377369',null,'Postpaid','ECG',0);
