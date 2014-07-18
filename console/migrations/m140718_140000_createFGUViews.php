@@ -32,19 +32,36 @@ SELECT fgu_step_2.genset_id,
        fgu_step_2.meter_reading,
        ROUND(fgu_step_2.fuel_delivered,3) fuel_delivered,
        ROUND(fgu_step_2.fuel_consumed,3) fuel_consumed,
-       ROUND((fgu_step_2.fuel_consumed / fgu_step_2.run_hours_for_period),2) as fuel_consumption_per_hr_lts,
+       ROUND((fgu_step_2.fuel_consumed / fgu_step_2.run_hours_for_period),2) AS fuel_consumption_per_hr_lts,
        fgu_step_2.last_fuel_level,
        fgu_step_2.fuel_quantity_lts,
        fgu_step_2.power_consumed,
        ROUND((fgu_step_2.power_consumed / ((fgu_step_2.days_from_last_reading * 24) - fgu_step_2.run_hours_for_period)),2) AS power_consumed_per_hr_kwh,
-       ROUND(((fgu_step_2.days_from_last_reading * 24) - fgu_step_2.run_hours_for_period),2) as grid_hours,
+       ROUND(((fgu_step_2.days_from_last_reading * 24) - fgu_step_2.run_hours_for_period),2) AS grid_hours,
+       ROUND((((fgu_step_2.days_from_last_reading * 24) - fgu_step_2.run_hours_for_period) / (fgu_step_2.days_from_last_reading * 24) * 100),2) AS grid_power_percent_availability,
+       ROUND((fgu_step_2.run_hours_for_period / (fgu_step_2.days_from_last_reading * 24) * 100),2) AS genset_power_percent_availability,
        fgu_step_2.mc,
-       fgu_step_2.run_hours_for_period
-  FROM fgu1.fgu_step_2 fgu_step_2');
+       gensets.kva,
+       cph.cph,
+       ROUND(if(fgu_step_2.fuel_consumed - (cph.cph * fgu_step_2.run_hours_for_period)>0,fgu_step_2.fuel_consumed - (cph.cph * fgu_step_2.run_hours_for_period),0),2) AS fuel_theft,
+       fgu_step_2.run_hours_for_period as genset_run_hours_for_period,
+       details.field_supervisor,
+       details.x3_site_id,
+       details.ownership,
+       details.tigo_site_class,
+       details.htg_site_type
+  FROM fgu1.fgu_step_2 fgu_step_2
+  INNER JOIN gensets as gensets
+  on fgu_step_2.genset_id = gensets.genset_id
+  inner join genset_cph cph
+  on gensets.kva = cph.kva
+  inner join site_details details
+  on details.site_id = fgu_step_2.site_id
+  ');
     }
 
     public function safeDown()
     {
-//        $this->execute('DROP VIEW IF EXISTS fgu_reporting, fgu_step_2, fgu_step_1');
+        $this->execute('DROP VIEW IF EXISTS fgu_step_3, fgu_step_2, fgu_step_1');
     }
 }
