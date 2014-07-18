@@ -1,6 +1,3 @@
-Select genset_id, supplier, kva, engine_used, fuel_tank_width, purchase_date, fuel_tank_height, fuel_tank_breadth, start_run_hours, date_added, date_modified, has_base_tank from fgu1.gensets
-USE fgu1;
-
 insert into `gensets`(`genset_id`,`supplier`,`kva`,`engine_used`,`fuel_tank_width`,`purchase_date`,`fuel_tank_height`,`fuel_tank_breadth`,`start_run_hours`,`date_added`,`date_modified`,`has_base_tank`) values ('AA Horizon-2008052547','AA Horizon',13,'','0',null,'0','0',0,'2014-07-17 00:00:00',null,'no');
 insert into `gensets`(`genset_id`,`supplier`,`kva`,`engine_used`,`fuel_tank_width`,`purchase_date`,`fuel_tank_height`,`fuel_tank_breadth`,`start_run_hours`,`date_added`,`date_modified`,`has_base_tank`) values ('AA Horizon-B10J332506','AA Horizon',13.5,'','0',null,'0','0',0,'2014-07-17 00:00:00',null,'no');
 insert into `gensets`(`genset_id`,`supplier`,`kva`,`engine_used`,`fuel_tank_width`,`purchase_date`,`fuel_tank_height`,`fuel_tank_breadth`,`start_run_hours`,`date_added`,`date_modified`,`has_base_tank`) values ('Caterpillar-CAT00000C2Y00275','Caterpillar',275,'','0',null,'0','0',0,'2014-07-17 00:00:00',null,'no');

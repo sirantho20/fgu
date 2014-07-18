@@ -1,6 +1,3 @@
-Select site_id, meter_id, date_added from fgu1.meter_site
-USE fgu1;
-
 insert into `meter_site`(`site_id`,`meter_id`,`date_added`) values ('1003','1003-27311467','2014-07-17 00:00:00');
 insert into `meter_site`(`site_id`,`meter_id`,`date_added`) values ('1005','1005-25300002','2014-07-17 00:00:00');
 insert into `meter_site`(`site_id`,`meter_id`,`date_added`) values ('1007','1007-99.323165','2014-07-17 00:00:00');

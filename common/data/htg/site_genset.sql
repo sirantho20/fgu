@@ -1,6 +1,3 @@
-Select site_id, genset_id, date_added from fgu1.site_genset
-USE fgu1;
-
 insert into `site_genset`(`site_id`,`genset_id`,`date_added`) values ('1003','Generator logic-U32160W','2014-07-17 00:00:00');
 insert into `site_genset`(`site_id`,`genset_id`,`date_added`) values ('1004','Deng-04E5750/26','2014-07-17 00:00:00');
 insert into `site_genset`(`site_id`,`genset_id`,`date_added`) values ('1005','Generator logic-U321589W','2014-07-17 00:00:00');

@@ -1,6 +1,3 @@
-Select id, kva, cph from fgu1.genset_cph
-USE fgu1;
-
 insert into `genset_cph`(`id`,`kva`,`cph`) values (1,12.5,2.2);
 insert into `genset_cph`(`id`,`kva`,`cph`) values (2,13.0,2.2);
 insert into `genset_cph`(`id`,`kva`,`cph`) values (3,13.5,2.2);

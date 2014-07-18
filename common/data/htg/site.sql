@@ -1,6 +1,3 @@
-Select site_id, site_name, region, city_town from fgu1.site
-USE fgu1;
-
 insert into `site`(`site_id`,`site_name`,`region`,`city_town`) values ('1003','Macarthy Hills','Greater Accra','Accra');
 insert into `site`(`site_id`,`site_name`,`region`,`city_town`) values ('1004','Legon','Greater Accra','Accra');
 insert into `site`(`site_id`,`site_name`,`region`,`city_town`) values ('1005','Teshie','Greater Accra','Accra');

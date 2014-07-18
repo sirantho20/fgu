@@ -1,6 +1,3 @@
-Select meter_id, purchase_date, meter_type, utility_provider, kwh_before_install from fgu1.utility_meter
-USE fgu1;
-
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1003-27311467',null,'Prepaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1005-25300002',null,'Postpaid','ECG',0);
 insert into `utility_meter`(`meter_id`,`purchase_date`,`meter_type`,`utility_provider`,`kwh_before_install`) values ('1007-99.323165',null,'Postpaid','ECG',0);
