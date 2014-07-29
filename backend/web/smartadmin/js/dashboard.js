@@ -29,6 +29,66 @@ if ($('#updating-chart').length) {
     }); 
 
 }
+if($('#fgu-fuel-on-site').length) {
+$.getJSON('http://fgu/api/weeklyfuelstock',function(data){
+
+        Morris.Area({
+                element : 'fgu-fuel-on-site',
+                data : data,
+                xkey : 'week',
+                ykeys : ['fuel_on_site','fuel_theft','fuel_consumed'],
+                labels : ['Fuel Stock', 'Stolen', 'Consumed'],
+                parseTime: false
+        });
+
+});
+}
+
+if($('#test-delivery').length) {
+$.getJSON('http://fgu/api/weeklyfueldelivery',function(data2){
+
+        Morris.Area({
+                element : 'test-delivery',
+                data : data2,
+                xkey : 'week',
+                ykeys : ['fuel_delivered'],
+                labels : ['Fuel Delivered'],
+                parseTime: false
+        });
+
+});
+}
+
+
+if($('#theft-trend').length) {
+$.getJSON('http://fgu/api/weeklyfuelstock',function(data){
+
+        Morris.Bar({
+                element : 'theft-trend',
+                data : data,
+                xkey : 'week',
+                ykeys : ['fuel_theft'],
+                labels : ['Fuel Theft'],
+                parseTime: false
+        });
+
+});
+}
+
+if($('#consumption-trend').length) {
+$.getJSON('http://fgu/api/weeklyfuelstock',function(data){
+
+        Morris.Line({
+                element : 'consumption-trend',
+                data : data,
+                xkey : 'week',
+                ykeys : ['fuel_consumed'],
+                labels : ['Fuel Consumed'],
+                parseTime: false
+        });
+
+});
+}
 
 });
 

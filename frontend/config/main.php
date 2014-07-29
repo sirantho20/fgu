@@ -28,6 +28,19 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'request' => [
+        'enableCookieValidation' => true,
+        'enableCsrfValidation' => true,
+        'cookieValidationKey' => 'somereallyLonganDfuNNystringTob3usedasCoolerforR3allyHARDGuis',
+            ],
+        
+        'i18n' => [
+                        'translations' => [
+                                'kvgrid' => [
+                                        'class' => 'yii\i18n\PhpMessageSource',
+                                ]
+                        ]
+                ],
     ],
     'params' => $params,
 ];

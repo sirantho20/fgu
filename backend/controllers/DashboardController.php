@@ -8,7 +8,15 @@ class DashboardController extends \yii\web\Controller
     
     public function actionIndex()
     {
-        return $this->render('index');
+        if(\Yii::$app->user->identity->role >= 6)
+        {
+            $view = 'mc';
+        }
+        else
+        {
+            $view = 'index';
+        }
+        return $this->render($view);
     }
 
 }

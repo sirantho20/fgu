@@ -18,5 +18,12 @@ return [
             'password' => '',
             'charset' => 'utf8',
         ],
+
     ],
+    
+    'modules' => [
+   'gridview' =>  [
+        'class' => '\kartik\grid\Module'
+    ]
+    ]
 ];

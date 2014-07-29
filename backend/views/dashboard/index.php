@@ -7,184 +7,214 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
-
+<div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                <h1 class="page-title txt-color-blueDark"><i class="fa fa-bar-chart-o fa-fw "></i> Dashboard <span>>
+                        FGU Overview </span></h1>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+                <!-- <ul id="sparks" class="">
+                        <li class="sparks-info">
+                                <h5> My Income <span class="txt-color-blue">$47,171</span></h5>
+                                <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+                                        1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+                                </div>
+                        </li>
+                        <li class="sparks-info">
+                                <h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+                                <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+                                        110,150,300,130,400,240,220,310,220,300, 270, 210
+                                </div>
+                        </li>
+                        <li class="sparks-info">
+                                <h5> Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+                                <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+                                        110,150,300,130,400,240,220,310,220,300, 270, 210
+                                </div>
+                        </li>
+                </ul> -->
+        </div>
+</div>
 <!-- widget grid -->
 <section id="widget-grid" class="">
+                                    
+<!-- row -->
+<div class="row">
+
+<!-- NEW WIDGET START -->
+<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+    <!-- Widget ID (each widget will need unique ID)-->
+    <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+  
+            <header>
+                    <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                    <h2>Fuel Stock </h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+                            <input type="text">
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                            <div id="fgu-fuel-on-site" class="no-padding"></div>
+
+                    </div>
+                    <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+    </div>
+    <!-- end widget -->
+
+</article>
+<!-- WIDGET END -->
+
+</div>
+
+<!-- end row -->
+                                        
+                                        
+<!-- row -->
+<div class="row">
+
+<!-- NEW WIDGET START -->
+<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+    <!-- Widget ID (each widget will need unique ID)-->
+    <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+            
+            <header>
+                    <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                    <h2>Weekly Fuel Delivery </h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+                            <input type="text">
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                            <div id="test-delivery" class=" no-padding"></div>
+
+                    </div>
+                    <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+    </div>
+    <!-- end widget -->
+
+</article>
+<!-- WIDGET END -->
+
+</div>
+
+<!-- end row -->
+
 
 <!-- row -->
 <div class="row">
-<article class="col-sm-12">
-<!-- new widget -->
-<div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
-<!-- widget options:
-usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-data-widget-colorbutton="false"
-data-widget-editbutton="false"
-data-widget-togglebutton="false"
-data-widget-deletebutton="false"
-data-widget-fullscreenbutton="false"
-data-widget-custombutton="false"
-data-widget-collapsed="true"
-data-widget-sortable="false"
+<!-- NEW WIDGET START -->
+<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
--->
-<header>
-<span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
-<h2>FGU Overview </h2>
+    <!-- Widget ID (each widget will need unique ID)-->
+    <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+            
+            <header>
+                    <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                    <h2>Fuel Theft Trended </h2>
 
-<ul class="nav nav-tabs pull-right in" id="myTab">
-    <li class="active">
-            <a data-toggle="tab" href="#s1"><i class="fa fa-clock-o"></i> <span class="hidden-mobile hidden-tablet">Fuel On Site</span></a>
-    </li>
+            </header>
 
-    <li>
-            <a data-toggle="tab" href="#s2"><i class="fa fa-dollar"></i> <span class="hidden-mobile hidden-tablet">Avg Consumption</span></a>
-    </li>
+            <!-- widget div-->
+            <div>
 
-    <li>
-            <a data-toggle="tab" href="#s3"><i class="fa fa-dollar"></i> <span class="hidden-mobile hidden-tablet">Power Consumption</span></a>
-    </li>
-</ul>
-
-</header>
-
-<!-- widget div-->
-<div class="no-padding">
-<!-- widget edit box -->
-<div class="jarviswidget-editbox">
-
-    test
-</div>
-<!-- end widget edit box -->
-
-<div class="widget-body">
-    <!-- content -->
-    <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade active in padding-10 no-padding-bottom" id="s1">
-                    <div class="row no-space">
-                            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                                <span class="demo-liveupdate-1">
-
-                                </span>
-                                    <div id="updating-chart" class="chart-large txt-color-blue"></div>
-
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 show-stats">
-
-                                    <!--<div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12"> <span class="text"> My Tasks <span class="pull-right">130/200</span> </span>
-                                                    <div class="progress">
-                                                            <div class="progress-bar bg-color-blueDark" style="width: 65%;"></div>
-                                                    </div> </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12"> <span class="text"> Transfered <span class="pull-right">440 GB</span> </span>
-                                                    <div class="progress">
-                                                            <div class="progress-bar bg-color-blue" style="width: 34%;"></div>
-                                                    </div> </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12"> <span class="text"> Bugs Squashed<span class="pull-right">77%</span> </span>
-                                                    <div class="progress">
-                                                            <div class="progress-bar bg-color-blue" style="width: 77%;"></div>
-                                                    </div> </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12"> <span class="text"> User Testing <span class="pull-right">7 Days</span> </span>
-                                                    <div class="progress">
-                                                            <div class="progress-bar bg-color-greenLight" style="width: 84%;"></div>
-                                                    </div> </div>
-
-                                            
-
-                                    </div> -->
-
-                            </div>
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+                            <input type="text">
                     </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                            <div id="theft-trend" class=" no-padding"></div>
+
+                    </div>
+                    <!-- end widget content -->
 
             </div>
-            <!-- end s1 tab pane -->
+            <!-- end widget div -->
 
-            <div class="tab-pane fade" id="s2">
-                    <div class="widget-body-toolbar bg-color-white">
-
-                            <form class="form-inline" role="form">
-
-                                    <div class="form-group">
-                                            <label class="sr-only" for="s123">Show From</label>
-                                            <input type="email" class="form-control input-sm" id="s123" placeholder="Show From">
-                                    </div>
-                                    <div class="form-group">
-                                            <input type="email" class="form-control input-sm" id="s124" placeholder="To">
-                                    </div>
-
-                                    <div class="btn-group hidden-phone pull-right">
-                                            <a class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown"><i class="fa fa-cog"></i> More <span class="caret"> </span> </a>
-                                            <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                            <a href="javascript:void(0);"><i class="fa fa-file-text-alt"></i> Export to PDF</a>
-                                                    </li>
-                                                    <li>
-                                                            <a href="javascript:void(0);"><i class="fa fa-question-sign"></i> Help</a>
-                                                    </li>
-                                            </ul>
-                                    </div>
-
-                            </form>
-
-                    </div>
-                    <div class="padding-10">
-                            <div id="statsChart" class="chart-large has-legend-unique"></div>
-                    </div>
-
-            </div>
-            <!-- end s2 tab pane -->
-
-            <div class="tab-pane fade" id="s3">
-
-                    <div class="widget-body-toolbar bg-color-white smart-form" id="rev-toggles">
-
-                            <div class="inline-group">
-
-                                    <label for="gra-0" class="checkbox">
-                                            <input type="checkbox" name="gra-0" id="gra-0" checked="checked">
-                                            <i></i> Target </label>
-                                    <label for="gra-1" class="checkbox">
-                                            <input type="checkbox" name="gra-1" id="gra-1" checked="checked">
-                                            <i></i> Actual </label>
-                                    <label for="gra-2" class="checkbox">
-                                            <input type="checkbox" name="gra-2" id="gra-2" checked="checked">
-                                            <i></i> Signups </label>
-                            </div>
-
-                            <div class="btn-group hidden-phone pull-right">
-                                    <a class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown"><i class="fa fa-cog"></i> More <span class="caret"> </span> </a>
-                                    <ul class="dropdown-menu pull-right">
-                                            <li>
-                                                    <a href="javascript:void(0);"><i class="fa fa-file-text-alt"></i> Export to PDF</a>
-                                            </li>
-                                            <li>
-                                                    <a href="javascript:void(0);"><i class="fa fa-question-sign"></i> Help</a>
-                                            </li>
-                                    </ul>
-                            </div>
-
-                    </div>
-
-                    <div class="padding-10">
-                            <div id="flotcontainer" class="chart-large has-legend-unique"></div>
-                    </div>
-            </div>
-            <!-- end s3 tab pane -->
     </div>
-
-    <!-- end content -->
-</div>
-
-</div>
-<!-- end widget div -->
-</div>
-<!-- end widget -->
+    <!-- end widget -->
 
 </article>
+<!-- WIDGET END -->
+
+<!-- NEW WIDGET START -->
+<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+    <!-- Widget ID (each widget will need unique ID)-->
+    <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+            
+            <header>
+                    <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+                    <h2>Fuel Consumption Trended </h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+                            <input type="text">
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                            <div id="consumption-trend" class=" no-padding"></div>
+
+                    </div>
+                    <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+    </div>
+    <!-- end widget -->
+
+</article>
+<!-- WIDGET END -->
+
 </div>
 
 <!-- end row -->
 
 </section>
-<!-- end widget grid -->
