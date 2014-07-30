@@ -69,6 +69,12 @@ Yii Framework 2 Change Log
 - Bug #4241: `yii\widgets\Pjax` was incorrectly setting container id (mitalcoi)
 - Bug #4276: Added check for UPLOAD_ERR_NO_FILE in `yii\web\UploadedFile` and return null if no file was uploaded (OmgDef)
 - Bug #4342: mssql (dblib) driver does not support getting attributes (tof06)
+- Bug #4409: Upper case letters in subdirectory prefixes of controller IDs were not properly handled (qiangxue)
+- Bug #4412: Formatter used SI Prefixes for base 1024, now uses binary prefixes (kmindi)
+- Bug #4427: Formatter could do one division too much (kmindi)
+- Bug #4453: `yii message/extract` wasn't properly writing to po files in case of multiple categories (samdark)
+- Bug #4469: Make `Security::compareString()` timing depend only on length of `$actual` input and add unit test. (tom--)
+- Bug #4470: Avoid endless loop when exporting logs with low values of flushInterval and eportInterval (cebe)
 - Bug: Fixed inconsistent return of `\yii\console\Application::runAction()` (samdark)
 - Bug: URL encoding for the route parameter added to `\yii\web\UrlManager` (klimov-paul)
 - Bug: Fixed the bug that requesting protected or private action methods would cause 500 error instead of 404 (qiangxue)
@@ -77,6 +83,7 @@ Yii Framework 2 Change Log
 - Enh #422: Added Support for BIT(M) data type default values in Schema (cebe)
 - Enh #1160: Added $strict parameter to Inflector::camel2id() to handle consecutive uppercase chars (schmunk)
 - Enh #1249: Added support for Active Record relation via array attributes (klimov-paul, cebe)
+- Enh #1388: Added mapping from physical types to abstract types for OCI DB driver (qiangxue)
 - Enh #1452: Added `Module::getInstance()` to allow accessing the module instance from anywhere within the module (qiangxue)
 - Enh #2264: `CookieCollection::has()` will return false for expired or removed cookies (qiangxue)
 - Enh #2435: `yii\db\IntegrityException` is now thrown on database integrity errors instead of general `yii\db\Exception` (samdark)
@@ -131,6 +138,7 @@ Yii Framework 2 Change Log
     - Removed character maps for non-latin languages.
     - Improved overall slug results.
     - Added note about the fact that intl is required for non-latin languages to requirements checker.
+- Enh #3957: Added more straightforward configurable properties to `BlameableBehavior`, `SluggableBehavior` and `TimestampBehavior` (creocoder)
 - Enh #3992: In mail layouts you can now access the message object via `$message` variable (qiangxue)
 - Enh #4028: Added ability to `yii\widgets\Menu` to encode each item's label separately (creocoder, umneeq)
 - Enh #4048: Added `init` event to `ActiveQuery` classes (qiangxue)
@@ -143,9 +151,16 @@ Yii Framework 2 Change Log
 - Enh #4080: Added proper handling and support of the symlinked directories in `FileHelper`, added $options parameter in `FileHelper::removeDirectory()` (resurtm)
 - Enh #4086: changedAttributes of afterSave Event now contain old values (dizews)
 - Enh #4114: Added `Security::generateRandomBytes()`, improved tests (samdark)
+- Enh #4131: Security adjustments (tom--)
+     - Added HKDF to `yii\base\Security`.
+     - Reverted auto fallback to PHP PBKDF2.
+     - Fixed PBKDF2 key truncation.
+     - Adjusted API.
 - Enh #4209: Added `beforeCopy`, `afterCopy`, `forceCopy` properties to AssetManager (cebe)
 - Enh #4297: Added check for DOM extension to requirements (samdark)
 - Enh #4317: Added `absoluteAuthTimeout` to yii\web\User (ivokund, nkovacs)
+- Enh #4360: Added client validation support for file validator (Skysplit)
+- Enh #4436: Added callback functions to AJAX-based form validation (thiagotalma)
 - Enh: Added support for using sub-queries when building a DB query with `IN` condition (qiangxue)
 - Enh: Supported adding a new response formatter without the need to reconfigure existing formatters (qiangxue)
 - Enh: Added `yii\web\UrlManager::addRules()` to simplify adding new URL rules (qiangxue)

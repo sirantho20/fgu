@@ -95,7 +95,7 @@ class FuellingController extends Controller
         $model = $this->findModel($delivery_date, $access_code);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'delivery_date' => $model->delivery_date, 'access_code' => $model->access_code]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

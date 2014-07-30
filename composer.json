@@ -20,7 +20,8 @@
 		"yiisoft/yii2-swiftmailer": "*",
                 "kartik-v/yii2-widgets": "2.6.0.*@dev",
                 "yiisoft/yii2-jui": "*",
-                "kartik-v/yii2-grid": "*"
+                "kartik-v/yii2-grid": "*",
+                "bburim/daterangepicker": "dev-master"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

@@ -69,9 +69,9 @@ use yii\jui\AutoComplete;
             sunday.setDate(sunday.getDate() - (sunday.getDay() || 0));
             var saturday = new Date(sunday.getTime());
             saturday.setDate(sunday.getDate() + 6);
-            return [(date <= today), ""];
+            return [(date >= sunday && date <= today), ""];
         }'),
-        ],'options'=>['class'=>'form-control',/*'readonly'=>'readonly'*/]]) ?>
+        ],'options'=>['class'=>'form-control','readonly'=>'readonly', 'style'=>'cursor:text;']]) ?>
 
     <?= $form->field($model, 'access_code')->textInput(['maxlength' => 50]) ?>
 

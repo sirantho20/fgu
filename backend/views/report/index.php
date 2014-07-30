@@ -1,62 +1,56 @@
 <?php
+use bburim\daterangepicker\DateRangePicker;
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-use kartik\grid\GridView;
-use yii\helpers\Html;
- 
-// Generate a bootstrap responsive striped table with row highlighted on hover
 
-echo GridView::widget([
-    'dataProvider' => $dataProvider,
-    //'filterModel' => $searchModel,
-   // 'columns' => $gridColumns,
-    'containerOptions' => ['style'=>'overflow: auto'], // only set when $responsive = false
-    'beforeHeader'=>[
-        [
-            'columns'=>[
-                ['content'=>'Header Before 1', 'options'=>['colspan'=>4, 'class'=>'text-center warning']], 
-                ['content'=>'Header Before 2', 'options'=>['colspan'=>4, 'class'=>'text-center warning']], 
-                ['content'=>'Header Before 3', 'options'=>['colspan'=>3, 'class'=>'text-center warning']], 
-            ],
-            'options'=>['class'=>'skip-export'] // remove this row from export
-        ]
-    ],
-    'toolbar' =>  Html::button('<i class="glyphicon glyphicon-plus"> ' . 
-        Yii::t('kvgrid', 'Add Book'), ['type'=>'button', 'class'=>'btn btn-success']) . ' ' .
-        Html::a('<i class="glyphicon glyphicon-repeat"> ' . 
-        Yii::t('kvgrid', 'Reset Grid'), ['grid-demo'], ['class' => 'btn btn-info']),
-        
-    // parameters from the demo form
-    'bordered' => true,
-    'striped' => true,
-    'condensed' => true,
-    'responsive' => true,
-    'hover' => true,
-    'floatHeader' => true,
-    'floatHeaderOptions' => ['scrollingTop' => 10],
-    'showPageSummary' => true,
-    'panel' => [
-        'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-globe"></i> Countries</h3>',
-        'type'=>'success',
-        'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> Create Country', ['create'], ['class' => 'btn btn-success']),
-        'after'=>Html::a('<i class="glyphicon glyphicon-repeat"></i> Reset Grid', ['index'], ['class' => 'btn btn-info']),
-        'showFooter'=>false
-    ],
-    'exportConfig' => [ GridView::CSV => [
-        'label' => Yii::t('kvgrid', 'CSV'),
-        'icon' => 'floppy-open',
-        'showHeader' => true,
-        'showPageSummary' => true,
-        'showFooter' => true,
-        'showCaption' => true,
-        'colDelimiter' => ",",
-        'rowDelimiter' => "\r\n",
-        'filename' => Yii::t('kvgrid', 'grid-export'),
-        'alertMsg' => Yii::t('kvgrid', 'The CSV export file will be generated for download.'),
-        'options' => ['title' => Yii::t('kvgrid', 'Save as CSV')]
-    ]],
-]);
+$ranges = new \yii\web\JsExpression("{
+                        'Today'        : [Date.today(), Date.today()],
+                        'Yesterday'    : [Date.today().add({ days: -1 }), Date.today().add({ days: -1 })],
+                        'Last 7 Days'  : [Date.today().add({ days: -6 }), Date.today()],
+                        'Last 30 Days' : [Date.today().add({ days: -29 }), Date.today()],
+                        'This Month'   : [Date.today().moveToFirstDayOfMonth(), Date.today().moveToLastDayOfMonth()],
+                        'This Year'    : [Date.today().moveToMonth(0,-1).moveToFirstDayOfMonth(), Date.today()],
+                        'Last Month'   : [Date.today().moveToFirstDayOfMonth().add({ months: -1 }), Date.today().moveToFirstDayOfMonth().add({ days: -1 })]
+                    }");
+
+$callback = new \yii\web\JsExpression("function(){}");
+?>
+<div class="row">
+
+<!-- NEW COL START -->
+<article class="col-sm-12 col-md-8 col-lg-8" style="margin-bottom: 15px;">
+
+<!-- Widget ID (each widget will need unique ID)-->
+<div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+        <!-- widget options:
+        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+        data-widget-colorbutton="false"
+        data-widget-editbutton="false"
+        data-widget-togglebutton="false"
+        data-widget-deletebutton="false"
+        data-widget-fullscreenbutton="false"
+        data-widget-custombutton="false"
+        data-widget-collapsed="true"
+        data-widget-sortable="false"
+
+        -->
+       <header><span class="widget-icon"> <i class="fa fa-edit"></i> </span><h2>FGU Report Export</h2></header>
+        <!-- widget div-->
+        <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+
+                   
+                </div>
+        </div>
+</div>
+</article>
+</div>

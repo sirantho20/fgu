@@ -93,15 +93,6 @@ return array (
       '@yii/bootstrap' => $vendorDir . '/yiisoft/yii2-bootstrap',
     ),
   ),
-  'yiisoft/yii2-gii' => 
-  array (
-    'name' => 'yiisoft/yii2-gii',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@yii/gii' => $vendorDir . '/yiisoft/yii2-gii',
-    ),
-  ),
   'kartik-v/yii2-widgets' => 
   array (
     'name' => 'kartik-v/yii2-widgets',
@@ -109,6 +100,24 @@ return array (
     'alias' => 
     array (
       '@kartik' => $vendorDir . '/kartik-v/yii2-widgets',
+    ),
+  ),
+  'bburim/daterangepicker' => 
+  array (
+    'name' => 'bburim/daterangepicker',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@bburim/daterangepicker' => $vendorDir . '/bburim/daterangepicker/bburim/daterangepicker',
+    ),
+  ),
+  'yiisoft/yii2-gii' => 
+  array (
+    'name' => 'yiisoft/yii2-gii',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@yii/gii' => $vendorDir . '/yiisoft/yii2-gii',
     ),
   ),
 );

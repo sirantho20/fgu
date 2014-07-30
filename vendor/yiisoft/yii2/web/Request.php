@@ -1303,7 +1303,7 @@ class Request extends \yii\base\Request
     {
         $options = $this->csrfCookie;
         $options['name'] = $this->csrfParam;
-        $options['value'] = Yii::$app->getSecurity()->generateRandomKey();
+        $options['value'] = Yii::$app->getSecurity()->generateRandomString();
 
         return new Cookie($options);
     }
@@ -1329,6 +1329,13 @@ class Request extends \yii\base\Request
             || $this->validateCsrfTokenInternal($this->getCsrfTokenFromHeader(), $trueToken);
     }
 
+    /**
+     * Validates CSRF token
+     *
+     * @param string $token
+     * @param string $trueToken
+     * @return boolean
+     */
     private function validateCsrfTokenInternal($token, $trueToken)
     {
         $token = base64_decode(str_replace('.', '+', $token));

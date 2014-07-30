@@ -4,8 +4,52 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c1bb55ec5026c78eb90c657f9d9f78ad",
+    "hash": "f8eb1bd5dbdb8977074b9e27f9aefc24",
     "packages": [
+        {
+            "name": "bburim/daterangepicker",
+            "version": "dev-master",
+            "target-dir": "bburim/daterangepicker",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bburim/daterangepicker.git",
+                "reference": "451a80bd611f4e62d9e0ff37a60900e44dc05384"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bburim/daterangepicker/zipball/451a80bd611f4e62d9e0ff37a60900e44dc05384",
+                "reference": "451a80bd611f4e62d9e0ff37a60900e44dc05384",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-0": {
+                    "bburim\\daterangepicker\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU GENERAL PUBLIC LICENSE"
+            ],
+            "authors": [
+                {
+                    "name": "Bogdan Burim",
+                    "email": "bgdn2007@ukr.net"
+                }
+            ],
+            "description": "Bootstrap Date Range Picker widget for Yii 2 Framework",
+            "keywords": [
+                "bootstrap",
+                "daterangepicker",
+                "jquery",
+                "yii"
+            ],
+            "time": "2014-02-14 19:17:01"
+        },
         {
             "name": "cebe/markdown",
             "version": "0.9.x-dev",
@@ -160,12 +204,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "2e6a2aba8c1321747168f32f21c5d03665c47b92"
+                "reference": "e008e6afb30a5d1113b860519a1204e065ffa1de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/2e6a2aba8c1321747168f32f21c5d03665c47b92",
-                "reference": "2e6a2aba8c1321747168f32f21c5d03665c47b92",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/e008e6afb30a5d1113b860519a1204e065ffa1de",
+                "reference": "e008e6afb30a5d1113b860519a1204e065ffa1de",
                 "shasum": ""
             },
             "type": "library",
@@ -196,7 +240,7 @@
                 "preview",
                 "upload"
             ],
-            "time": "2014-07-20 19:14:43"
+            "time": "2014-07-29 09:36:36"
         },
         {
             "name": "kartik-v/bootstrap-star-rating",
@@ -578,12 +622,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "e27c50e6f768aecbc46666994ccc9b2f77fd8ade"
+                "reference": "62478c4c4ed84939a5457b15f9b978b58d0db849"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/e27c50e6f768aecbc46666994ccc9b2f77fd8ade",
-                "reference": "e27c50e6f768aecbc46666994ccc9b2f77fd8ade",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/62478c4c4ed84939a5457b15f9b978b58d0db849",
+                "reference": "62478c4c4ed84939a5457b15f9b978b58d0db849",
                 "shasum": ""
             },
             "require": {
@@ -622,7 +666,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2014-07-22 15:44:41"
+            "time": "2014-07-28 09:34:50"
         },
         {
             "name": "twbs/bootstrap",
@@ -630,12 +674,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "36483af92c2d0be97aa86f16ffcf5f67abf2ed11"
+                "reference": "fc1db2e74b16b355656512eafd39f667f383a8a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/36483af92c2d0be97aa86f16ffcf5f67abf2ed11",
-                "reference": "36483af92c2d0be97aa86f16ffcf5f67abf2ed11",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/fc1db2e74b16b355656512eafd39f667f383a8a9",
+                "reference": "fc1db2e74b16b355656512eafd39f667f383a8a9",
                 "shasum": ""
             },
             "replace": {
@@ -673,7 +717,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2014-07-22 05:48:38"
+            "time": "2014-07-29 00:47:51"
         },
         {
             "name": "yiisoft/jquery",
@@ -730,12 +774,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "53887ab11f2ff508ecf6d60083f37c16fa193f28"
+                "reference": "22fa6c00eb4d823901df8e75e8d3dc2950e18ced"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/53887ab11f2ff508ecf6d60083f37c16fa193f28",
-                "reference": "53887ab11f2ff508ecf6d60083f37c16fa193f28",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/22fa6c00eb4d823901df8e75e8d3dc2950e18ced",
+                "reference": "22fa6c00eb4d823901df8e75e8d3dc2950e18ced",
                 "shasum": ""
             },
             "require": {
@@ -803,7 +847,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2014-07-23 12:42:41"
+            "time": "2014-07-29 07:10:31"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1104,12 +1148,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "ce6644841f805bfce14453bbe4eba17b8bb6e549"
+                "reference": "3919852efa2a4526d8388b4c9d5b8590b0ebf85a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/ce6644841f805bfce14453bbe4eba17b8bb6e549",
-                "reference": "ce6644841f805bfce14453bbe4eba17b8bb6e549",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/3919852efa2a4526d8388b4c9d5b8590b0ebf85a",
+                "reference": "3919852efa2a4526d8388b4c9d5b8590b0ebf85a",
                 "shasum": ""
             },
             "require": {
@@ -1139,7 +1183,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2014-07-23 12:37:49"
+            "time": "2014-07-25 11:01:13"
         }
     ],
     "aliases": [
@@ -1147,7 +1191,8 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "kartik-v/yii2-widgets": 20
+        "kartik-v/yii2-widgets": 20,
+        "bburim/daterangepicker": 20
     },
     "platform": {
         "php": ">=5.4.0"

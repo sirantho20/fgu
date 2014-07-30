@@ -21,25 +21,26 @@ class ReportController extends Controller {
     public function actionIndex()
     {
         $query = \Yii::$app->db->createCommand('select site_id,fuel_consumed,last_fuel_level,fuel_quantity_lts,power_consumed from fgu_step_3')->queryAll();
-        $dataprovider = new \yii\data\ArrayDataProvider([
-            'allModels' => $query,
-            'pagination' => [
-                    'pageSize' => 2,
-                    ],
-        ]);
+//        $dataprovider = new \yii\data\ArrayDataProvider([
+//            'allModels' => $query,
+//            'pagination' => [
+//                    'pageSize' => 2,
+//                    ],
+//        ]);
         
-            header("Content-type: text/x-csv");
-            header("Content-type: text/csv");
-            header("Content-type: application/csv");
-            header( 'Content-Disposition: attachment;filename='.'test.csv');
-            $fp = fopen('php://output', 'w');
-            
-            
-            fputcsv($fp, array_keys($query[0]));
-            foreach ($query as $row)
-            {
-                fputcsv($fp, array_values($row));
-            }
-            fclose($fp);
+//            header("Content-type: text/x-csv");
+//            header("Content-type: text/csv");
+//            header("Content-type: application/csv");
+//            header( 'Content-Disposition: attachment;filename='.'test.csv');
+//            $fp = fopen('php://output', 'w');
+//            
+//            
+//            fputcsv($fp, array_keys($query[0]));
+//            foreach ($query as $row)
+//            {
+//                fputcsv($fp, array_values($row));
+//            }
+//            fclose($fp);
+        return $this->render('index');
     }
 }
