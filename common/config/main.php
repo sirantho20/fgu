@@ -6,10 +6,6 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'urlManager' => [
-        'enablePrettyUrl' => false,
-        'showScriptName' => true,
-        ],
         
             'db' => [
             'class' => 'yii\db\Connection',
