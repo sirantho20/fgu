@@ -118,8 +118,11 @@ class GensetReading extends \yii\db\ActiveRecord
        $this->power_consumed = $this->powerConsumed($this->genset_id, $this->meter_reading);
        $this->mc = Yii::$app->user->identity->company;
        $this->run_hours_for_period = $this->runHrsSinceLastReading($this->genset_id, $this->genset_run_hours);
-        //print_r($qr[0]['genset_id']);die();
-       
+        
+       if(!$this->isNewRecord)
+        {
+            $this->modified_by = Yii::$app->user->identity->username;
+        }
         return parent::beforeValidate();
     }
 

@@ -30,6 +30,8 @@ class PrepaidReload extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $balance_after_reload = 0;
+    
     public static function tableName()
     {
         return 'prepaid_reload';
@@ -38,10 +40,14 @@ class PrepaidReload extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function afterFind() {
+        $this->balance_after_reload = $this->balance_before_reload + $this->reload_amount;
+        parent::afterFind();
+    }
     public function rules()
     {
         return [
-            [['site_id', 'meter_id', 'reload_amount', 'reload_date', 'balance_before_reload','kwh_readings'], 'required'],
+            [['site_id', 'meter_id', 'reload_amount', 'reload_date', 'balance_before_reload','kwh_readings','balance_after_reload'], 'required'],
             [['reload_amount', 'balance_before_reload', 'amount_consumed'], 'number'],
             [['reload_date', 'entry_date', 'date_modified'], 'safe'],
             [['kwh_readings', 'kwh_consumed', 'days_since_last_reload'], 'integer'],
@@ -58,9 +64,9 @@ class PrepaidReload extends \yii\db\ActiveRecord
         return [
             'site_id' => 'Site ID',
             'meter_id' => 'Meter ID',
-            'reload_amount' => 'Reload Amount',
+            'reload_amount' => 'Reload Amount (GHS)',
             'reload_date' => 'Reload Date',
-            'balance_before_reload' => 'Balance Before Reload',
+            'balance_before_reload' => 'Balance Before Reload (GHS)',
             'kwh_readings' => 'Kwh Readings',
             'kwh_consumed' => 'Kwh Consumed',
             'amount_consumed' => 'Amount Consumed',
@@ -70,6 +76,7 @@ class PrepaidReload extends \yii\db\ActiveRecord
             'date_modified' => 'Date Modified',
             'modified_by' => 'Modified By',
             'days_since_last_reload' => 'Days Since Last Reload',
+            'balance_after_reload' => 'Balance After Reload (GHS)'
         ];
     }
 
@@ -92,6 +99,7 @@ class PrepaidReload extends \yii\db\ActiveRecord
     public function beforeValidate() {
         $this->entry_date = new \yii\db\Expression('now()');
         $this->entry_by = Yii::$app->user->identity->username;
+        $this->reload_amount = $this->balance_after_reload - $this->balance_before_reload;
         $this->amount_consumed = $this->amountConsumed($this->meter_id, $this->balance_before_reload);
         $this->kwh_consumed = $this->kwhConsumed($this->meter_id, $this->kwh_readings);
         $this->days_since_last_reload = $this->daysSinceLastReload($this->meter_id, $this->reload_date);

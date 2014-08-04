@@ -75,7 +75,7 @@ use yii\widgets\ActiveForm;
     
     <?= $form->field($model, 'balance_before_reload')->textInput() ?>
             
-    <?= $form->field($model, 'reload_amount')->textInput() ?>
+    <?= $form->field($model, 'balance_after_reload')->textInput() ?>
 
     <?= $form->field($model, 'kwh_readings')->textInput() ?>
                     </fieldset>

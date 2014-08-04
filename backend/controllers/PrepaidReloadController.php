@@ -77,7 +77,8 @@ class PrepaidReloadController extends Controller
         $model = new PrepaidReload;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'site_id' => $model->site_id, 'meter_id' => $model->meter_id, 'reload_date' => $model->reload_date]);
+            \Yii::$app->session->setFlash('success', 'Record created.');
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -98,7 +99,8 @@ class PrepaidReloadController extends Controller
         $model = $this->findModel($site_id, $meter_id, $reload_date);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'site_id' => $model->site_id, 'meter_id' => $model->meter_id, 'reload_date' => $model->reload_date]);
+            \Yii::$app->session->setFlash('success', 'Record successfully updated.');
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
