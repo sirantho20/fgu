@@ -9,12 +9,12 @@
 			<div class="login-info">
 				<span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
 					
-					<a href="javascript:void(0);" id="show-shortcut">
-                                            <span class="fa fa-lg fa-fw fa-user menu-item-parent"></span> 
+					<a href="<?= Url::toRoute('site/resetpassword') ?>" >
+                                            <span class="fa fa-lg fa-fw fa-user"></span> 
 						<span>
-							<?= Yii::$app->user->identity->company ?>
+                                                    	<?= Yii::$app->user->identity->first_name.' '.Yii::$app->user->identity->last_name ?> 
 						</span>
-						<i class="fa fa-angle-down"></i>
+						
 					</a> 
 					
 				</span>

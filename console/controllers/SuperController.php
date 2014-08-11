@@ -31,6 +31,7 @@ class SuperController extends Controller {
         $model->last_name = $this->prompt('Last Name', ['required'=>true]);
         $model->email = $this->prompt('Email Address', ['required'=>true]);
         $model->company = $this->prompt('Company', ['required'=>true]);
+        $model->role = $this->prompt('Role', ['required'=>true]);
         
         if($model->signup())
         {

@@ -26,7 +26,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        //'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -81,5 +81,27 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+    
+    public function actionResetpassword()
+    {
+        $this->layout = 'adminMain';
+        $model = new \common\models\PasswordResetForm();
+        
+        if($model->load(Yii::$app->request->post()))
+        {
+            $model->changePassword();
+            Yii::$app->session->setFlash('success', 'Password reset succcessful');
+            //return $this->redirect(\yii\helpers\Url::toRoute('index'));
+        }
+        else {
+            return $this->render('passwordReset',[
+                'model' => $model
+            ]);
+        }
+        
+        return $this->render('passwordReset',[
+                'model' => $model
+            ]);
     }
 }
