@@ -6,14 +6,17 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        
-            'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=fgu1',
-            'username' => 'root',
-            'password' => '',
-            'charset' => 'utf8',
-        ],
+        'mailer' => [ 
+            'class' => 'yii\swiftmailer\Mailer', 
+            'transport' => [ 
+                'class' => 'Swift_SmtpTransport', 
+                'host' => 'smtp.gmail.com', 
+                'username' => 'fgu.htg@gmail.com', 
+                'password' => 'Mys3kr3t', 
+                'port' => '465', 
+                'encryption' => 'ssl', 
+                ], 
+            ],
 
     ],
     

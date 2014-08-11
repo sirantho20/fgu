@@ -17,8 +17,8 @@ class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    public $css = ['css/site.css'];
-    public $js = ['js/notify.min.js','fgu.js'];
+    public $css = ['css/site.css','css/daterangepicker-bs3.css'];
+    public $js = ['js/notify.min.js','js/fgu.js','js/moment.min.js','js/daterangepicker.js'];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',

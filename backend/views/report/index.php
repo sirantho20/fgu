@@ -1,18 +1,6 @@
 <?php
 use bburim\daterangepicker\DateRangePicker;
-
-
-$ranges = new \yii\web\JsExpression("{
-                        'Today'        : [Date.today(), Date.today()],
-                        'Yesterday'    : [Date.today().add({ days: -1 }), Date.today().add({ days: -1 })],
-                        'Last 7 Days'  : [Date.today().add({ days: -6 }), Date.today()],
-                        'Last 30 Days' : [Date.today().add({ days: -29 }), Date.today()],
-                        'This Month'   : [Date.today().moveToFirstDayOfMonth(), Date.today().moveToLastDayOfMonth()],
-                        'This Year'    : [Date.today().moveToMonth(0,-1).moveToFirstDayOfMonth(), Date.today()],
-                        'Last Month'   : [Date.today().moveToFirstDayOfMonth().add({ months: -1 }), Date.today().moveToFirstDayOfMonth().add({ days: -1 })]
-                    }");
-
-$callback = new \yii\web\JsExpression("function(){}");
+use yii\widgets\ActiveForm;
 ?>
 <div class="row">
 
@@ -38,16 +26,29 @@ $callback = new \yii\web\JsExpression("function(){}");
         <!-- widget div-->
         <div>
 
-                <!-- widget edit box -->
-                <div class="jarviswidget-editbox">
-                        <!-- This area used as dropdown edit box -->
-
-                </div>
-                <!-- end widget edit box -->
-
                 <!-- widget content -->
                 <div class="widget-body no-padding">
+                <?php $form = ActiveForm::begin([
+                     'options'=>['class'=>'smart-form'],
+                     'fieldConfig'=>['labelOptions'=>['class'=>'label', 'style'=>'font-weight:bold;'],'options'=>['tag'=>'section']]
+                    ]); ?>
+                
+                    <fieldset>
 
+                    <?= $form->field($model, 'reportDates')->textInput(['maxlength' => 50,'id'=>'report-dates']) ?>
+                     <?= $form->field($model, 'type')->dropDownList(['fgu'=>'FGU','fuelling'=>'Fuelling','prepaid'=>'Prepaid Reload'])?>
+
+                    </fieldset>
+                 <footer>
+                        <button type="submit" class="btn btn-primary">
+                                Extract
+                        </button>
+                        <button type="button" class="btn btn-default" onclick="window.history.back();">
+                                Cancel
+                        </button>
+                </footer>
+
+                <?php ActiveForm::end(); ?>
                    
                 </div>
         </div>

@@ -85,6 +85,13 @@ class SiteController extends Controller
     
     public function actionResetpassword()
     {
+//        Yii::$app->mailer->compose('@app/mail/accountDetails')
+//                ->setFrom('admin@mail.i-webb.net')
+//                ->setTo('aafetsrom@htghana.com')
+//                ->setSubject('hello Welcome')
+//                ->send();
+//    
+        
         $this->layout = 'adminMain';
         $model = new \common\models\PasswordResetForm();
         

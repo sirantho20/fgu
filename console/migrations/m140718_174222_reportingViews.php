@@ -50,7 +50,7 @@ SELECT fgu_step_2.genset_id,
        details.ownership,
        details.tigo_site_class,
        details.htg_site_type
-  FROM fgu1.fgu_step_2 fgu_step_2
+  FROM fgu_step_2 fgu_step_2
   INNER JOIN gensets as gensets
   on fgu_step_2.genset_id = gensets.genset_id
   inner join genset_cph cph

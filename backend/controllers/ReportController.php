@@ -20,7 +20,16 @@ class ReportController extends Controller {
     
     public function actionIndex()
     {
-        $query = \Yii::$app->db->createCommand('select site_id,fuel_consumed,last_fuel_level,fuel_quantity_lts,power_consumed from fgu_step_3')->queryAll();
+        $model = new \backend\models\Report();
+        if($model->load(\Yii::$app->request->post()))
+        {
+            $model->fguReport();
+        }
+        
+        return $this->render('index', [
+            'model' => $model,
+        ]);
+        //$query = \Yii::$app->db->createCommand('select site_id,fuel_consumed,last_fuel_level,fuel_quantity_lts,power_consumed from fgu_step_3')->queryAll();
 //        $dataprovider = new \yii\data\ArrayDataProvider([
 //            'allModels' => $query,
 //            'pagination' => [
