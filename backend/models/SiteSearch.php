@@ -52,7 +52,7 @@ class SiteSearch extends Site
             return $dataProvider;
         }
 
-        $query->andFilterWhere(['like', 'site_id', $this->site_id])
+        $query->andFilterWhere(['like', 'site.site_id', $this->site_id])
             ->andFilterWhere(['like', 'site_name', $this->site_name])
             ->andFilterWhere(['like', 'region', $this->region])
             ->andFilterWhere(['like', 'siteDetails.x3_site_id', $this->getAttribute('siteDetails.x3_site_id')])

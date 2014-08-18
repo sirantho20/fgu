@@ -67,7 +67,7 @@ class GensetReading extends \yii\db\ActiveRecord
             [['days_from_last_reading', 'meter_reading'], 'integer'],
             [['meter_reading'],'validateKWH'],
             [['genset_run_hours'],'validateRunHRS'], 
-            [['access_code'],'validateAccessCode'],
+            //[['access_code'],'validateAccessCode'],
             [['genset_id', 'site_id', 'reading_by', 'entry_by', 'source_of_reading', 'modified_by', 'access_code'], 'string', 'max' => 50],
             //[['mc', 'run_hours_for_period'], 'integer', 'max' => 255]
         ];
