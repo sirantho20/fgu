@@ -67,7 +67,7 @@ use yii\widgets\ActiveForm;
         
     <?= $form->field($model, 'quantity_after_delivery_cm')->textInput() ?>
         
-    <?= $form->field($model, 'fuel_supplier')->dropDownList(['ai'=>'AI','champion'=>'Champion'], ['prompt'=>'Select supplier']) ?> 
+    <?= $form->field($model, 'fuel_supplier')->dropDownList(['ai'=>'AI','champion'=>'Champion','self'=>'Self Supplied'], ['prompt'=>'Select supplier']) ?> 
         
     <?= $form->field($model, 'emergency_fuelling')->dropDownList(['yes'=>'Yes','no'=>'No']) ?>
 

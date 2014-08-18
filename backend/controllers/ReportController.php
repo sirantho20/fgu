@@ -21,35 +21,44 @@ class ReportController extends Controller {
     public function actionIndex()
     {
         $model = new \backend\models\Report();
-        if($model->load(\Yii::$app->request->post()))
-        {
-            $model->fguReport();
-        }
         
-        return $this->render('index', [
+        if($model->load(\Yii::$app->request->post()) && $model->validate())
+        {
+            
+            $query = $model->getQuery();
+            if(count($query) > 0)
+            {
+                    header("Content-type: text/x-csv");
+                    header("Content-type: text/csv");
+                    header("Content-type: application/csv");
+                    header( 'Content-Disposition: attachment;filename='.\Yii::$app->user->identity->company.$_POST['Report']['type'].$_POST['Report']['reportDates'].'_'.(new \DateTime("now"))->format('Y-m-d H:i:s').'.csv');
+                    $fp = fopen('php://output', 'w');
+
+
+                    fputcsv($fp, array_keys($query[0]));
+                    foreach ($query as $row)
+                    {
+                        fputcsv($fp, array_values($row));
+                    }
+                    fclose($fp);
+                    \Yii::$app->end();
+            }
+            else 
+            {
+                \Yii::$app->session->setFlash('info','No records found');
+                return $this->render('index',[
+                    'model' => $model,
+                ]);
+            }
+            
+            
+        }
+
+        return $this->render('index',[
             'model' => $model,
         ]);
-        //$query = \Yii::$app->db->createCommand('select site_id,fuel_consumed,last_fuel_level,fuel_quantity_lts,power_consumed from fgu_step_3')->queryAll();
-//        $dataprovider = new \yii\data\ArrayDataProvider([
-//            'allModels' => $query,
-//            'pagination' => [
-//                    'pageSize' => 2,
-//                    ],
-//        ]);
-        
-//            header("Content-type: text/x-csv");
-//            header("Content-type: text/csv");
-//            header("Content-type: application/csv");
-//            header( 'Content-Disposition: attachment;filename='.'test.csv');
-//            $fp = fopen('php://output', 'w');
-//            
-//            
-//            fputcsv($fp, array_keys($query[0]));
-//            foreach ($query as $row)
-//            {
-//                fputcsv($fp, array_values($row));
-//            }
-//            fclose($fp);
-        return $this->render('index');
     }
+
 }
+
+

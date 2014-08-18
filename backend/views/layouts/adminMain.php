@@ -19,6 +19,10 @@
         <?php $this->registerJs('$("#notification-area").notify("'.Yii::$app->session->getFlash('success').'",{elementPosition:"bottom right",className:"success"});'); ?> 
         <?php endif; ?>
 
+<?php if(Yii::$app->session->hasFlash('info')): ?>
+        <?php $this->registerJs('$("#notification-area").notify("'.Yii::$app->session->getFlash('info').'",{elementPosition:"bottom right",className:"success"});'); ?> 
+        <?php endif; ?>
+
                 <?= $content ?>
 
 <?php $this->endContent();

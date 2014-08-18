@@ -56,8 +56,9 @@ class SuperController extends Controller {
             {
                 $user->setPassword($pword);
                 
-                if($this->confirm('Are you sure you wnt to change password for '.$username.'?') && $user->update())
+                if($this->confirm('Are you sure you wnt to change password for '.$username.'?'))
                 {
+                    $user->update(false);
                     echo 'Password successfully changed!';
                     return 0;
                 }

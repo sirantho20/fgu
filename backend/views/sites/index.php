@@ -58,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
 
             'site_id',
+            'siteDetails.x3_site_id',
             'site_name',
             'region',
             'city_town',

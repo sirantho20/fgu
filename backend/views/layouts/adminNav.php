@@ -41,6 +41,7 @@
                                                     <span class="menu-item-parent"> Dashboard</span>
                                                 </a>
                                     </li>
+                                    
                                     <li>
                                         <a href="#" title="Sites"><i class="fa fa-lg fa-fw fa-th"></i> <span class="menu-item-parent">Sites</span></a>
                                         <ul>
@@ -67,8 +68,12 @@
                                                 </a>
 					</li>
                                         <?php endif; ?>
+                                        <li>
+                                        <a href="<?= Url::to(['report/index']) ?>" title="Reports"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Reports</span></a>
+
+                                        </li>
 					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">MC Reports</span></a>
+						<a href="#"><i class="fa fa-lg fa-fw fa-list-ul"></i> <span class="menu-item-parent">MC Reports</span></a>
 						<ul>
 							<li>
                                                             <a href="#" class="menu-item-parent"><i class="fa fa-lg fa-fw fa-calendar"></i><span class="menu-item-parent">FGU Readings</span></a>

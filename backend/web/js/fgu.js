@@ -18,7 +18,7 @@ jQuery( document ).ready(function() {
                     showDropdowns: true,
                     showWeekNumbers: true,
                     minDate: moment().subtract('years', 2),
-                    maxDate: moment(),
+                    maxDate: moment()
               }
                 );
     
