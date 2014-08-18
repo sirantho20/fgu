@@ -129,7 +129,7 @@ class Site extends \yii\db\ActiveRecord
            INNER JOIN site_details site_details
               ON (site_details.site_id = site.site_id)
          WHERE     (`site`.`site_id` IN (SELECT DISTINCT site_id FROM site_genset))
-           AND (site_details.maintenance_contractor = :mc) order by site.site_id ASC',[':mc'=>$mc]);
+           AND (lower(site_details.maintenance_contractor) = :mc) order by site.site_id ASC',[':mc'=>strtolower($mc)]);
         
         return $qr->all();
     }
@@ -141,7 +141,7 @@ class Site extends \yii\db\ActiveRecord
                 ->innerJoin('site site', 'site_genset.site_id = site.site_id')
                 ->innerJoin('site_details site_details','site_details.site_id = site.site_id')
                 ->where('(`site`.`site_id` IN (SELECT DISTINCT site_id FROM site_genset))')
-                ->andWhere(['site_details.maintenance_contractor'=>$mc])
+                ->andWhere(['lower(site_details.maintenance_contractor)'=>  strtolower($mc)])
                 ->select(['site.site_id as value','site.site_name as label'])
                 ->orderBy(['site.site_id'=>SORT_ASC]);
         return \yii\helpers\Json::encode($query->all());
@@ -162,7 +162,7 @@ class Site extends \yii\db\ActiveRecord
         $qr = new \yii\db\Query();
         $qr->from(['prepaid_meter_sites prepaid_meter_sites'])
                 ->innerJoin('site_details site_details', 'prepaid_meter_sites.site_id = site_details.site_id')
-                ->where(['site_details.maintenance_contractor'=>$mc])
+                ->where(['lower(site_details.maintenance_contractor)'=>  strtolower($mc)])
                 ->select(['prepaid_meter_sites.site_id','CONCAT(prepaid_meter_sites.site_ID,"-",prepaid_meter_sites.site_name) AS site_name'])
                 ->orderBy(['site_id'=>SORT_ASC]);
         

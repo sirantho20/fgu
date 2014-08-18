@@ -57,9 +57,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'site_id',
+            'siteDetails.x3_site_id',
             'site_name',
             'region',
             'city_town',
+            'siteDetails.maintenance_contractor',
         ],
     ]) ?>
 
