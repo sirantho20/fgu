@@ -67,7 +67,7 @@ class GensetReading extends \yii\db\ActiveRecord
             [['days_from_last_reading', 'meter_reading'], 'integer'],
             [['meter_reading'],'validateKWH'],
             [['genset_run_hours'],'validateRunHRS'], 
-            //[['access_code'],'validateAccessCode'],
+            [['access_code'],'validateAccessCode'],
             [['genset_id', 'site_id', 'reading_by', 'entry_by', 'source_of_reading', 'modified_by', 'access_code'], 'string', 'max' => 50],
             //[['mc', 'run_hours_for_period'], 'integer', 'max' => 255]
         ];
@@ -304,12 +304,13 @@ class GensetReading extends \yii\db\ActiveRecord
                 refuel.AccessCode access_code,
                 CONVERT(DATE,refuel.dateRefueled) date
            FROM escalator.dbo.refuel refuel) as tbl
-           where contractor = :contractor and date = :date and access_code = :access_code
+           where contractor = :contractor and date = :date and access_code = :access_code and site_id = :site_id
             ",
            [
                ':contractor' => \Yii::$app->user->identity->company,
                ':date' => $this->reading_date,
-               ':access_code' => $this->access_code
+               ':access_code' => $this->access_code,
+               ':site_id' => $this->site_id
            ]);
         $re = $query->queryAll();
         
