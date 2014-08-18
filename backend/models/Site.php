@@ -100,7 +100,7 @@ class Site extends \yii\db\ActiveRecord
      */
     public function getSiteDetails()
     {
-        return $this->hasOne(SiteDetails::className(), ['site_id' => 'site_id']);
+        return $this->hasOne(Sitedetails::className(), ['site_id' => 'site_id']);
     }
 
     /**

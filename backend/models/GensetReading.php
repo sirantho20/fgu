@@ -66,7 +66,8 @@ class GensetReading extends \yii\db\ActiveRecord
             [['fuel_level_cm', 'fuel_quantity_lts', 'genset_run_hours', 'fuel_consumed', 'power_consumed'], 'number'],
             [['days_from_last_reading', 'meter_reading'], 'integer'],
             [['meter_reading'],'validateKWH'],
-            [['genset_run_hours'],'validateRunHRS'],
+            [['genset_run_hours'],'validateRunHRS'], 
+            [['access_code'],'validateAccessCode'],
             [['genset_id', 'site_id', 'reading_by', 'entry_by', 'source_of_reading', 'modified_by', 'access_code'], 'string', 'max' => 50],
             //[['mc', 'run_hours_for_period'], 'integer', 'max' => 255]
         ];
@@ -279,6 +280,43 @@ class GensetReading extends \yii\db\ActiveRecord
         }
         
         return $lts;
+    }
+    
+    public function validateAccessCode($attribute, $params)
+    {
+        $conn = \Yii::$app->spoandb;
+        $query = $conn->createCommand("select * from (SELECT sitelist.ContractorName contractor,
+                troubleticket.siteID site_id,
+                SUBSTRING(troubleticket.ourReference,charindex(':',troubleticket.ourReference)+1,4) access_code,
+                convert(date, troubleticket.dateReported) date
+           FROM escalator.dbo.sitelist sitelist
+                INNER JOIN escalator.dbo.troubleticket troubleticket
+                   ON (sitelist.siteID = troubleticket.siteID)
+           UNION
+           SELECT access.contractor contractor,
+                access.siteID site_id,
+                access.accessCode AccessCode,
+                CONVERT(DATE,access.accessDate) date
+           FROM escalator.dbo.access access
+           UNION
+           SELECT refuel.Contractor contractor,
+                refuel.siteid site_id,
+                refuel.AccessCode access_code,
+                CONVERT(DATE,refuel.dateRefueled) date
+           FROM escalator.dbo.refuel refuel) as tbl
+           where contractor = :contractor and date = :date and access_code = :access_code
+            ",
+           [
+               ':contractor' => \Yii::$app->user->identity->company,
+               ':date' => $this->reading_date,
+               ':access_code' => $this->access_code
+           ]);
+        $re = $query->queryAll();
+        
+        if(count($re) < 1)
+        {
+            $this->addError($attribute, 'Invalid access code');
+        }
     }
     
     

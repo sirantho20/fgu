@@ -3,6 +3,13 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'components' => [
+        'spoandb' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'dblib:host=htgops;dbname=escalator',
+            'username' => 'htgdashboard01',
+            'password' => 'NewD@shboardPassw0rd',
+            'charset' => 'utf8',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

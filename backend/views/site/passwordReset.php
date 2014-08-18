@@ -3,7 +3,7 @@ use yii\widgets\ActiveForm;
 ?>
 <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
     <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-user"></i> <?=                Yii::$app->user->identity->first_name.' '.Yii::$app->user->identity->last_name; ?> <span>>
-        Profile </span></h1>
+        <?= Yii::$app->user->identity->company ?> </span></h1>
 </div>
 <div class="row">
 					
