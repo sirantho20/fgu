@@ -35,12 +35,13 @@ class SuperController extends Controller {
         
         if($model->signup())
         {
-            echo 'User successfully created!';
+            echo 'User successfully created!'."\n";
             return 0;
         }
         else 
         {
-            echo 'Sorry, something went wrong. Please try again!';
+            echo 'Sorry, something went wrong. Please try again!'."\n";
+            return 1;
         }
         
     }
