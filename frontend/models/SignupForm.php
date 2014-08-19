@@ -27,6 +27,7 @@ class SignupForm extends Model
         return [
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
+            [['first_name', 'last_name', 'company','role'], 'safe'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
@@ -57,10 +58,20 @@ class SignupForm extends Model
             $user->last_name = $this->last_name;
             $user->role = $this->role;
             $user->generateAuthKey();
-            $user->save();
-            return $user;
+            return $user->save(false);
         }
 
         return false;
     }
+    
+//    public function beforeValidate() {
+//        $this->company = $_POST['SignupForm']['company'];
+//        $this->first_name = $_POST['SignupForm']['first_name'];
+//        $this->last_name = $_POST['SignupForm']['last_name'];
+//        $this->username = $_POST['SignupForm']['username'];
+//        $this->password = $_POST['SignupForm']['password'];
+//        $this->role = $_POST['SignupForm']['role'];
+//        $this->email = $_POST['SignupForm']['email'];
+//        return parent::beforeValidate();
+//    }
 }

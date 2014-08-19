@@ -51,7 +51,10 @@ class User extends ActiveRecord implements IdentityInterface
     /**
 * @inheritdoc
 */
- public function rules()
+public static function tableName() {
+    return 'user';//parent::tableName();
+}
+public function rules()
  {
      return [
          ['status', 'default', 'value' => self::STATUS_ACTIVE],
