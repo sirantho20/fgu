@@ -309,7 +309,7 @@ class GensetReading extends \yii\db\ActiveRecord
            [
                //':contractor' => \Yii::$app->user->identity->company,
                ':date' => $this->reading_date,
-               ':access_code' => $this->access_code,
+               ':access_code' => str_replace(' ','',trim($this->access_code)),
                ':site_id' => $this->site_id
            ]);
         $re = $query->queryAll();
