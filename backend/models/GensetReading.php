@@ -304,7 +304,7 @@ class GensetReading extends \yii\db\ActiveRecord
                 refuel.AccessCode access_code,
                 CONVERT(DATE,refuel.dateRefueled) date
            FROM escalator.dbo.refuel refuel) as tbl
-           where lower(right(tbl.contractor,2)) = lower(right(:contractor,2)) and tbl.date = :date and tbl.access_code = :access_code and site_id = :site_id
+           where tbl.date = :date and tbl.access_code = :access_code and site_id = :site_id
             ",
            [
                //':contractor' => \Yii::$app->user->identity->company,
