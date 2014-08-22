@@ -39,4 +39,29 @@ class SuperController extends Controller {
                 ]);
     }
     
+    public function actionResetpassword($username)
+    {
+        $user = \common\models\User::findOne(['username'=>$username]);
+        $user->setPassword(\Yii::$app->params['defaultPassword']);
+        if($user->save(false))
+        {
+            if(\Yii::$app->mailer->compose('accountDetails',['user'=>$user,'password'=>(new \yii\base\Security())->generateRandomString(8)])
+                    ->setTo($user->email)
+                    ->setFrom(\Yii::$app->params['fromEmail'])
+                    ->setSubject('Password Reset')
+                    ->send())
+            {
+                die('sent');
+            }
+            else 
+            {
+                die('not sent');
+            }
+        }
+        else
+        {
+            die('param not set');
+        }
+    }
+    
 }

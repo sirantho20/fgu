@@ -7,14 +7,14 @@
  */
 use yii\helpers\Html
 ?>
-Hello <?= $user['first_name']?>,
+Hello <?= $user->first_name ?>,
 <p>
-Please note you have an account on the new Helios Towers FGU software. Find your login details below: <br />
+Please note you have an account password on  Helios Towers FGU has been reset. Find your login details below: <br />
 Login Url: <?= Yii::$app->urlManager->createAbsoluteUrl('/') ?> <br />
-Username: <?= $user['username']?> <br />
-Password; P@ssword <br />
+Username: <?= $user->username ?> <br />
+Password; <?= Html::encode($password) ?> <br />
 </p>
-Note that you will be required to change this default password after first login. <br />
+You are free to change this password anytime. <br />
 
 <p>Best Regards</p>
 

@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'format' =>'html',
                 'value' => function($data){
-                return Html::a('<i class="fa fa-edit"></i>', Yii::$app->urlManager->createUrl(['sites/view','id'=>$data->username]));
+                return Html::a('<i class="fa fa-refresh"></i>', '#',['class'=>'passwordResetBtn', 'title'=>$data->username]);
                 }
             ]
             //['class' => 'yii\grid\ActionColumn'],
@@ -85,3 +85,22 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 </div>
 
+<?php
+ Yii::$app->controller->view->registerJs("
+     $('.passwordResetBtn').click(function(){
+            var uname = $(this).attr('title');
+            $.ajax({
+                url: '".yii\helpers\Url::toRoute('super/resetpassword')."',
+                data: {username: uname},
+                beforeSend: function(){
+                            $('.activitySpinner').removeClass('hidden');
+                            },
+                complete: function(){
+                            $('.activitySpinner').addClass('hidden');
+                            $('#notification-area').notify('password reset complete',{elementPosition:'bottom right',className:'info'});
+                            },
+            });
+            
+            
+        });", yii\web\View::POS_END);
+?>
