@@ -10,7 +10,7 @@ pageSetUp();
 
 // bar graph color
 if ($('#updating-chart').length) {
-    $.getJSON('http://fgu/api/gensetbysupplier',function(data){
+    $.getJSON(window.location.pathname + 'api/gensetbysupplier',function(data){
             Morris.Bar({
             element : 'updating-chart',
             data : data,
@@ -30,7 +30,7 @@ if ($('#updating-chart').length) {
 
 }
 if($('#fgu-fuel-on-site').length) {
-$.getJSON('http://fgu/api/weeklyfuelstock',function(data){
+$.getJSON(window.location.pathname + 'api/weeklyfuelstock',function(data){
 
         Morris.Area({
                 element : 'fgu-fuel-on-site',
@@ -45,7 +45,7 @@ $.getJSON('http://fgu/api/weeklyfuelstock',function(data){
 }
 
 if($('#test-delivery').length) {
-$.getJSON('http://fgu/api/weeklyfueldelivery',function(data2){
+$.getJSON(window.location.pathname + 'api/weeklyfueldelivery',function(data2){
 
         Morris.Area({
                 element : 'test-delivery',
@@ -61,7 +61,7 @@ $.getJSON('http://fgu/api/weeklyfueldelivery',function(data2){
 
 
 if($('#theft-trend').length) {
-$.getJSON('http://fgu/api/weeklyfuelstock',function(data){
+$.getJSON(window.location.pathname + 'api/weeklyfuelstock',function(data){
 
         Morris.Bar({
                 element : 'theft-trend',
@@ -76,7 +76,7 @@ $.getJSON('http://fgu/api/weeklyfuelstock',function(data){
 }
 
 if($('#consumption-trend').length) {
-$.getJSON('http://fgu/api/weeklyfuelstock',function(data){
+$.getJSON(window.location.pathname + 'api/weeklyfuelstock',function(data){
 
         Morris.Line({
                 element : 'consumption-trend',
