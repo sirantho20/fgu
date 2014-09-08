@@ -43,7 +43,7 @@ class ApiController extends \yii\rest\Controller
        SUM(IFNULL(fgu_step_3.fuel_consumed,0)) AS fuel_consumed,
        SUM(IFNULL(fgu_step_3.fuel_quantity_lts,0)) AS fuel_on_site,
        SUM(IFNULL(fgu_step_3.fuel_theft,0)) AS fuel_theft
-  FROM fgu1.fgu_step_3 fgu_step_3
+  FROM fgu_step_3 fgu_step_3
 GROUP BY fgu_step_3.`year`, fgu_step_3.`week`
 ORDER BY `week` ASC');
         return $cmd->queryAll();
@@ -52,7 +52,7 @@ ORDER BY `week` ASC');
     public function actionWeeklyfueldelivery()
     {
         $cmd = \Yii::$app->db->createCommand('SELECT concat(`year`," wk",fgu_step_3.`week`) week, SUM(IFNULL(fgu_step_3.fuel_delivered,0)) fuel_delivered
-  FROM fgu1.fgu_step_3 fgu_step_3
+  FROM fgu_step_3 fgu_step_3
 GROUP BY fgu_step_3.week
 ORDER BY `week` ASC');
         
