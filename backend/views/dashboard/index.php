@@ -218,3 +218,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <!-- end row -->
 
 </section>
+<?php
+Yii::$app->controller->view->registerJs('<script type="text/javascript">
+
+var siteRoot = '.Yii::$app->urlManager->baseUrl.'; console.log(siteRoot);
+<script>');
