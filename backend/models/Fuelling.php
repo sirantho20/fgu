@@ -5,7 +5,7 @@ namespace backend\models;
 use Yii;
 use backend\models\GensetReading;
 
-/**
+/** room 11 5091144086
  * This is the model class for table "fgu_fuelling".
  *
  * @property string $site_id
@@ -49,7 +49,8 @@ class Fuelling extends \yii\db\ActiveRecord
             [['site_id', 'access_code', 'htg_fs_present'], 'string', 'max' => 50],
             [['emergency_fuelling'], 'string', 'max' => 10],
             [['genset_id', 'mc'], 'string', 'max' => 255],
-            [['entry_by'], 'string', 'max' => 45]
+            [['entry_by'], 'string', 'max' => 45],
+            [['access_code'],'validateAccessCode'],
         ];
     }
 
@@ -98,6 +99,11 @@ class Fuelling extends \yii\db\ActiveRecord
         $this->delivery_date = new \yii\db\Expression('date(now())');
         
         return parent::beforeValidate();
+    }
+    
+    public function validateAccessCode($attribute, $params)
+    {
+        return (new GensetReading())->validateAccessCode($attribute, $params);
     }
     public static function getRefuelforPeriod($genset, $date)
     {
