@@ -127,7 +127,7 @@ class Fuelling extends \yii\db\ActiveRecord
             ",
            [
                ':contractor' => \Yii::$app->user->identity->company,
-               ':date' => $this->reading_date,
+               ':date' => $this->delivery_date,
                ':access_code' => str_replace(' ','',trim($this->access_code)),
                ':site_id' => $this->site_id
            ]);
