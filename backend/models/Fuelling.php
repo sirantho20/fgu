@@ -103,7 +103,7 @@ class Fuelling extends \yii\db\ActiveRecord
     
     public function validateAccessCode($attribute, $params)
     {
-        return (new GensetReading())->validateAccessCode($attribute, $params);
+        (new GensetReading())->validateAccessCode($attribute, $params);
     }
     public static function getRefuelforPeriod($genset, $date)
     {
