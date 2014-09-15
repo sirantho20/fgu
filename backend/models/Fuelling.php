@@ -103,7 +103,40 @@ class Fuelling extends \yii\db\ActiveRecord
     
     public function validateAccessCode($attribute, $params)
     {
-        (new GensetReading())->validateAccessCode($attribute, $params);
+        $conn = \Yii::$app->spoandb;
+        $query = $conn->createCommand("select * from (SELECT sitelist.ContractorName contractor,
+                troubleticket.siteID site_id,
+                SUBSTRING(troubleticket.ourReference,charindex(':',troubleticket.ourReference)+1,4) access_code,
+                convert(date, troubleticket.dateReported) date
+           FROM escalator.dbo.sitelist sitelist
+                INNER JOIN escalator.dbo.troubleticket troubleticket
+                   ON (sitelist.siteID = troubleticket.siteID)
+           UNION
+           SELECT access.contractor contractor,
+                access.siteID site_id,
+                access.accessCode AccessCode,
+                CONVERT(DATE,access.accessDate) date
+           FROM escalator.dbo.access access
+           UNION
+           SELECT refuel.Contractor contractor,
+                refuel.siteid site_id,
+                refuel.AccessCode access_code,
+                CONVERT(DATE,refuel.dateRefueled) date
+           FROM escalator.dbo.refuel refuel) as tbl
+           where lower(right(tbl.contractor,2)) = lower(right(:contractor,2)) and tbl.date = :date and tbl.access_code = :access_code and site_id = :site_id
+            ",
+           [
+               ':contractor' => \Yii::$app->user->identity->company,
+               ':date' => $this->reading_date,
+               ':access_code' => str_replace(' ','',trim($this->access_code)),
+               ':site_id' => $this->site_id
+           ]);
+        $re = $query->queryAll();
+        
+        if(count($re) < 1)
+        {
+            $this->addError($attribute, 'Invalid access code');
+        }
     }
     public static function getRefuelforPeriod($genset, $date)
     {
