@@ -68,8 +68,8 @@ use yii\jui\AutoComplete;
             sunday.setHours(0,0,0,0);
             sunday.setDate(sunday.getDate() - (sunday.getDay() || 0));
             var saturday = new Date(sunday.getTime());
-            saturday.setDate(sunday.getDate() + 6);
-            return [(date >= sunday.setDate(29) && date <= today), ""];
+            saturday.setDate(sunday.getDate() - 28);
+            return [(date >= saturday && date <= today), ""];
         }'),
         ],'options'=>['class'=>'form-control','readonly'=>'readonly', 'style'=>'cursor:text;']]) ?>
 

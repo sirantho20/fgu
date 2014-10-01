@@ -50,7 +50,7 @@ class Fuelling extends \yii\db\ActiveRecord
             [['emergency_fuelling'], 'string', 'max' => 10],
             [['genset_id', 'mc'], 'string', 'max' => 255],
             [['entry_by'], 'string', 'max' => 45],
-            //[['access_code'],'validateAccessCode'],
+            [['access_code'],'validateAccessCode'],
         ];
     }
 
@@ -123,11 +123,10 @@ class Fuelling extends \yii\db\ActiveRecord
                 refuel.AccessCode access_code,
                 CONVERT(DATE,refuel.dateRefueled) date
            FROM escalator.dbo.refuel refuel) as tbl
-           where lower(right(tbl.contractor,2)) = lower(right(:contractor,2)) and tbl.date = :date and tbl.access_code = :access_code and site_id = :site_id
+           where lower(right(tbl.contractor,2)) = lower(right(:contractor,2)) and tbl.date = convert(date, getdate()) and tbl.access_code = :access_code and site_id = :site_id
             ",
            [
                ':contractor' => \Yii::$app->user->identity->company,
-               ':date' => $this->delivery_date,
                ':access_code' => str_replace(' ','',trim($this->access_code)),
                ':site_id' => $this->site_id
            ]);
