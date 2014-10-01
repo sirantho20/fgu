@@ -110,8 +110,6 @@ class GensetReading extends \yii\db\ActiveRecord
     }
     
     public function beforeValidate() {
-       //$qr = (new \yii\db\Query)->from('site_genset')->where(['site_id'=>$this->site_id])->select('genset_id')->all();
-       //$this->genset_id = $qr[0]['genset_id'];
        $this->entry_by = Yii::$app->user->identity->username;
        $this->days_from_last_reading = $this->daysSinceLastReading($this->genset_id,$this->reading_date);
        $this->fuel_quantity_lts = self::getFuelLtsfromCM($this->genset_id, $this->fuel_level_cm);
