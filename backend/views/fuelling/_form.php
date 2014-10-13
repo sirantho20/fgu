@@ -59,7 +59,8 @@ use yii\widgets\ActiveForm;
              'placeholder' => 'Select genset...',
              'url' => yii\helpers\Url::to(['siteactions/gensetlist'])
          ]
-     ]) ?>
+     ])->hint('<div id="genProps"></div>') ?>
+        
     
     <?php //$form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<'],'options'=>['class'=>'form-control']]) ?>
     

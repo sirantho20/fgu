@@ -22,7 +22,11 @@ jQuery( document ).ready(function() {
               }
                 );
         
+    $('#genset-id').change(function(){ 
         
+        alert(this.value); 
+    
+    });
     
     });
   

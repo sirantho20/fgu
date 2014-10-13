@@ -15,6 +15,7 @@ namespace backend\controllers;
 use yii\web\Controller;
 use Yii;
 use backend\models\SiteGenset;
+use backend\models\Genset;
 
 class SiteactionsController extends Controller {
     
@@ -131,5 +132,10 @@ class SiteactionsController extends Controller {
                 ->limit(1);
         
         $arr = $qr->all();
+    }
+    
+    public function mctankprops($genset)
+    {
+        $gen = Genset::findOne(['genset_id'=>$genset]);
     }
 }

@@ -36,7 +36,7 @@ class FuelFransfer extends Model {
         return [
           'from' => 'Site ID where fuel is taken from (Source)',
           'to' =>'Site ID where fuel is taken to (Destination)',
-          'fuel_quantity' => 'Quantity of fuel taken (litres)',
+          'fuel_quantity' => 'Quantity of fuel taken (cm)',
           'from_date' =>'Date when fuel was taken',
             'to_date' =>'Date when fuel delivered to Destination',
             'from_accesscode' =>'Accesscode when fuel was taken from source',
@@ -47,6 +47,11 @@ class FuelFransfer extends Model {
 
     public function doTransfer()
     {
+        // Syphoning
         $fuel = new Fuelling();
+        $fuel->access_code = $this->from_accesscode;
+        $fuel->site_id = $this->from;
+        $fuel->quantity_after_delivery_cm = $this->fuel_quantity;
+        
     }
 }
