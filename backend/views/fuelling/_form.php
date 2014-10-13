@@ -70,7 +70,7 @@ use yii\widgets\ActiveForm;
         
     <?= $form->field($model, 'fuel_supplier')->dropDownList(['ai'=>'AI','champion'=>'Champion','self'=>'Self Supplied','Tel Energy'=>'Tel Energy','Vivo'=>'Vivo','Zen'=>'Zen'], ['prompt'=>'Select supplier']) ?> 
         
-    <?= $form->field($model, 'emergency_fuelling')->dropDownList(['yes'=>'Yes','no'=>'No']) ?>
+    <?= $form->field($model, 'emergency_fuelling')->dropDownList(['emergency'=>'Emergency Fuelling','normal'=>'Normal Fuelling','tranfer'=>'Transfer/Syphoning','contamination'=>'Contamination Cleaning']) ?>
 
     <?= $form->field($model, 'access_code')->textInput(['maxlength' => 50]) ?>
 
