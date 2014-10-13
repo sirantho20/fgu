@@ -15,7 +15,8 @@ namespace backend\controllers;
 use yii\web\Controller;
 use Yii;
 use backend\models\SiteGenset;
-use backend\models\Genset;
+use app\models\Genset;
+use backend\models\Sitedetails;
 
 class SiteactionsController extends Controller {
     
@@ -134,8 +135,67 @@ class SiteactionsController extends Controller {
         $arr = $qr->all();
     }
     
-    public function mctankprops($genset)
+    public function actionMctankprops($genset)
     {
-        $gen = Genset::findOne(['genset_id'=>$genset]);
+        $output = array();
+        
+        $det = SiteGenset::findOne(['genset_id'=>  urldecode($genset)]);
+        
+        if($det->genset->has_base_tank == 'yes')
+        {
+            $output['tank'] = 'Base Tank';
+            $gen = $det->genset;
+            $output['width'] = $gen->fuel_tank_width;
+            $output['height'] = $gen->fuel_tank_height;
+            $output['bredth'] = $gen->fuel_tank_breadth;
+            $output['url'] = '/siteactions/mcupdategenset?genset='.urlencode($det->genset->genset_id);
+        }
+        else 
+        {
+            $output['tank'] = 'External Tank';        
+            $tank = Sitedetails::findOne(['site_id'=>$det->site_id]);
+            $output['width'] = $tank->tank_width;
+            $output['height'] = $tank->tank_height;
+            $output['bredth'] = $tank->tank_bredth;
+            $output['url'] = '/siteactions/mcsidedetailtankupdate?site='.urlencode($det->site->site_id);
+            
+        }
+        
+        echo \yii\helpers\Json::encode($output);
+        
     }
+    
+    public function actionMcupdategenset($genset)
+    {
+        $this->layout = '/adminMain';
+        $model = Genset::findOne(['genset_id' => $genset]);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+            
+            return $this->redirect(['fuelling/create']);
+        } else {
+            return $this->render('/genset/update_ro', [
+                'model' => $model,
+            ]);
+        }
+    }
+    
+    public function actionMcsidedetailtankupdate($site)
+    {
+        $this->layout = '/adminMain';
+        $model = \backend\models\Sitedetails::findOne(['site_id'=>$site]);
+        
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+            return $this->redirect(['fuelling/create']);
+        }
+        else 
+        {
+            return $this->render('/genset/tank_dimentions',[
+               'model' => $model 
+            ]);
+        }
+    }
+    
+    
+
 }

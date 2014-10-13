@@ -24,7 +24,9 @@ jQuery( document ).ready(function() {
         
     $('#genset-id').change(function(){ 
         
-        alert(this.value); 
+     $.getJSON('/siteactions/mctankprops?genset='+this.value,function( data ){
+        $('#genProps').html('Tank: <a href="'+data.url+'">'+data.height+' x '+data.width+' x '+data.bredth+'</a> | Type: <a href="'+data.url+'">'+data.tank+'</a>');
+     });
     
     });
     
