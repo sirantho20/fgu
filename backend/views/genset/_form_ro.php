@@ -53,19 +53,6 @@ use yii\jui\DatePicker;
                     <fieldset>
 
                     <?= $form->field($model, 'genset_id')->textInput(['maxlength' => 50,'readonly'=>'readonly']) ?>
-                        
-                    <?= $form->field($model, 'supplier')->textInput(['maxlength' => 50]) ?>
-
-                    <?= $form->field($model, 'purchase_date')->widget(DatePicker::className(), [
-                            'options'=>['class'=>'form-control'],
-                            'clientOptions' => [
-                                'dateFormat' => 'yy-mm-dd',
-                                'nextText'=>'>',
-                                'prevText'=>'<'
-                                ]
-                            ]) ?>
-
-                    
 
                     <?= $form->field($model, 'kva')->textInput() ?>
                         

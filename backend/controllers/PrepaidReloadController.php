@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\PrepaidReload;
-use app\models\PrepaidReloadSearch;
+use backend\models\PrepaidReloadSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

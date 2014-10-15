@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\GensetReading;
-use app\models\GensetReadingSearch;
+use backend\models\GensetReadingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

@@ -1,7 +1,7 @@
 <?php
 
 namespace backend\models;
-use app\models\Genset;
+use backend\models\Genset;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 

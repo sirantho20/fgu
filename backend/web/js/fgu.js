@@ -23,12 +23,23 @@ jQuery( document ).ready(function() {
                 );
         
     $('#genset-id').change(function(){ 
-        
+     
+     // Genset tank updates
      $.getJSON('/siteactions/mctankprops?genset='+this.value,function( data ){
         $('#genProps').html('Tank: <a href="'+data.url+'">'+data.height+' x '+data.width+' x '+data.bredth+'</a> | Type: <a href="'+data.url+'">'+data.tank+'</a>');
      });
-    
+     
     });
+    
+     // Meter type updates
+     $('#site-id').change(function(){
+        $.getJSON('/siteactions/meterprops','site='+this.value,function(data){
+            
+            $('#meterProps').html('Meter Type : <a href="'+data.url+'">'+ data.type +'</a>'); 
+            
+        });
+         
+     });
     
     });
   

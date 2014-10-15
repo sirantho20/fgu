@@ -59,7 +59,7 @@ use yii\jui\AutoComplete;
          'placeholder' => 'Select genset...',
          'url' => yii\helpers\Url::to(['siteactions/gensetlist'])
             ]
-        ]) 
+        ])->hint('<div id="genProps"></div>') 
     ?>
     <?= $form->field($model, 'reading_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<',
         'beforeShowDay' => new yii\web\JsExpression('function (date) {
@@ -79,7 +79,7 @@ use yii\jui\AutoComplete;
 
     <?= $form->field($model, 'genset_run_hours')->textInput() ?>
     
-    <?= $form->field($model, 'meter_reading')->textInput() ?>
+    <?= $form->field($model, 'meter_reading')->textInput()->hint('<div id="meterProps"></div>')  ?>
                     </fieldset>
      <footer>
             <button type="submit" class="btn btn-primary">

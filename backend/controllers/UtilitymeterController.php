@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\UtilityMeter;
-use app\models\UtilitymeterSearch;
+use backend\models\UtilitymeterSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use backend\models\UserAccess;

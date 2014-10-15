@@ -16,7 +16,7 @@ use Yii;
  * @property MeterSite $meterSite
  * @property Site[] $sites
  */
-class Utilitymeter extends \yii\db\ActiveRecord
+class UtilityMeter extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -15,8 +15,10 @@ namespace backend\controllers;
 use yii\web\Controller;
 use Yii;
 use backend\models\SiteGenset;
-use app\models\Genset;
+use backend\models\Genset;
 use backend\models\Sitedetails;
+use backend\models\MeterSite;
+use backend\models\UtilityMeter;
 
 class SiteactionsController extends Controller {
     
@@ -168,9 +170,38 @@ class SiteactionsController extends Controller {
     public function actionMcupdategenset($genset)
     {
         $this->layout = '/adminMain';
+        $old = array();
+        
         $model = Genset::findOne(['genset_id' => $genset]);
+        $old['site_id'] = $model->siteGenset->site->site_id;
+        $old['site_name'] = $model->siteGenset->site->site_name;
+        $old['has_base_tank'] = $model->has_base_tank;
+        $old['fuel_tank_width'] = $model->fuel_tank_width;
+        $old['fuel_tank_breadth'] = $model->fuel_tank_breadth;
+        $old['fuel_tank_height'] = $model->fuel_tank_height;
+                
+       // $old = Genset::find()->where(['genset_id' => $genset]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+        if ($model->load(Yii::$app->request->post())) {
+            
+            if($model->save(FALSE))
+            {
+                $new = array();
+                $new['site_id'] = $model->siteGenset->site->site_id;
+                $new['site_name'] = $model->siteGenset->site->site_name;
+                $new['has_base_tank'] = $model->has_base_tank;
+                $new['fuel_tank_width'] = $model->fuel_tank_width;
+                $new['fuel_tank_breadth'] = $model->fuel_tank_breadth;
+                $new['fuel_tank_height'] = $model->fuel_tank_height;
+                
+                //$new = Genset::find()->where(['genset_id' => $genset]);
+            }
+            
+            $msg = \Yii::$app->mailer->compose('tankChanges',['old' => $old, 'new' => $new, 'model' => $model])
+                    ->setTo(\Yii::$app->params['dataChangeMailingList'])
+                    ->setFrom('fgu.htg@gmail.com')
+                    ->setSubject('Fuel tank dimension change - '.$model->siteGenset->site->site_name.' - '.$model->siteGenset->site->site_id)
+                    ->send();
             
             return $this->redirect(['fuelling/create']);
         } else {
@@ -184,8 +215,35 @@ class SiteactionsController extends Controller {
     {
         $this->layout = '/adminMain';
         $model = \backend\models\Sitedetails::findOne(['site_id'=>$site]);
+        $old = array();
+        $old['site_id'] = $model->site->site_id;
+        $old['site_name'] = $model->site->site_name;
+        $old['has_base_tank'] = $model->site->siteGenset->genset->has_base_tank;
+        $old['fuel_tank_width'] = $model->tank_width;
+        $old['fuel_tank_breadth'] = $model->tank_bredth;
+        $old['fuel_tank_height'] = $model->tank_height;
         
-        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+        if ($model->load(Yii::$app->request->post())) {
+            
+            $new = array();
+            
+            
+            if($model->save(false))
+            {
+                $new['site_id'] = $model->site->site_id;
+                $new['site_name'] = $model->site->site_name;
+                $new['has_base_tank'] = $model->site->siteGenset->genset->has_base_tank;
+                $new['fuel_tank_width'] = $model->tank_width;
+                $new['fuel_tank_breadth'] = $model->tank_bredth;
+                $new['fuel_tank_height'] = $model->tank_height;
+            }
+            
+            $msg = \Yii::$app->mailer->compose('tankChanges',['old' => $old, 'new' => $new, 'model' => $model, 'site_id'=>$model->site->site_id])
+                ->setTo(\Yii::$app->params['dataChangeMailingList'])
+                ->setFrom(\Yii::$app->params['fromEmail'])
+                ->setSubject('Fuel tank dimension change - '.$old['site_name'].' - '.$old['site_id'])
+                ->send();
+            
             return $this->redirect(['fuelling/create']);
         }
         else 
@@ -194,6 +252,58 @@ class SiteactionsController extends Controller {
                'model' => $model 
             ]);
         }
+    }
+    
+    public function actionMeterprops($site)
+    {
+        $out = array();
+        
+        $det = \backend\models\MeterSite::findOne(['site_id' => $site]);
+        
+        $out['type'] = $det->meter->meter_type;
+        
+        $out['url'] = '/siteactions/mcmeterupdate?site='.$det->site->site_id;
+        echo json_encode($out);
+    }
+    
+    public function actionMcmeterupdate($site)
+    {
+        \yii\helpers\BaseUrl::remember(\Yii::$app->request->referrer,'prev');
+        
+        $this->layout = '/adminMain';
+         
+        $meter = MeterSite::findOne(['site_id' => $site]);
+        
+        $model = UtilityMeter::findOne(['meter_id' => $meter->meter_id]);
+        
+        $old = $model->meter_type;
+        
+        $site_name = $meter->site->site_name;
+        $site_id = $meter->site->site_id;
+        
+        if($model->load(Yii::$app->request->post()) && $model->save())
+        {
+            $new = $model->meter_type;
+            
+            if($old != $new)
+            {
+                $msg = \Yii::$app->mailer->compose('meterUpdate',['old' => $old, 'new' => $new, 'site_name' => $site_name, 'site_id' => $site_id])
+                        ->setTo(\Yii::$app->params['dataChangeMailingList'])
+                        ->setFrom(\Yii::$app->params['fromEmail'])
+                        ->setSubject('Meter type changed - '.$meter->site->site_name.' '.$meter->site->site_id)
+                        ->send();
+            }
+            
+            $this->redirect(\yii\helpers\Url::previous('prev'));
+        }
+        else 
+        {
+            return $this->render('/metersite/mcMeterchange',[
+                'model' => $model
+            ]);
+        }
+        
+
     }
     
     
