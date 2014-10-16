@@ -3,6 +3,7 @@
 namespace backend\controllers;
 use yii\web\Controller;
 use common\models\UserSearch;
+use backend\models\SiteSearch;
 
 class SuperController extends Controller {
     
@@ -26,7 +27,7 @@ class SuperController extends Controller {
         
         if($model->load(\Yii::$app->request->post()) && $model->signup())
         {
-            $search = new \app\models\SiteSearch();
+            $search = new SiteSearch();
             $dataProvider = $search->search(\Yii::$app->request->getQueryParams());
         
             \Yii::$app->session->setFlash('success', 'User successfully created');

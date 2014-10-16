@@ -5,6 +5,7 @@ namespace backend\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use backend\models\Genset;
 
 /**
  * This is the model class for table "genset_reading".
@@ -237,7 +238,7 @@ class GensetReading extends \yii\db\ActiveRecord
     }
     public static function getFuelLtsfromCM($genset, $level)
     {
-        $gen = \app\models\Genset::find()->where(['genset_id'=>$genset])->all();
+        $gen = Genset::find()->where(['genset_id'=>$genset])->all();
         //print_r($gen); die($gen);
         $site_genset = SiteGenset::find()->where(['genset_id'=>$genset])->all();
         $site_id = $site_genset[0]['site_id'];
@@ -259,7 +260,7 @@ class GensetReading extends \yii\db\ActiveRecord
     
     public static function getFuelTankCapacity($genset)
     {
-        $gen = \app\models\Genset::find()->where(['genset_id'=>$genset])->all();
+        $gen = Genset::find()->where(['genset_id'=>$genset])->all();
         //print_r($gen); die($gen);
         $site_genset = SiteGenset::find()->where(['genset_id'=>$genset])->all();
         $site_id = $site_genset[0]['site_id'];
