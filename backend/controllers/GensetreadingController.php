@@ -2,9 +2,12 @@
 
 namespace backend\controllers;
 
+use backend\models\SiteGenset;
 use Yii;
 use backend\models\GensetReading;
 use backend\models\GensetReadingSearch;
+use yii\data\ActiveDataProvider;
+use yii\db\Query;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -45,7 +48,7 @@ class GensetreadingController extends Controller
     public function actionHistoric()
     {
         $searchModel = new GensetReadingSearch();
-        $dataProvider = new \yii\data\ActiveDataProvider([
+        $dataProvider = new ActiveDataProvider([
             'query' => GensetReading::find()->where(['mc'=>  \Yii::$app->user->identity->company]),
         ]);
         
@@ -148,11 +151,12 @@ class GensetreadingController extends Controller
         $parents = $_POST['depdrop_parents'];
         if ($parents != null) {
         $cat_id = $parents[0];
-        $query = new yii\db\Query();
+
+        $query = new Query();
         $query->from('site_genset')->where(['site_id'=>$cat_id])->select('genset_id')->asArray();
         print_r($query);
-        
-        $out = \backend\models\SiteGenset::findAll($query); //self::getSubCatList($cat_id);
+
+        $out = SiteGenset::findAll($query); //self::getSubCatList($cat_id);
         // the getSubCatList function will query the database based on the
         // cat_id and return an array like below:
         // [
