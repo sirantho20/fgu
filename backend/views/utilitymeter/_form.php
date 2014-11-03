@@ -64,9 +64,9 @@ use yii\jui\DatePicker;
                         
                         <?= $form->field($model, 'kwh_before_install')->textInput() ?>
 
-                        <?= $form->field($model, 'meter_type')->dropDownList(['prepaid'=>'Prepaid','credit'=>'Credit','postpaid'=>'Postpaid'], ['prompt'=>'Select Meter Type']) ?>
+                        <?= $form->field($model, 'meter_type')->dropDownList(['prepaid'=>'Prepaid','postpaid'=>'Postpaid'], ['options'=> ["$model->meter_type" => ['selected' =>true]]]) ?>
 
-                        <?= $form->field($model, 'utility_provider')->dropDownList(['ecg'=>'ECG','vra'=>'VRA'], ['prompt'=>'Select Power Provider']) ?>
+                        <?= $form->field($model, 'utility_provider')->dropDownList(['ecg'=>'ECG','vra'=>'VRA', 'other' => 'Other'], ['options'=> ["$model->utility_provider" => ['selected' =>true]]]) ?>
                         
 
   

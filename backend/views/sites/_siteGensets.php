@@ -9,10 +9,10 @@ $site_id = $model->site_id;
 $query = new yii\db\Query();
 $query->from('site_genset')->where(['site_id'=>$site_id])->select('genset_id')->all();
 
-$record = $model->siteGenset->getGenset();
+//$record = $model->siteGenset->getGenset();
 
 $provider = new \yii\data\ArrayDataProvider([
-    'allModels' => \app\models\Genset::findAll($query)
+    'allModels' => \backend\models\Genset::findAll($query)
 ]);
 
 ?>
@@ -24,7 +24,7 @@ $provider = new \yii\data\ArrayDataProvider([
             [
                 'format' => 'html',
                 'value' => function($data){
-                    return yii\helpers\Html::a($data->genset_id, Yii::$app->urlManager->createAbsoluteUrl(['genset/view','genset_id'=>$data->genset_id,'supplier'=>$data->supplier,'kva'=>$data->kva]));
+                    return yii\helpers\Html::a($data->genset_id, Yii::$app->urlManager->createAbsoluteUrl(['genset/update','genset_id'=>$data->genset_id,'supplier'=>$data->supplier,'kva'=>$data->kva]));
                 }
             ],
             'supplier',

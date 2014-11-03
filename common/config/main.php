@@ -24,6 +24,11 @@ return [
                 ], 
             ],
 
+        'user' => [
+            'identityClass' => 'common\models\User',
+            'enableAutoLogin' => true,
+            'loginUrl'=>array('site/login'),
+        ],
     ],
     
     'modules' => [

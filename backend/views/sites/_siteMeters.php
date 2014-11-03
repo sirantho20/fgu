@@ -7,7 +7,7 @@ if($model->meterSite)
 $record = $model->meterSite->meter->meter_id;
 //die($record);
 $provider = new \yii\data\ActiveDataProvider([
-    'query' => \app\models\UtilitymeterSearch::find()->where(['meter_id'=>$record])
+    'query' => \backend\models\UtilitymeterSearch::find()->where(['meter_id'=>$record])
 ]);
 
 ?>
@@ -19,7 +19,7 @@ $provider = new \yii\data\ActiveDataProvider([
             [
                 'format' => 'html',
                 'value' => function($data){
-                    return yii\helpers\Html::a($data->meter_id, Yii::$app->urlManager->createAbsoluteUrl(['utilitymeter/view','id'=>$data->meter_id]));
+                    return yii\helpers\Html::a($data->meter_id, Yii::$app->urlManager->createAbsoluteUrl(['utilitymeter/update','id'=>$data->meter_id]));
                 }
             ],
             'meter_type',

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="htg-web-01">
+    <serverData>
+      <paths name="htg-web-01">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/fgu" local="$PROJECT_DIR$" web="/fgu" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
+

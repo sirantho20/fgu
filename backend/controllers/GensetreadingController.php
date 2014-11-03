@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use backend\models\SiteGenset;
+use common\models\User;
 use Yii;
 use backend\models\GensetReading;
 use backend\models\GensetReadingSearch;
