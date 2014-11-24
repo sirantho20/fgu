@@ -2,6 +2,7 @@
 
 use yii\widgets\Breadcrumbs;
 use yii\helpers\Html;
+use yii\helpers\BaseHtml;
 
 /**
  * @var \yii\web\View $this
@@ -17,7 +18,7 @@ use yii\helpers\Html;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <?= Html::csrfMetaTags() ?>
+    <?= BaseHtml::csrfMetaTags();  ?>
 </head>
 <body>
     <?php $this->beginBody() ?>
