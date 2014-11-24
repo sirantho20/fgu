@@ -36,6 +36,7 @@ class Controller extends Component implements ViewContextInterface
      * @event ActionEvent an event raised right after executing a controller action.
      */
     const EVENT_AFTER_ACTION = 'afterAction';
+
     /**
      * @var string the ID of this controller.
      */
@@ -61,10 +62,12 @@ class Controller extends Component implements ViewContextInterface
      * by [[run()]] when it is called by [[Application]] to run an action.
      */
     public $action;
+
     /**
      * @var View the view object that can be used to render views or view files.
      */
     private $_view;
+
 
     /**
      * @param string $id the ID of this controller.
@@ -131,6 +134,7 @@ class Controller extends Component implements ViewContextInterface
         $modules = [];
         $runAction = true;
 
+        // call beforeAction on modules
         foreach ($this->getModules() as $module) {
             if ($module->beforeAction($action)) {
                 array_unshift($modules, $module);
@@ -142,16 +146,17 @@ class Controller extends Component implements ViewContextInterface
 
         $result = null;
 
-        if ($runAction) {
-            if ($this->beforeAction($action)) {
-                $result = $action->runWithParams($params);
-                $result = $this->afterAction($action, $result);
-            }
-        }
+        if ($runAction && $this->beforeAction($action)) {
+            // run the action
+            $result = $action->runWithParams($params);
 
-        foreach ($modules as $module) {
-            /* @var $module Module */
-            $result = $module->afterAction($action, $result);
+            $result = $this->afterAction($action, $result);
+
+            // call afterAction on modules
+            foreach ($modules as $module) {
+                /* @var $module Module */
+                $result = $module->afterAction($action, $result);
+            }
         }
 
         $this->action = $oldAction;

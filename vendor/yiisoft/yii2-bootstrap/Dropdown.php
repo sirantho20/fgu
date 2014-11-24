@@ -45,7 +45,7 @@ class Dropdown extends Widget
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     protected $_containerOptions = [];
-    
+
     /**
      * Initializes the widget.
      * If you override this method, make sure you call the parent implementation first.
@@ -63,6 +63,7 @@ class Dropdown extends Widget
     public function run()
     {
         echo $this->renderItems($this->items);
+        BootstrapPluginAsset::register($this->getView());
     }
 
     /**
@@ -94,7 +95,7 @@ class Dropdown extends Widget
             $content = Html::a($label, ArrayHelper::getValue($item, 'url', '#'), $linkOptions);
             if (!empty($item['items'])) {
                 unset($this->_containerOptions['id']);
-                $this->renderItems($item['items']);
+                $content .= $this->renderItems($item['items']);
                 Html::addCssClass($options, 'dropdown-submenu');
             }
             $lines[] = Html::tag('li', $content, $options);

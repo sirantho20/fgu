@@ -18,5 +18,12 @@ class DashboardController extends \yii\web\Controller
         }
         return $this->render($view);
     }
+    public function actionTest()
+    {
+//        $auth = \Yii::$app->ldap->authenticate('aafetsrom', '!!AFtony19833');
+//        var_dump($auth);
+
+        print_r(\Yii::$app->ldap->user()->info('gvaneijk')[0]);
+    }
 
 }

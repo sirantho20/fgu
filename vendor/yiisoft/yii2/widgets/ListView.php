@@ -60,6 +60,7 @@ class ListView extends BaseListView
      */
     public $options = ['class' => 'list-view'];
 
+
     /**
      * Renders all data models.
      * @return string the rendering result
@@ -100,7 +101,7 @@ class ListView extends BaseListView
         $options = $this->itemOptions;
         $tag = ArrayHelper::remove($options, 'tag', 'div');
         if ($tag !== false) {
-            $options['data-key'] = is_array($key) ? json_encode($key) : (string) $key;
+            $options['data-key'] = is_array($key) ? json_encode($key, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) : (string) $key;
 
             return Html::tag($tag, $content, $options);
         } else {

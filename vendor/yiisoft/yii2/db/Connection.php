@@ -15,11 +15,11 @@ use yii\base\NotSupportedException;
 use yii\caching\Cache;
 
 /**
- * Connection represents a connection to a database via [PDO](http://www.php.net/manual/en/ref.pdo.php).
+ * Connection represents a connection to a database via [PDO](php.net/manual/en/book.pdo.php).
  *
  * Connection works together with [[Command]], [[DataReader]] and [[Transaction]]
  * to provide data access to various DBMS in a common set of APIs. They are a thin wrapper
- * of the [[PDO PHP extension]](http://www.php.net/manual/en/ref.pdo.php).
+ * of the [[PDO PHP extension]](php.net/manual/en/book.pdo.php).
  *
  * Connection supports database replication and read-write splitting. In particular, a Connection component
  * can be configured with multiple [[masters]] and [[slaves]]. It will do load balancing and failover by choosing
@@ -110,15 +110,20 @@ use yii\caching\Cache;
  * ],
  * ~~~
  *
- *
  * @property string $driverName Name of the DB driver.
  * @property boolean $isActive Whether the DB connection is established. This property is read-only.
  * @property string $lastInsertID The row ID of the last row inserted, or the last value retrieved from the
  * sequence object. This property is read-only.
+ * @property PDO $masterPdo The PDO instance for the currently active master connection. This property is
+ * read-only.
  * @property QueryBuilder $queryBuilder The query builder for the current DB connection. This property is
  * read-only.
  * @property Schema $schema The schema information for the database opened by this connection. This property
  * is read-only.
+ * @property Connection $slave The currently active slave connection. Null is returned if there is slave
+ * available and `$fallbackToMaster` is false. This property is read-only.
+ * @property PDO $slavePdo The PDO instance for the currently active slave connection. Null is returned if no
+ * slave connection is available and `$fallbackToMaster` is false. This property is read-only.
  * @property Transaction $transaction The currently active transaction. Null if no active transaction. This
  * property is read-only.
  *
@@ -458,22 +463,38 @@ class Connection extends Component
     /**
      * Returns the current query cache information.
      * This method is used internally by [[Command]].
+     * @param integer $duration the preferred caching duration. If null, it will be ignored.
+     * @param \yii\caching\Dependency $dependency the preferred caching dependency. If null, it will be ignored.
      * @return array the current query cache information, or null if query cache is not enabled.
      * @internal
      */
-    public function getQueryCacheInfo()
+    public function getQueryCacheInfo($duration, $dependency)
     {
+        if (!$this->enableQueryCache) {
+            return null;
+        }
+
         $info = end($this->_queryCacheInfo);
-        if ($this->enableQueryCache) {
+        if (is_array($info)) {
+            if ($duration === null) {
+                $duration = $info[0];
+            }
+            if ($dependency === null) {
+                $dependency = $info[1];
+            }
+        }
+
+        if ($duration === 0 || $duration > 0) {
             if (is_string($this->queryCache) && Yii::$app) {
                 $cache = Yii::$app->get($this->queryCache, false);
             } else {
                 $cache = $this->queryCache;
             }
             if ($cache instanceof Cache) {
-                return is_array($info) ? [$cache, $info[0], $info[1]] : [$cache, null, null];
+                return [$cache, $duration, $dependency];
             }
         }
+
         return null;
     }
 
@@ -510,7 +531,7 @@ class Connection extends Component
             Yii::endProfile($token, __METHOD__);
         } catch (\PDOException $e) {
             Yii::endProfile($token, __METHOD__);
-            throw new Exception($e->getMessage(), $e->errorInfo, (int)$e->getCode(), $e);
+            throw new Exception($e->getMessage(), $e->errorInfo, (int) $e->getCode(), $e);
         }
     }
 

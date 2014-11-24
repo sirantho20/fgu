@@ -11,7 +11,7 @@ use yii\base\Component;
 use yii\base\Action;
 use yii\web\User;
 use yii\web\Request;
-use yii\web\Controller;
+use yii\base\Controller;
 
 /**
  * This class represents an access rule defined by the [[AccessControl]] action filter
@@ -89,6 +89,7 @@ class AccessRule extends Component
      * where `$rule` is this rule, and `$action` is the current [[Action|action]] object.
      */
     public $denyCallback;
+
 
     /**
      * Checks whether the Web user is allowed to perform the specified action.

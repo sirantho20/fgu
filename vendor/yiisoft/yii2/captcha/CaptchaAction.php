@@ -42,6 +42,7 @@ class CaptchaAction extends Action
      * The name of the GET parameter indicating whether the CAPTCHA image should be regenerated.
      */
     const REFRESH_GET_VAR = 'refresh';
+
     /**
      * @var integer how many times should the same CAPTCHA be displayed. Defaults to 3.
      * A value less than or equal to 0 means the test is unlimited (available since version 1.1.2).
@@ -98,6 +99,7 @@ class CaptchaAction extends Action
      */
     public $fixedVerifyCode;
 
+
     /**
      * Initializes the action.
      * @throws InvalidConfigException if the font file does not exist.
@@ -125,7 +127,7 @@ class CaptchaAction extends Action
                 // we add a random 'v' parameter so that FireFox can refresh the image
                 // when src attribute of image tag is changed
                 'url' => Url::to([$this->id, 'v' => uniqid()]),
-            ]);
+            ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         } else {
             $this->setHttpHeaders();
             Yii::$app->response->format = Response::FORMAT_RAW;

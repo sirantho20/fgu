@@ -54,10 +54,12 @@ class BlameableBehavior extends AttributeBehavior
 {
     /**
      * @var string the attribute that will receive current user ID value
+     * Set this property to false if you do not want to record the creator ID.
      */
     public $createdByAttribute = 'created_by';
     /**
      * @var string the attribute that will receive current user ID value
+     * Set this property to false if you do not want to record the updater ID.
      */
     public $updatedByAttribute = 'updated_by';
     /**
@@ -74,6 +76,7 @@ class BlameableBehavior extends AttributeBehavior
      * If this property is not set, the value of `Yii::$app->user->id` will be assigned to the attribute(s).
      */
     public $value;
+
 
     /**
      * @inheritdoc
@@ -99,8 +102,7 @@ class BlameableBehavior extends AttributeBehavior
     protected function getValue($event)
     {
         if ($this->value === null) {
-            $user = Yii::$app->getUser();
-
+            $user = Yii::$app->get('user', false);
             return $user && !$user->isGuest ? $user->id : null;
         } else {
             return call_user_func($this->value, $event);

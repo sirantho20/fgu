@@ -93,10 +93,10 @@ class Fuelling extends \yii\db\ActiveRecord
         $this->quantity_after_delivery_cm = $this->quantity_before_delivery_cm + $this->quantity_delivered_cm;
         $this->quantity_after_delivery_lts = GensetReading::getFuelLtsfromCM($this->genset_id, $this->quantity_after_delivery_cm);
         $this->quantity_before_delivery_lts = GensetReading::getFuelLtsfromCM($this->genset_id, $this->quantity_before_delivery_cm);
-        $this->entry_date = new \yii\db\Expression('now()');
+        $this->entry_date =  new \yii\db\Expression('now()');
         $this->entry_by = Yii::$app->user->identity->username;
         $this->mc = Yii::$app->user->identity->company;
-        $this->delivery_date = new \yii\db\Expression('date(now())');
+        //$this->delivery_date = new \yii\db\Expression('date(now())');
         
         return parent::beforeValidate();
     }

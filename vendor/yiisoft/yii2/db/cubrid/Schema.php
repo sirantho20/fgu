@@ -13,7 +13,7 @@ use yii\db\ColumnSchema;
 use yii\db\Transaction;
 
 /**
- * Schema is the class for retrieving metadata from a CUBRID database (version 9.1.x and higher).
+ * Schema is the class for retrieving metadata from a CUBRID database (version 9.3.x and higher).
  *
  * @author Carsten Brandt <mail@cebe.cc>
  * @since 2.0
@@ -64,7 +64,6 @@ class Schema extends \yii\db\Schema
         'sequence' => self::TYPE_STRING,
         'enum' => self::TYPE_STRING,
     ];
-
     /**
      * @var array map of DB errors and corresponding exceptions
      * If left part is found in DB error message exception class from the right part is used.
@@ -72,6 +71,7 @@ class Schema extends \yii\db\Schema
     public $exceptionMap = [
         'Operation would have caused one or more unique constraint violations' => 'yii\db\IntegrityException',
     ];
+
 
     /**
      * @inheritdoc
@@ -101,30 +101,6 @@ class Schema extends \yii\db\Schema
     public function quoteSimpleColumnName($name)
     {
         return strpos($name, '"') !== false || $name === '*' ? $name : '"' . $name . '"';
-    }
-
-    /**
-     * Quotes a string value for use in a query.
-     * Note that if the parameter is not a string, it will be returned without change.
-     * @param string $str string to be quoted
-     * @return string the properly quoted string
-     * @see http://www.php.net/manual/en/function.PDO-quote.php
-     */
-    public function quoteValue($str)
-    {
-        if (!is_string($str)) {
-            return $str;
-        }
-
-        $pdo = $this->db->getSlavePdo();
-
-        // workaround for broken PDO::quote() implementation in CUBRID 9.1.0 http://jira.cubrid.org/browse/APIS-658
-        $version = $pdo->getAttribute(\PDO::ATTR_CLIENT_VERSION);
-        if (version_compare($version, '8.4.4.0002', '<') || $version[0] == '9' && version_compare($version, '9.2.0.0002', '<=')) {
-            return "'" . addcslashes(str_replace("'", "''", $str), "\000\n\r\\\032") . "'";
-        } else {
-            return $pdo->quote($str);
-        }
     }
 
     /**
@@ -195,7 +171,7 @@ class Schema extends \yii\db\Schema
      */
     protected function loadColumnSchema($info)
     {
-        $column = new ColumnSchema();
+        $column = $this->createColumnSchema();
 
         $column->name = $info['Field'];
         $column->allowNull = $info['Null'] === 'YES';

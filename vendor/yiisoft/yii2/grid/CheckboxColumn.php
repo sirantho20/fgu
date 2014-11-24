@@ -44,14 +44,16 @@ class CheckboxColumn extends Column
      */
     public $name = 'selection';
     /**
-     * @var array HTML attributes for the checkboxes.
+     * @var array|\Closure the HTML attributes for checkboxes. This can either be an array of
+     * attributes or an anonymous function ([[Closure]]) that returns such an array.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $checkboxOptions = [];
     /**
-     * @var bool whether it is possible to select multiple rows. Defaults to `true`.
+     * @var boolean whether it is possible to select multiple rows. Defaults to `true`.
      */
     public $multiple = true;
+
 
     /**
      * @inheritdoc
@@ -63,7 +65,7 @@ class CheckboxColumn extends Column
         if (empty($this->name)) {
             throw new InvalidConfigException('The "name" property must be set.');
         }
-        if (substr_compare($this->name, '[]', -2)) {
+        if (substr_compare($this->name, '[]', -2, 2)) {
             $this->name .= '[]';
         }
     }
@@ -82,7 +84,7 @@ class CheckboxColumn extends Column
             'name' => $this->name,
             'multiple' => $this->multiple,
             'checkAll' => $name,
-        ]);
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         $this->grid->getView()->registerJs("jQuery('#$id').yiiGridView('setSelectionColumn', $options);");
 
         if ($this->header !== null || !$this->multiple) {
@@ -102,7 +104,7 @@ class CheckboxColumn extends Column
         } else {
             $options = $this->checkboxOptions;
             if (!isset($options['value'])) {
-                $options['value'] = is_array($key) ? json_encode($key) : $key;
+                $options['value'] = is_array($key) ? json_encode($key, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) : $key;
             }
         }
 

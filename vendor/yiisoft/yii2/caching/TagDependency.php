@@ -7,7 +7,6 @@
 
 namespace yii\caching;
 
-
 /**
  * TagDependency associates a cached data item with one or multiple [[tags]].
  *
@@ -22,6 +21,7 @@ class TagDependency extends Dependency
      * @var string|array a list of tag names for this dependency. For a single tag, you may specify it as a string.
      */
     public $tags = [];
+
 
     /**
      * Generates the data needed to determine if dependency has been changed.
@@ -65,7 +65,7 @@ class TagDependency extends Dependency
     public static function invalidate($cache, $tags)
     {
         $keys = [];
-        foreach ((array)$tags as $tag) {
+        foreach ((array) $tags as $tag) {
             $keys[] = $cache->buildKey([__CLASS__, $tag]);
         }
         static::touchKeys($cache, $keys);

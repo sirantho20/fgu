@@ -3,6 +3,51 @@
 $vendorDir = dirname(__DIR__);
 
 return array (
+  'kartik-v/yii2-widgets' => 
+  array (
+    'name' => 'kartik-v/yii2-widgets',
+    'version' => '2.6.0.9999999-dev',
+    'alias' => 
+    array (
+      '@kartik' => $vendorDir . '/kartik-v/yii2-widgets',
+    ),
+  ),
+  'bburim/daterangepicker' => 
+  array (
+    'name' => 'bburim/daterangepicker',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@bburim/daterangepicker' => $vendorDir . '/bburim/daterangepicker/bburim/daterangepicker',
+    ),
+  ),
+  'edvlerblog/yii2-adldap-module' => 
+  array (
+    'name' => 'edvlerblog/yii2-adldap-module',
+    'version' => '1.0.0.0',
+    'alias' => 
+    array (
+      '@Edvlerblog' => $vendorDir . '/edvlerblog/yii2-adldap-module/src',
+    ),
+  ),
+  'kartik-v/yii2-popover-x' => 
+  array (
+    'name' => 'kartik-v/yii2-popover-x',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/popover' => $vendorDir . '/kartik-v/yii2-popover-x',
+    ),
+  ),
+  'kartik-v/yii2-editable' => 
+  array (
+    'name' => 'kartik-v/yii2-editable',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/editable' => $vendorDir . '/kartik-v/yii2-editable',
+    ),
+  ),
   'yiisoft/yii2-swiftmailer' => 
   array (
     'name' => 'yiisoft/yii2-swiftmailer',
@@ -39,51 +84,6 @@ return array (
       '@yii/jui' => $vendorDir . '/yiisoft/yii2-jui',
     ),
   ),
-  'kartik-v/yii2-field-range' => 
-  array (
-    'name' => 'kartik-v/yii2-field-range',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@kartik' => $vendorDir . '/kartik-v/yii2-field-range',
-    ),
-  ),
-  'kartik-v/yii2-checkbox-x' => 
-  array (
-    'name' => 'kartik-v/yii2-checkbox-x',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@kartik' => $vendorDir . '/kartik-v/yii2-checkbox-x',
-    ),
-  ),
-  'kartik-v/yii2-money' => 
-  array (
-    'name' => 'kartik-v/yii2-money',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@kartik' => $vendorDir . '/kartik-v/yii2-money',
-    ),
-  ),
-  'kartik-v/yii2-slider' => 
-  array (
-    'name' => 'kartik-v/yii2-slider',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@kartik' => $vendorDir . '/kartik-v/yii2-slider',
-    ),
-  ),
-  'kartik-v/yii2-grid' => 
-  array (
-    'name' => 'kartik-v/yii2-grid',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@kartik' => $vendorDir . '/kartik-v/yii2-grid',
-    ),
-  ),
   'yiisoft/yii2-bootstrap' => 
   array (
     'name' => 'yiisoft/yii2-bootstrap',
@@ -93,24 +93,6 @@ return array (
       '@yii/bootstrap' => $vendorDir . '/yiisoft/yii2-bootstrap',
     ),
   ),
-  'kartik-v/yii2-widgets' => 
-  array (
-    'name' => 'kartik-v/yii2-widgets',
-    'version' => '2.6.0.9999999-dev',
-    'alias' => 
-    array (
-      '@kartik' => $vendorDir . '/kartik-v/yii2-widgets',
-    ),
-  ),
-  'bburim/daterangepicker' => 
-  array (
-    'name' => 'bburim/daterangepicker',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@bburim/daterangepicker' => $vendorDir . '/bburim/daterangepicker/bburim/daterangepicker',
-    ),
-  ),
   'yiisoft/yii2-gii' => 
   array (
     'name' => 'yiisoft/yii2-gii',
@@ -118,6 +100,51 @@ return array (
     'alias' => 
     array (
       '@yii/gii' => $vendorDir . '/yiisoft/yii2-gii',
+    ),
+  ),
+  'kartik-v/yii2-field-range' => 
+  array (
+    'name' => 'kartik-v/yii2-field-range',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/field' => $vendorDir . '/kartik-v/yii2-field-range',
+    ),
+  ),
+  'kartik-v/yii2-slider' => 
+  array (
+    'name' => 'kartik-v/yii2-slider',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/slider' => $vendorDir . '/kartik-v/yii2-slider',
+    ),
+  ),
+  'kartik-v/yii2-money' => 
+  array (
+    'name' => 'kartik-v/yii2-money',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/money' => $vendorDir . '/kartik-v/yii2-money',
+    ),
+  ),
+  'kartik-v/yii2-checkbox-x' => 
+  array (
+    'name' => 'kartik-v/yii2-checkbox-x',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/checkbox' => $vendorDir . '/kartik-v/yii2-checkbox-x',
+    ),
+  ),
+  'kartik-v/yii2-grid' => 
+  array (
+    'name' => 'kartik-v/yii2-grid',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid',
     ),
   ),
 );

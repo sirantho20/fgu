@@ -22,8 +22,8 @@ trait QueryTrait
 {
     /**
      * @var string|array query condition. This refers to the WHERE clause in a SQL statement.
-     * For example, `age > 31 AND team = 1`.
-     * @see where()
+     * For example, `['age' => 31, 'team' => 1]`.
+     * @see where() for valid syntax on specifying this value.
      */
     public $where;
     /**
@@ -253,20 +253,6 @@ trait QueryTrait
                     return [];
                 }
                 break;
-            case 'IN':
-            case 'NOT IN':
-            case 'LIKE':
-            case 'OR LIKE':
-            case 'NOT LIKE':
-            case 'OR NOT LIKE':
-            case 'ILIKE': // PostgreSQL operator for case insensitive LIKE
-            case 'OR ILIKE':
-            case 'NOT ILIKE':
-            case 'OR NOT ILIKE':
-                if (array_key_exists(1, $condition) && $this->isEmpty($condition[1])) {
-                    return [];
-                }
-                break;
             case 'BETWEEN':
             case 'NOT BETWEEN':
                 if (array_key_exists(1, $condition) && array_key_exists(2, $condition)) {
@@ -276,7 +262,9 @@ trait QueryTrait
                 }
                 break;
             default:
-                throw new NotSupportedException("Operator not supported: $operator");
+                if (array_key_exists(1, $condition) && $this->isEmpty($condition[1])) {
+                    return [];
+                }
         }
 
         array_unshift($condition, $operator);

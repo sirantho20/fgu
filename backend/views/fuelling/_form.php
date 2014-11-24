@@ -60,9 +60,19 @@ use yii\widgets\ActiveForm;
              'url' => yii\helpers\Url::to(['siteactions/gensetlist'])
          ]
      ])->hint('<div id="genProps"></div>') ?>
-        
-    
-    <?php //$form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<'],'options'=>['class'=>'form-control']]) ?>
+
+
+    <?= $form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<',
+        'beforeShowDay' => new yii\web\JsExpression('function (date) {
+            var sunday = new Date();
+            var today = new Date();
+            sunday.setHours(0,0,0,0);
+            sunday.setDate(sunday.getDate() - (sunday.getDay() || 0));
+            var saturday = new Date(sunday.getTime());
+            saturday.setDate(sunday.getDate() - 2);
+            return [(date >= saturday && date <= today), ""];
+        }'),
+    ],'options'=>['class'=>'form-control','readonly'=>'readonly', 'style'=>'cursor:text;']]) ?>
     
     <?= $form->field($model, 'quantity_before_delivery_cm')->textInput() ?>
         

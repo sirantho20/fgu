@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'bburim\\daterangepicker\\' => array($vendorDir . '/bburim/daterangepicker'),
+    'adLDAP' => array($vendorDir . '/adldap/adldap/lib'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
     'Diff' => array($vendorDir . '/phpspec/php-diff/lib'),
 );

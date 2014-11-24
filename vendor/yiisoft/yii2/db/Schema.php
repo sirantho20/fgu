@@ -64,6 +64,14 @@ abstract class Schema extends Object
      */
     public $defaultSchema;
     /**
+     * @var array map of DB errors and corresponding exceptions
+     * If left part is found in DB error message exception class from the right part is used.
+     */
+    public $exceptionMap = [
+        'SQLSTATE[23' => 'yii\db\IntegrityException',
+    ];
+
+    /**
      * @var array list of ALL table names in the database
      */
     private $_tableNames = [];
@@ -76,13 +84,15 @@ abstract class Schema extends Object
      */
     private $_builder;
 
+
     /**
-     * @var array map of DB errors and corresponding exceptions
-     * If left part is found in DB error message exception class from the right part is used.
+     * @return \yii\db\ColumnSchema
+     * @throws \yii\base\InvalidConfigException
      */
-    public $exceptionMap = [
-        'SQLSTATE[23' => 'yii\db\IntegrityException',
-    ];
+    protected function createColumnSchema()
+    {
+        return Yii::createObject('yii\db\ColumnSchema');
+    }
 
     /**
      * Loads the metadata for the specified table.
@@ -480,13 +490,16 @@ abstract class Schema extends Object
             // abstract type => php type
             'smallint' => 'integer',
             'integer' => 'integer',
+            'bigint' => 'integer',
             'boolean' => 'boolean',
             'float' => 'double',
             'binary' => 'resource',
         ];
         if (isset($typeMap[$column->type])) {
-            if ($column->type === 'integer') {
-                return $column->unsigned ? 'string' : 'integer';
+            if ($column->type === 'bigint') {
+                return PHP_INT_SIZE == 8 && !$column->unsigned ? 'integer' : 'string';
+            } elseif ($column->type === 'integer') {
+                return PHP_INT_SIZE == 4 && $column->unsigned ? 'string' : 'integer';
             } else {
                 return $typeMap[$column->type];
             }

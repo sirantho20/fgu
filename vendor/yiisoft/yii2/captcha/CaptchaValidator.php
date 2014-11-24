@@ -39,6 +39,7 @@ class CaptchaValidator extends Validator
      */
     public $captchaAction = 'site/captcha';
 
+
     /**
      * @inheritdoc
      */
@@ -102,6 +103,6 @@ class CaptchaValidator extends Validator
 
         ValidationAsset::register($view);
 
-        return 'yii.validation.captcha(value, messages, ' . json_encode($options) . ');';
+        return 'yii.validation.captcha(value, messages, ' . json_encode($options, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . ');';
     }
 }

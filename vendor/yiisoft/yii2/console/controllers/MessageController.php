@@ -41,6 +41,7 @@ class MessageController extends Controller
      */
     public $defaultAction = 'extract';
 
+
     /**
      * Creates a configuration file for the "extract" command.
      *
@@ -49,6 +50,7 @@ class MessageController extends Controller
      * you may use this configuration file with the "extract" command.
      *
      * @param string $filePath output file name or alias.
+     * @return integer CLI exit code
      * @throws Exception on failure.
      */
     public function actionConfig($filePath)
@@ -95,6 +97,9 @@ class MessageController extends Controller
         if (!is_dir($config['sourcePath'])) {
             throw new Exception("The source path {$config['sourcePath']} is not a valid directory.");
         }
+        if (empty($config['format']) || !in_array($config['format'], ['php', 'po', 'db'])) {
+            throw new Exception('Format should be either "php", "po" or "db".');
+        }
         if (in_array($config['format'], ['php', 'po'])) {
             if (!isset($config['messagePath'])) {
                 throw new Exception('The configuration file must specify "messagePath".');
@@ -104,9 +109,6 @@ class MessageController extends Controller
         }
         if (empty($config['languages'])) {
             throw new Exception("Languages cannot be empty.");
-        }
-        if (empty($config['format']) || !in_array($config['format'], ['php', 'po', 'db'])) {
-            throw new Exception('Format should be either "php", "po" or "db".');
         }
 
         $files = FileHelper::findFiles(realpath($config['sourcePath']), $config);
@@ -201,10 +203,10 @@ class MessageController extends Controller
 
                 $db->createCommand()
                    ->insert($sourceMessageTable, ['category' => $category, 'message' => $m])->execute();
-                $lastId = $db->getLastInsertID();
+                $lastID = $db->getLastInsertID();
                 foreach ($languages as $language) {
                     $db->createCommand()
-                       ->insert($messageTable, ['id' => $lastId, 'language' => $language])->execute();
+                       ->insert($messageTable, ['id' => $lastID, 'language' => $language])->execute();
                 }
             }
         }
@@ -220,17 +222,12 @@ class MessageController extends Controller
                    ->delete($sourceMessageTable, ['in', 'id', $obsolete])->execute();
                 echo "deleted.\n";
             } else {
-                $last_id = $db->getLastInsertID();
                 $db->createCommand()
                    ->update(
                        $sourceMessageTable,
                        ['message' => new \yii\db\Expression("CONCAT('@@',message,'@@')")],
                        ['in', 'id', $obsolete]
                    )->execute();
-                foreach ($languages as $language) {
-                    $db->createCommand()
-                       ->insert($messageTable, ['id' => $last_id, 'language' => $language])->execute();
-                }
                 echo "updated.\n";
             }
         }
@@ -259,13 +256,9 @@ class MessageController extends Controller
                 PREG_SET_ORDER
             );
             for ($i = 0; $i < $n; ++$i) {
-                if (($pos = strpos($matches[$i][1], '.')) !== false) {
-                    $category = substr($matches[$i][1], $pos + 1, -1);
-                } else {
-                    $category = substr($matches[$i][1], 1, -1);
-                }
+                $category = substr($matches[$i][1], 1, -1);
                 $message = $matches[$i][2];
-                $messages[$category][] = eval("return $message;"); // use eval to eliminate quote escape
+                $messages[$category][] = eval("return {$message};"); // use eval to eliminate quote escape
             }
         }
 
@@ -331,7 +324,7 @@ class MessageController extends Controller
             ksort($existingMessages);
             foreach ($existingMessages as $message => $translation) {
                 if (!isset($merged[$message]) && !isset($todo[$message]) && !$removeUnused) {
-                    if (mb_strlen($translation, Yii::$app->charset) >= 2 && substr_compare($translation, '@@', 0, 2) === 0 && substr_compare($translation, '@@', -2) === 0) {
+                    if (!empty($translation) && strncmp($translation, '@@', 2) === 0 && substr_compare($translation, '@@', -2, 2) === 0) {
                         $todo[$message] = $translation;
                     } else {
                         $todo[$message] = '@@' . $translation . '@@';
@@ -445,7 +438,7 @@ EOD;
                 // add obsolete unused messages
                 foreach ($existingMessages as $message => $translation) {
                     if (!isset($merged[$category . chr(4) . $message]) && !isset($todos[$category . chr(4) . $message]) && !$removeUnused) {
-                        if (mb_strlen($translation, Yii::$app->charset) >= 2 && substr($translation, 0, 2) === '@@' && substr($translation, -2) === '@@') {
+                        if (!empty($translation) && substr($translation, 0, 2) === '@@' && substr($translation, -2) === '@@') {
                             $todos[$category . chr(4) . $message] = $translation;
                         } else {
                             $todos[$category . chr(4) . $message] = '@@' . $translation . '@@';

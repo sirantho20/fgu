@@ -29,6 +29,18 @@ return [
             'enableAutoLogin' => true,
             'loginUrl'=>array('site/login'),
         ],
+        'ldap' => [
+            'class'=>'Edvlerblog\Ldap',
+            'options'=> [
+                'ad_port'      => 389,
+                'domain_controllers'    => array('htg-ad-01'),
+                'account_suffix' =>  '@hta.local',
+                'base_dn' => "DC=hta,DC=local",
+                // for basic functionality this could be a standard, non privileged domain user (required)
+                'admin_username' => 'aafetsrom',
+                'admin_password' => '!!AFtony19833'
+            ]
+        ],
     ],
     
     'modules' => [

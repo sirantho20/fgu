@@ -29,7 +29,7 @@ use yii\helpers\Html;
  *         [
  *             'label' => 'Post Category',
  *             'url' => ['post-category/view', 'id' => 10],
- *             'template' => '<li><b>{link}</b></li>\n', // template for this link only
+ *             'template' => "<li><b>{link}</b></li>\n", // template for this link only
  *         ],
  *         ['label' => 'Sample Post', 'url' => ['post/edit', 'id' => 1]],
  *         'Edit',
@@ -100,6 +100,7 @@ class Breadcrumbs extends Widget
      * will be replaced with the actual HTML link for each active item.
      */
     public $activeItemTemplate = "<li class=\"active\">{link}</li>\n";
+
 
     /**
      * Renders the widget.

@@ -78,6 +78,7 @@ class ColumnSchema extends Object
      */
     public $comment;
 
+
     /**
      * Converts the input value according to [[phpType]] after retrieval from the database.
      * If the value is null or an [[Expression]], it will not be converted.
@@ -97,9 +98,9 @@ class ColumnSchema extends Object
             case 'string':
                 return is_resource($value) ? $value : (string) $value;
             case 'integer':
-                return (integer) $value;
+                return (int) $value;
             case 'boolean':
-                return (boolean) $value;
+                return (bool) $value;
             case 'double':
                 return (double) $value;
         }

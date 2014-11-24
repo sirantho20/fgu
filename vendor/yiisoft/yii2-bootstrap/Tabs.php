@@ -62,10 +62,10 @@ class Tabs extends Widget
      *   global `$this->encodeLabels` param.
      * - headerOptions: array, optional, the HTML attributes of the tab header.
      * - linkOptions: array, optional, the HTML attributes of the tab header link tags.
-     * - content: string, required if `items` is not set. The content (HTML) of the tab pane.
+     * - content: string, optional, the content (HTML) of the tab pane.
      * - options: array, optional, the HTML attributes of the tab pane container.
      * - active: boolean, optional, whether the item tab header and pane should be visible or not.
-     * - items: array, optional, if not set then `content` will be required. The `items` specify a dropdown items
+     * - items: array, optional, can be used instead of `content` to specify a dropdown items
      *   configuration array. Each item can hold three extra keys, besides the above ones:
      *     * active: boolean, optional, whether the item tab header and pane should be visible or not.
      *     * content: string, required if `items` is not set. The content (HTML) of the tab pane.
@@ -101,6 +101,13 @@ class Tabs extends Widget
      * @var string specifies the Bootstrap tab styling.
      */
     public $navType = 'nav-tabs';
+    /**
+     * @var boolean whether to render the `tab-content` container and its content. You may set this property
+     * to be false so that you can manually render `tab-content` yourself in case your tab contents are complex.
+     * @since 2.0.1
+     */
+    public $renderTabContent = true;
+
 
     /**
      * Initializes the widget.
@@ -155,7 +162,7 @@ class Tabs extends Widget
                 $linkOptions['data-toggle'] = 'dropdown';
                 $header = Html::a($label, "#", $linkOptions) . "\n"
                     . Dropdown::widget(['items' => $item['items'], 'clientOptions' => false, 'view' => $this->getView()]);
-            } elseif (isset($item['content'])) {
+            } else {
                 $options = array_merge($this->itemOptions, ArrayHelper::getValue($item, 'options', []));
                 $options['id'] = ArrayHelper::getValue($options, 'id', $this->options['id'] . '-tab' . $n);
 
@@ -166,16 +173,16 @@ class Tabs extends Widget
                 }
                 $linkOptions['data-toggle'] = 'tab';
                 $header = Html::a($label, '#' . $options['id'], $linkOptions);
-                $panes[] = Html::tag('div', $item['content'], $options);
-            } else {
-                throw new InvalidConfigException("Either the 'content' or 'items' option must be set.");
+                if ($this->renderTabContent) {
+                    $panes[] = Html::tag('div', isset($item['content']) ? $item['content'] : '', $options);
+                }
             }
 
             $headers[] = Html::tag('li', $header, $headerOptions);
         }
 
-        return Html::tag('ul', implode("\n", $headers), $this->options) . "\n"
-        . Html::tag('div', implode("\n", $panes), ['class' => 'tab-content']);
+        return Html::tag('ul', implode("\n", $headers), $this->options)
+        . ($this->renderTabContent ? "\n" . Html::tag('div', implode("\n", $panes), ['class' => 'tab-content']) : '');
     }
 
     /**
@@ -184,7 +191,7 @@ class Tabs extends Widget
     protected function hasActiveTab()
     {
         foreach ($this->items as $item) {
-            if (isset($item['active']) && $item['active']===true) {
+            if (isset($item['active']) && $item['active'] === true) {
                 return true;
             }
         }

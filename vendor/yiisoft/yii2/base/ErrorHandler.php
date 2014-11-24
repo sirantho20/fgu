@@ -85,8 +85,8 @@ abstract class ErrorHandler extends Component
         $this->exception = $exception;
 
         // disable error capturing to avoid recursive errors while handling exceptions
-        restore_error_handler();
-        restore_exception_handler();
+        $this->unregister();
+
         try {
             $this->logException($exception);
             if ($this->discardExistingOutput) {
@@ -125,6 +125,7 @@ abstract class ErrorHandler extends Component
      * @param string $message the error message.
      * @param string $file the filename that the error was raised in.
      * @param integer $line the line number the error was raised at.
+     * @return boolean whether the normal error handler continues.
      *
      * @throws ErrorException
      */
@@ -150,6 +151,7 @@ abstract class ErrorHandler extends Component
 
             throw $exception;
         }
+        return false;
     }
 
     /**

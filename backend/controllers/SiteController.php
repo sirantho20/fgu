@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -69,7 +70,39 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             $this->redirect(['dashboard/index']);
             
-        } else {
+        }
+        // if regular login fails, try AD authentication
+        elseif($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            if(Yii::$app->ldap->authenticate($model->username, $model->password))
+            {
+                $info = Yii::$app->ldap->user()->info($model->username)[0];
+                $name = $info['displayname'][0];
+                $username = $info['samaccountname'][0];
+                $email = $info['mail'][0];
+                // create user instance
+                $user = new User();
+                $user->role = 1;
+                $user->username = $username;
+                $user->auth_key = $user->generateAuthKey();
+                $user->first_name = $name;
+                $user->email = $email;
+                $user->company = 'HTG';
+
+                if($model->ADlogin($user))
+                {
+
+                    $this->redirect(['dashboard/index']);
+                }
+                else
+                {
+                    return $this->render('login', [
+                        'model' => $model,
+                    ]);
+                }
+            }
+        }
+        else {
             return $this->render('login', [
                 'model' => $model,
             ]);
