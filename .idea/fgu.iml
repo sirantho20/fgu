@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vendor/adldap/adldap" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bburim/daterangepicker" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bower/bootstrap" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bower/jquery" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bower/jquery-ui" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bower/jquery.inputmask" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bower/punycode" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bower/typeahead.js" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bower/yii2-pjax" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cebe/markdown" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/edvlerblog/yii2-adldap-module" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ezyang/htmlpurifier" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/bootstrap-checkbox-x" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/bootstrap-fileinput" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/bootstrap-popover-x" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/bootstrap-star-rating" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/dependent-dropdown" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-checkbox-x" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-editable" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-field-range" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-grid" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-money" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-popover-x" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-slider" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-widgets" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpspec/php-diff" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/swiftmailer/swiftmailer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-bootstrap" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-codeception" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-debug" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-gii" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-jui" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-swiftmailer" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHP">
+        <CLASSES>
+          <root url="file:///usr/share/php" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file:///usr/share/php" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
+

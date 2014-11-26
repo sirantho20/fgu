@@ -3,7 +3,6 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
-use yii\web\IdentityInterface;
 
 /**
  * Login form
@@ -27,7 +26,7 @@ class LoginForm extends Model
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
-            //['password', 'validatePassword'],
+            ['password', 'validatePassword'],
         ];
     }
 
@@ -40,9 +39,7 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-
-                    //$this->addError('password', 'Incorrect username or password.');
-                    return false;
+                $this->addError('password', 'Incorrect username or password.');
             }
         }
     }
@@ -54,19 +51,11 @@ class LoginForm extends Model
      */
     public function login()
     {
-        if ($this->validate() && $this->validatePassword())
-        {
-            return Yii::$app->user->login($this->getUser(), 0);
-        }
-        else
-        {
+        if ($this->validate()) {
+            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+        } else {
             return false;
         }
-    }
-
-    public function ADlogin(IdentityInterface $user)
-    {
-        return Yii::$app->user->login($user,0);
     }
 
     /**
