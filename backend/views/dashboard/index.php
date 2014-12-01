@@ -6,7 +6,7 @@ $this->title = 'Dashboard';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-
+<!--
 <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
                 <h1 class="page-title txt-color-blueDark"><i class="fa fa-bar-chart-o fa-fw "></i> Dashboard <span>>
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </li>
                 </ul>
         </div>
-</div>
+</div> -->
 <!-- widget grid -->
 <section id="widget-grid" class="">
                                     
