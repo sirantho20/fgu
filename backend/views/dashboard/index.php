@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         FGU Overview </span></h1>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-                <!-- <ul id="sparks" class="">
+                 <ul id="sparks" class="">
                         <li class="sparks-info">
                                 <h5> My Income <span class="txt-color-blue">$47,171</span></h5>
                                 <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         110,150,300,130,400,240,220,310,220,300, 270, 210
                                 </div>
                         </li>
-                </ul> -->
+                </ul>
         </div>
 </div>
 <!-- widget grid -->

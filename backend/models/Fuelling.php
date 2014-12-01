@@ -123,12 +123,13 @@ class Fuelling extends \yii\db\ActiveRecord
                 refuel.AccessCode access_code,
                 CONVERT(DATE,refuel.dateRefueled) date
            FROM escalator.dbo.refuel refuel) as tbl
-           where lower(right(tbl.contractor,2)) = lower(right(:contractor,2)) and tbl.date = convert(date, getdate()) and tbl.access_code = :access_code and site_id = :site_id
+           where lower(right(tbl.contractor,2)) = lower(right(:contractor,2)) and tbl.date = convert(date, :ddate) and tbl.access_code = :access_code and site_id = :site_id
             ",
            [
                ':contractor' => \Yii::$app->user->identity->company,
                ':access_code' => str_replace(' ','',trim($this->access_code)),
-               ':site_id' => $this->site_id
+               ':site_id' => $this->site_id,
+               ':ddate' => $this->delivery_date
            ]);
         $re = $query->queryAll();
         
