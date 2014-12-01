@@ -62,7 +62,7 @@ use yii\widgets\ActiveForm;
      ])->hint('<div id="genProps"></div>') ?>
 
 
-    <?= $form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<',
+    <?= $form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['nextText'=>'>','prevText'=>'<',
         'beforeShowDay' => new yii\web\JsExpression('function (date) {
             var sunday = new Date();
             var today = new Date();

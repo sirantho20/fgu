@@ -68,6 +68,7 @@ class FuellingController extends Controller
             Yii::$app->session->setFlash('success',' Record successfully saved');
             return $this->redirect(['index']);
         } else {
+
             return $this->render('create', [
                 'model' => $model,
             ]);

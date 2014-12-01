@@ -96,7 +96,7 @@ class Fuelling extends \yii\db\ActiveRecord
         $this->entry_date =  new \yii\db\Expression('now()');
         $this->entry_by = Yii::$app->user->identity->username;
         $this->mc = Yii::$app->user->identity->company;
-        //$this->delivery_date = new \yii\db\Expression('date(now())');
+        $this->delivery_date = date("Y-m-d", strtotime($this->delivery_date));
         
         return parent::beforeValidate();
     }
