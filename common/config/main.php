@@ -41,8 +41,9 @@ return [
                 'admin_password' => '!!AFtony19833'
             ]
         ],
+
     ],
-    
+
     'modules' => [
    'gridview' =>  [
         'class' => '\kartik\grid\Module'

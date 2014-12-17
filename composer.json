@@ -22,7 +22,8 @@
                 "yiisoft/yii2-jui": "*",
                 "kartik-v/yii2-grid": "*",
                 "bburim/daterangepicker": "dev-master",
-        "edvlerblog/yii2-adldap-module": "v1.0.0"
+        "edvlerblog/yii2-adldap-module": "v1.0.0",
+        "yiisoft/yii2-jui": "*"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

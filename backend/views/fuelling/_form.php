@@ -59,11 +59,17 @@ use yii\widgets\ActiveForm;
              'placeholder' => 'Select genset...',
              'url' => yii\helpers\Url::to(['siteactions/gensetlist'])
          ]
-     ])->hint('<div id="genProps"></div>') ?>
+     ])->hint('<div id="genProps1"></div>') ?>
 
 
-    <?= $form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['nextText'=>'>','prevText'=>'<',
-        'beforeShowDay' => new yii\web\JsExpression('function (date) {
+    <?= $form->field($model, 'delivery_date')->widget(\yii\jui\DatePicker::className(),[
+        'clientOptions'=>[
+            'nextText'=>'>',
+            'prevText'=>'<',
+            'showWeek' => true,
+            'minDate' => -20,
+            'maxDate' =>0,
+        /*'beforeShowDay' => new yii\web\JsExpression('function (date) {
             var sunday = new Date();
             var today = new Date();
             sunday.setHours(0,0,0,0);
@@ -71,7 +77,7 @@ use yii\widgets\ActiveForm;
             var saturday = new Date(sunday.getTime());
             saturday.setDate(sunday.getDate() - 2);
             return [(date >= saturday && date <= today), ""];
-        }'),
+        }'),*/
     ],'options'=>['class'=>'form-control','readonly'=>'readonly', 'style'=>'cursor:text;']]) ?>
     
     <?= $form->field($model, 'quantity_before_delivery_cm')->textInput() ?>
