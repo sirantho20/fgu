@@ -5,7 +5,7 @@ return [
     'components' => [
         'spoandb' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'dblib:host=HTG-SQL-01\SPOAN;dbname=escalator;charset=utf8',
+            'dsn' => 'dblib:host=10.3.0.6\SPOAN;dbname=escalator;charset=utf8',
             'username' => 'htgdashboard01',
             'password' => 'NewD@shboardPassw0rd',
         ],
