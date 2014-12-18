@@ -10,7 +10,6 @@ use yii\helpers\Html;
  */
 
 $this->title = $name;
-$this->layout = '//'
 ?>
 <div class="site-error">
 
