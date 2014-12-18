@@ -59,7 +59,7 @@ use yii\jui\AutoComplete;
          'placeholder' => 'Select genset...',
          'url' => yii\helpers\Url::to(['siteactions/gensetlist'])
             ]
-        ])->hint('<div id="genProps1"></div>')
+        ])->hint('<div id="genProps"></div>')
     ?>
     <?= $form->field($model, 'reading_date')->widget(\yii\jui\DatePicker::className(),[
         'clientOptions'=>[
