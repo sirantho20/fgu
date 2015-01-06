@@ -26,7 +26,7 @@ jQuery( document ).ready(function() {
      
      // Genset tank updates
      $.getJSON('/siteactions/mctankprops?genset='+this.value,function( data ){
-        $('#genProps').html('Tank: <a href="'+data.url+'">'+data.height+' x '+data.width+' x '+data.bredth+'</a> | Type: <a href="'+data.url+'">'+data.tank+'</a>');
+        $('#genProps').html('Tank: <a href="#">'+data.height+' x '+data.width+' x '+data.bredth+'</a> | Type: <a href="#">'+data.tank+'</a>');
      });
      
     });
@@ -35,7 +35,7 @@ jQuery( document ).ready(function() {
      $('#site-id').change(function(){
         $.getJSON('/siteactions/meterprops','site='+this.value,function(data){
             
-            $('#meterProps').html('Meter Type : <a href="'+data.url+'">'+ data.type +'</a>'); 
+            $('#meterProps').html('Meter Type : <a href="#">'+ data.type +'</a>'); 
             
         });
          

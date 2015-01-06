@@ -59,6 +59,7 @@ class GensetReading extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
     public function rules()
     {
         return [
@@ -71,6 +72,7 @@ class GensetReading extends \yii\db\ActiveRecord
             [['access_code'],'validateAccessCode'],
             [['genset_id', 'site_id', 'reading_by', 'entry_by', 'source_of_reading', 'modified_by', 'access_code'], 'string', 'max' => 50],
             //[['mc', 'run_hours_for_period'], 'integer', 'max' => 255]
+            //['reading_date', 'date', 'format' => 'php:yy-mm-dd'],
         ];
     }
 
@@ -111,6 +113,7 @@ class GensetReading extends \yii\db\ActiveRecord
     }
     
     public function beforeValidate() {
+
        $this->entry_by = Yii::$app->user->identity->username;
        $this->days_from_last_reading = $this->daysSinceLastReading($this->genset_id,$this->reading_date);
        $this->fuel_quantity_lts = self::getFuelLtsfromCM($this->genset_id, $this->fuel_level_cm);
@@ -122,12 +125,14 @@ class GensetReading extends \yii\db\ActiveRecord
        if(!$this->isNewRecord)
         {
             $this->modified_by = Yii::$app->user->identity->username;
+
         }
         return parent::beforeValidate();
     }
 
         private function daysSinceLastReading($genset,$new_date)
     {
+        $this->reading_date = Yii::$app->formatter->asDate($this->reading_date, 'yyyy-MM-dd');
         $qr = new \yii\db\Query();
         $qr->from('genset_reading');
         $qr->select('date(reading_date) as reading_date');
@@ -154,6 +159,7 @@ class GensetReading extends \yii\db\ActiveRecord
     }
     private function runHrsSinceLastReading($genset, $runHrs)
     {
+        $this->reading_date = Yii::$app->formatter->asDate($this->reading_date, 'yyyy-MM-dd');
         $qr = new \yii\db\Query();
         $qr->from('genset_reading');
         $qr->select('genset_run_hours');
@@ -178,6 +184,7 @@ class GensetReading extends \yii\db\ActiveRecord
 
     private function fuelConsumed($genset, $fuel_level)
     {
+        $this->reading_date = Yii::$app->formatter->asDate($this->reading_date, 'yyyy-MM-dd');
         $model = GensetReading::find()->where(['genset_id'=>$genset])->andWhere('reading_date < :date',[':date'=>$this->reading_date])->orderBy('reading_date desc')->limit(1)->all();
         if(count($model)>0)
         {
@@ -199,6 +206,7 @@ class GensetReading extends \yii\db\ActiveRecord
     }
     private function powerConsumed($genset,$meter_reading) 
     {
+        $this->reading_date = Yii::$app->formatter->asDate($this->reading_date, 'yyyy-MM-dd');
         $model = GensetReading::find()->where(['genset_id'=>$genset])->andWhere('reading_date < :date',[':date'=>$this->reading_date])->orderBy('reading_date desc')->limit(1)->all();
         if(count($model)>0)
         {
@@ -213,6 +221,7 @@ class GensetReading extends \yii\db\ActiveRecord
     
     public function validateKWH($attribute, $params)
     {
+        $this->reading_date = Yii::$app->formatter->asDate($this->reading_date, 'yyyy-MM-dd');
         $model = GensetReading::find()->where(['genset_id'=>$this->genset_id])->andWhere('reading_date < :date',[':date'=>$this->reading_date])->orderBy('reading_date desc')->limit(1)->all();
         if(count($model)>0)
         {
@@ -226,6 +235,7 @@ class GensetReading extends \yii\db\ActiveRecord
     
     public function validateRunHRS($attribute, $params)
     {
+        $this->reading_date = Yii::$app->formatter->asDate($this->reading_date, 'yyyy-MM-dd');
         $model = GensetReading::find()->where(['genset_id'=>$this->genset_id])->andWhere('reading_date < :date',[':date'=>$this->reading_date])->orderBy('reading_date desc')->limit(1)->all();
             if(count($model)>0)
             {
@@ -268,13 +278,13 @@ class GensetReading extends \yii\db\ActiveRecord
         {
             $lts = ($gen[0]['fuel_tank_width'] * $gen[0]['fuel_tank_breadth'] * $gen[0]['fuel_tank_height'])/1000;
         }
-        else 
+        else
         {
             $site = Site::findOne($site_id);
             $width = $site->siteDetails->tank_width;
             $bredth = $site->siteDetails->tank_bredth;
             $height = $site->siteDetails->tank_height;
-            
+
             $lts = ($width * $bredth * $height) / 1000;
         }
         
@@ -283,6 +293,7 @@ class GensetReading extends \yii\db\ActiveRecord
     
     public function validateAccessCode($attribute, $params)
     {
+        $this->reading_date = Yii::$app->formatter->asDate($this->reading_date, 'yyyy-MM-dd');
         $conn = \Yii::$app->spoandb;
         $query = $conn->createCommand("select * from (SELECT sitelist.ContractorName contractor,
                 troubleticket.siteID site_id,

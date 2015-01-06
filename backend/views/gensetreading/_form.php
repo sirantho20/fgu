@@ -59,10 +59,17 @@ use yii\jui\AutoComplete;
          'placeholder' => 'Select genset...',
          'url' => yii\helpers\Url::to(['siteactions/gensetlist'])
             ]
-        ])->hint('<div id="genProps"></div>') 
+        ])->hint('<div id="genProps"></div>')
     ?>
-    <?= $form->field($model, 'reading_date')->widget(\yii\jui\DatePicker::className(),['clientOptions'=>['dateFormat'=>'yy-mm-dd','nextText'=>'>','prevText'=>'<',
-        'beforeShowDay' => new yii\web\JsExpression('function (date) {
+    <?= $form->field($model, 'reading_date')->widget(\yii\jui\DatePicker::className(),[
+        'clientOptions'=>[
+            'dateFormat' => 'yyyy-MM-dd',
+            'nextText'=>'>',
+            'prevText'=>'<',
+            'minDate' => -30,
+            'maxDate' =>0,
+            'showWeek' => true,
+        /*'beforeShowDay' => new yii\web\JsExpression('function (date) {
             var sunday = new Date();
             var today = new Date();
             sunday.setHours(0,0,0,0);
@@ -70,7 +77,7 @@ use yii\jui\AutoComplete;
             var saturday = new Date(sunday.getTime());
             saturday.setDate(sunday.getDate() - 28);
             return [(date >= saturday && date <= today), ""];
-        }'),
+        }'),*/
         ],'options'=>['class'=>'form-control','readonly'=>'readonly', 'style'=>'cursor:text;']]) ?>
 
     <?= $form->field($model, 'access_code')->textInput(['maxlength' => 50]) ?>
