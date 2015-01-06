@@ -7,7 +7,7 @@
  */
 use yii\widgets\ActiveForm;
 use kartik\widgets\Select2;
-use app\models\Genset;
+use backend\models\Genset;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use backend\models\Site;
