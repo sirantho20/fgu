@@ -1,6 +1,24 @@
 <?php
 use yii\widgets\ActiveForm;
 ?>
+<?php
+$total = 0;
+$uploaded = 0;
+$rejected = 0;
+foreach($output as $check)
+{
+    $total++;
+    if(empty($check['error']))
+    {
+        $uploaded++;
+    }
+    else
+    {
+        $rejected++;
+    }
+}
+
+?>
 <div class="row">
 
     <!-- NEW COL START -->
@@ -21,7 +39,7 @@ use yii\widgets\ActiveForm;
             data-widget-sortable="false"
 
             -->
-            <header><span class="widget-icon"> <i class="fa fa-upload"></i> </span><h2>Mass Upload - FGU</h2></header>
+            <header><span class="widget-icon"> <i class="fa fa-upload"></i> </span><h2>Mass Upload Status</h2><div class="pull-right" style="margin-right: 5px;"><?= $rejected ?> out of <?= $total ?> uploaded records have errors</div></header>
             <!-- widget div-->
             <div>
 
@@ -34,10 +52,6 @@ use yii\widgets\ActiveForm;
 
                 <!-- widget content -->
                 <div class="widget-body no-padding">
-                    <?php
-                    $uploaded = 0;
-                    $rejected = 0;
-                    ?>
                 <table class="table table-striped table-hover table-bordered smart-form">
                     <tr>
                         <th>Site ID</th>
@@ -51,8 +65,8 @@ use yii\widgets\ActiveForm;
                     </tr>
 
                     <tr>
-                        <?php foreach($output as $record): ?>
-                            <?php if(!empty($record['error'])): $rejected++; ?>
+                        <?php foreach($output as $record): $rejected++; ?>
+
                             <td><?= $record['site_id']; ?></td>
                             <td><?= $record['access_code']; ?></td>
                             <td><?= $record['reading_date']; ?></td>
@@ -61,7 +75,8 @@ use yii\widgets\ActiveForm;
                             <td><?= $record['fuel_level_cm']; ?></td>
                             <td><?= empty($record['error'])? '<i style="color:green; font-size: 18px;" class="fa icon-fa-check-square-o">Ok</i>':'<i style="color:red; font-size: 18px;" class="fa fa-times-circle"></i>' ?></td>
 
-                            <td><?php if(is_array($record['error'])){
+                            <td>
+                                <?php
                                 $out = '<ul>';
                                     foreach($record['error'] as $arr)
                                     {
@@ -69,16 +84,13 @@ use yii\widgets\ActiveForm;
                                     }
                                     $out .='</ul>';
                                     echo $out;
-                                }
 
                                 ?></td>
-                            <?php else: $uploaded++ ?>
 
-                            <?php endif; ?>
 
-                        <?php endforeach; ?>
 
                     </tr>
+                    <?php endforeach; ?>
                 </table>
 
                 </div>
