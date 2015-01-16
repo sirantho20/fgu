@@ -39,7 +39,7 @@ foreach($output as $check)
             data-widget-sortable="false"
 
             -->
-            <header><span class="widget-icon"> <i class="fa fa-upload"></i> </span><h2>Mass Upload Status</h2><div class="pull-right" style="margin-right: 5px;"><?= $rejected ?> out of <?= $total ?> uploaded records have errors | <a class="" id="output-download-button" href="#" role="">Download</a></div></header>
+            <header><span class="widget-icon"> <i class="fa fa-upload"></i> </span><h2>Mass Upload Status</h2><div class="pull-right" style="margin-right: 5px;"><?php if($rejected > 0): ?><?= $rejected ?> out of <?= $total ?> uploaded records have errors | <a class="" id="output-download-button" href="#" role="">Download</a><?php else: ?>All records uploaded successfully.<?php endif; ?></div></header>
             <!-- widget div-->
             <div>
 

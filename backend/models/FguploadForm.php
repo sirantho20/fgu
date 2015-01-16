@@ -18,7 +18,7 @@ class FguploadForm extends Model {
     public function rules()
     {
         return [
-            [['file'], 'file','skipOnEmpty' => false,/*'extensions' => 'csv','mimeTypes' => 'text/csv'*/],
+            [['file'], 'file','skipOnEmpty' => false/*,'extensions' => 'csv','mimeTypes' => 'text/csv'*/],
             [['file'],'validateContent']
         ];
     }
