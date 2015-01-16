@@ -40,7 +40,11 @@ jQuery( document ).ready(function() {
         });
          
      });
-    
+
+    // Download upload output
+    $('#output-download-button').click(function(){
+        $('#upload-output-table').table2CSV();
+    });
     });
   
     

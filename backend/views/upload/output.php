@@ -39,7 +39,7 @@ foreach($output as $check)
             data-widget-sortable="false"
 
             -->
-            <header><span class="widget-icon"> <i class="fa fa-upload"></i> </span><h2>Mass Upload Status</h2><div class="pull-right" style="margin-right: 5px;"><?= $rejected ?> out of <?= $total ?> uploaded records have errors</div></header>
+            <header><span class="widget-icon"> <i class="fa fa-upload"></i> </span><h2>Mass Upload Status</h2><div class="pull-right" style="margin-right: 5px;"><?= $rejected ?> out of <?= $total ?> uploaded records have errors | <a class="" id="output-download-button" href="#" role="">Download</a></div></header>
             <!-- widget div-->
             <div>
 
@@ -52,7 +52,7 @@ foreach($output as $check)
 
                 <!-- widget content -->
                 <div class="widget-body no-padding">
-                <table class="table table-striped table-hover table-bordered smart-form">
+                <table id="upload-output-table" class="table table-striped table-hover table-bordered smart-form">
                     <tr>
                         <th>Site ID</th>
                         <th>Access Code</th>
