@@ -18,7 +18,8 @@ class FguploadForm extends Model {
     public function rules()
     {
         return [
-            [['file'], 'file','skipOnEmpty' => false,/*'extensions' => 'csv','mimeTypes' => 'text/csv'*/]
+            [['file'], 'file','skipOnEmpty' => false,/*'extensions' => 'csv','mimeTypes' => 'text/csv'*/],
+            [['file'],'validateContent']
         ];
     }
 
@@ -28,7 +29,19 @@ class FguploadForm extends Model {
             'file' => 'Select FGU file to upload',
         ];
     }
+    public function validateContent()
+    {
+        $file = $this->file->tempName;
+        if (($handle = fopen($file, "r")) !== FALSE) {
+            $header = fgetcsv($handle, 1000, ",");
+            $content = fgetcsv($handle, 1000, ",");
 
+            if(empty($content) || empty($header))
+            {
+                $this->addError('Empty file not allowed');
+            }
+        }
+    }
     public function upload()
     {
         $file = $this->file->tempName;
@@ -51,9 +64,9 @@ class FguploadForm extends Model {
                 $model->meter_reading = $data[array_search('kwh_reading',$header)];
                 $model->reading_date = $data[array_search('reading_date',$header)];
 
-                if($model->validate())
+                if($model->save())
                 {
-                    $model->save(false);
+                    $error = [];
                 }
                 else
                 {

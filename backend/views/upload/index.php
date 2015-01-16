@@ -39,6 +39,9 @@ use yii\widgets\ActiveForm;
                         'options'=>['class'=>'smart-form', 'enctype' => 'multipart/form-data'],
                         'fieldConfig'=>['labelOptions'=>['class'=>'label', 'style'=>'font-weight:bold;'],'options'=>['tag'=>'section']]
                     ]); ?>
+<div style="padding:10px; font-size: 1.2em;">
+                    Upload bulk FGU readings by formatting your excel according to provided template. <br />Only .CSV files are allowed. <?= \yii\helpers\Html::a('Download Sample Template',\yii\helpers\Url::to('templatedownload')) ?>
+                       </div><hr />
                     <fieldset>
                         <?= $form->field($model, 'file')->fileInput() ?>
                     </fieldset>

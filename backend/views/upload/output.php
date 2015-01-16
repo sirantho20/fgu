@@ -60,21 +60,18 @@ foreach($output as $check)
                         <th>Run Hrs</th>
                         <th>KWH Reading</th>
                         <th>Fuel Reading</th>
-                        <th>Status</th>
                         <th>Comments</th>
                     </tr>
 
-                    <tr>
                         <?php foreach($output as $record): $rejected++; ?>
-
+                            <?php if(!empty($record['error'])): ?>
+                        <tr>
                             <td><?= $record['site_id']; ?></td>
                             <td><?= $record['access_code']; ?></td>
                             <td><?= $record['reading_date']; ?></td>
                             <td><?= $record['run_hours']; ?></td>
                             <td><?= $record['kwh_reading']; ?></td>
                             <td><?= $record['fuel_level_cm']; ?></td>
-                            <td><?= empty($record['error'])? '<i style="color:green; font-size: 18px;" class="fa icon-fa-check-square-o">Ok</i>':'<i style="color:red; font-size: 18px;" class="fa fa-times-circle"></i>' ?></td>
-
                             <td>
                                 <?php
                                 $out = '<ul>';
@@ -90,6 +87,7 @@ foreach($output as $check)
 
 
                     </tr>
+                    <?php endif; ?>
                     <?php endforeach; ?>
                 </table>
 

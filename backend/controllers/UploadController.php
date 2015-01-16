@@ -27,5 +27,9 @@ class UploadController extends \yii\web\Controller
             return $this->render('index', ['model' => $model]);
 
     }
+    public function actionTemplatedownload()
+    {
+        return Yii::$app->response->sendFile(Yii::getAlias('@webroot').'/uploadtemplate.csv');
+    }
 
 }

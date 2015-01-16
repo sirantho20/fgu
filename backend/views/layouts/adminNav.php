@@ -82,6 +82,9 @@
                                                                         <a href="<?= Url::to(['gensetreading/index']) ?>">Current Week</a>
                                                                     </li>
                                                                     <li>
+                                                                        <a href="<?= Url::to(['upload/index']) ?>">Mass Upload</a>
+                                                                    </li>
+                                                                    <li>
                                                                         <a href="<?= Url::to(['gensetreading/historic']) ?>">Historic Readings</a>
                                                                     </li>
                                                                 </ul>
