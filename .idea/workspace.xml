@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4e4bfd06-d3f9-41dd-a310-87b9a69d9b97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/models/FguploadForm.php" afterPath="$PROJECT_DIR$/backend/models/FguploadForm.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/fgu.iml" afterPath="$PROJECT_DIR$/.idea/fgu.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="fgu.iws" />
@@ -97,12 +96,12 @@
       <file leaf-file-name="FguploadForm.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/models/FguploadForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8761062" vertical-offset="1947" max-vertical-offset="3234">
-              <caret line="121" column="90" selection-start-line="121" selection-start-column="90" selection-end-line="121" selection-end-column="90" />
+            <state vertical-scroll-proportion="0.44247788" vertical-offset="2388" max-vertical-offset="3255">
+              <caret line="128" column="43" selection-start-line="128" selection-start-column="43" selection-end-line="128" selection-end-column="43" />
               <folding>
                 <element signature="e#6#84#0#PHP" expanded="true" />
                 <element signature="e#112#140#0#PHP" expanded="true" />
-                <marker date="1421852874679" expanded="true" signature="5145:5154" placeholder="..." />
+                <marker date="1421853397125" expanded="true" signature="5149:5158" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -647,7 +646,13 @@
       <option name="project" value="LOCAL" />
       <updated>1421421584338</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="mass upload fixes&#10;">
+      <created>1421853015461</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1421853015461</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -655,8 +660,9 @@
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328877" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24582799" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24582799" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3302139" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32486632" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -665,7 +671,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25802138" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3302139" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="115" y="90" width="545" height="379" />
@@ -703,7 +708,8 @@
     <MESSAGE value="validation date issues corrected&#10;" />
     <MESSAGE value="error page fixes&#10;" />
     <MESSAGE value="mass upload&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="mass upload&#10;" />
+    <MESSAGE value="mass upload fixes&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="mass upload fixes&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -717,7 +723,7 @@
           <folding>
             <element signature="e#6#84#0#PHP" expanded="true" />
             <element signature="e#112#140#0#PHP" expanded="true" />
-            <marker date="1421852874679" expanded="true" signature="5145:5154" placeholder="..." />
+            <marker date="1421853397125" expanded="true" signature="5149:5158" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1078,12 +1084,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/models/FguploadForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8761062" vertical-offset="1947" max-vertical-offset="3234">
-          <caret line="121" column="90" selection-start-line="121" selection-start-column="90" selection-end-line="121" selection-end-column="90" />
+        <state vertical-scroll-proportion="0.44247788" vertical-offset="2388" max-vertical-offset="3255">
+          <caret line="128" column="43" selection-start-line="128" selection-start-column="43" selection-end-line="128" selection-end-column="43" />
           <folding>
             <element signature="e#6#84#0#PHP" expanded="true" />
             <element signature="e#112#140#0#PHP" expanded="true" />
-            <marker date="1421852874679" expanded="true" signature="5145:5154" placeholder="..." />
+            <marker date="1421853397125" expanded="true" signature="5149:5158" placeholder="..." />
           </folding>
         </state>
       </provider>

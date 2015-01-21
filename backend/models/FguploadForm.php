@@ -96,7 +96,7 @@ class FguploadForm extends Model {
 
                                 ];
                             } else {
-                                echo 'no genset <br />';
+                                //echo 'no genset <br />';
                                 $output[] = [
                                     'site_id' => $data[array_search('site_id', $header)],
                                     'access_code' => '',
@@ -111,7 +111,7 @@ class FguploadForm extends Model {
                             }
                         }
                         else {
-                            echo 'no site';
+                            //echo 'no site';
                             $output[] = [
                                 'site_id' => $data[array_search('site_id', $header)],
                                 'access_code' => "",
@@ -126,7 +126,8 @@ class FguploadForm extends Model {
                     }
                     else
                     {
-                        die('duplicate');
+                        //die('duplicate');
+
                     }
                 }
                 catch( Exception $e){
