@@ -127,6 +127,15 @@ class FguploadForm extends Model {
                     else
                     {
                         //die('duplicate');
+                        $output[] = [
+                            'site_id' => $data[array_search('site_id', $header)],
+                            'access_code' => "",
+                            'reading_date' => "",
+                            'run_hours' => "",
+                            'kwh_reading' => "",
+                            'fuel_level_cm' => "",
+                            'error' => []
+                        ];
 
                     }
                 }

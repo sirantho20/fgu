@@ -56,8 +56,8 @@
       <file leaf-file-name="output.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/views/upload/output.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.5" vertical-offset="567" max-vertical-offset="2163">
-              <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+            <state vertical-scroll-proportion="-31.5" vertical-offset="0" max-vertical-offset="2163">
+              <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -96,12 +96,12 @@
       <file leaf-file-name="FguploadForm.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/models/FguploadForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44247788" vertical-offset="2388" max-vertical-offset="3255">
-              <caret line="128" column="43" selection-start-line="128" selection-start-column="43" selection-end-line="128" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.5663717" vertical-offset="2325" max-vertical-offset="3444">
+              <caret line="129" column="37" selection-start-line="129" selection-start-column="37" selection-end-line="129" selection-end-column="37" />
               <folding>
                 <element signature="e#6#84#0#PHP" expanded="true" />
                 <element signature="e#112#140#0#PHP" expanded="true" />
-                <marker date="1421853397125" expanded="true" signature="5149:5158" placeholder="..." />
+                <marker date="1421853604250" expanded="true" signature="5149:5158" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -652,7 +652,13 @@
       <option name="project" value="LOCAL" />
       <updated>1421853015461</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="mass upload fixes&#10;">
+      <created>1421853410661</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1421853410661</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -723,7 +729,7 @@
           <folding>
             <element signature="e#6#84#0#PHP" expanded="true" />
             <element signature="e#112#140#0#PHP" expanded="true" />
-            <marker date="1421853397125" expanded="true" signature="5149:5158" placeholder="..." />
+            <marker date="1421853604250" expanded="true" signature="5149:5158" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1058,14 +1064,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/views/upload/output.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.5" vertical-offset="567" max-vertical-offset="2163">
-          <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/config/main.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.2" vertical-offset="315" max-vertical-offset="1218">
@@ -1082,14 +1080,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/upload/output.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-31.5" vertical-offset="0" max-vertical-offset="2163">
+          <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backend/models/FguploadForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44247788" vertical-offset="2388" max-vertical-offset="3255">
-          <caret line="128" column="43" selection-start-line="128" selection-start-column="43" selection-end-line="128" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.5663717" vertical-offset="2325" max-vertical-offset="3444">
+          <caret line="129" column="37" selection-start-line="129" selection-start-column="37" selection-end-line="129" selection-end-column="37" />
           <folding>
             <element signature="e#6#84#0#PHP" expanded="true" />
             <element signature="e#112#140#0#PHP" expanded="true" />
-            <marker date="1421853397125" expanded="true" signature="5149:5158" placeholder="..." />
+            <marker date="1421853604250" expanded="true" signature="5149:5158" placeholder="..." />
           </folding>
         </state>
       </provider>
