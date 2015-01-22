@@ -67,7 +67,7 @@ use yii\widgets\ActiveForm;
             'nextText'=>'>',
             'prevText'=>'<',
             'showWeek' => true,
-            'minDate' => -20,
+            'minDate' => -60,
             'maxDate' =>0,
         /*'beforeShowDay' => new yii\web\JsExpression('function (date) {
             var sunday = new Date();
