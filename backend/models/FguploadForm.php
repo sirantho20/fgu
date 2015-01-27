@@ -135,13 +135,13 @@ class FguploadForm extends Model {
                     {
                         //die('duplicate');
                         $output[] = [
-                            'site_id' => $data[array_search('site_id', $header)],
-                            'access_code' => "",
-                            'reading_date' => "",
-                            'run_hours' => "",
-                            'kwh_reading' => "",
-                            'fuel_level_cm' => "",
-                            'error' => array('site_id' =>array('<span style="color:red">duplicate record</span>'))
+                            //'site_id' => $data[array_search('site_id', $header)],
+                           // 'access_code' => "",
+                            //'reading_date' => "",
+                            //'run_hours' => "",
+                            //'kwh_reading' => "",
+                            //'fuel_level_cm' => "",
+                           // 'error' => array('site_id' =>array('<span style="color:red">duplicate record</span>'))
                         ];
 
                     }

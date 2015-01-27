@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4bfd06-d3f9-41dd-a310-87b9a69d9b97" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/models/FuellinguploadForm.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/console/controllers/TanksizeController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/views/upload/fuelling.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/views/upload/fuellingoutput.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/web/fuellinguploadtemplate.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/models/FguploadForm.php" afterPath="$PROJECT_DIR$/backend/models/FguploadForm.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/models/GensetReadingSearch.php" afterPath="$PROJECT_DIR$/backend/models/GensetReadingSearch.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/controllers/UploadController.php" afterPath="$PROJECT_DIR$/backend/controllers/UploadController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/views/layouts/adminNav.php" afterPath="$PROJECT_DIR$/backend/views/layouts/adminNav.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/models/Fuelling.php" afterPath="$PROJECT_DIR$/backend/models/Fuelling.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/models/FuellinguploadForm.php" afterPath="$PROJECT_DIR$/backend/models/FuellinguploadForm.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/web/fuellinguploadtemplate.csv" afterPath="$PROJECT_DIR$/backend/web/fuellinguploadtemplate.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="fgu.iws" />
@@ -75,13 +69,13 @@
       <file leaf-file-name="FguploadForm.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/models/FguploadForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38650307" vertical-offset="1302" max-vertical-offset="3591">
-              <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.67846155" vertical-offset="2562" max-vertical-offset="3591">
+              <caret line="143" column="29" selection-start-line="143" selection-start-column="29" selection-end-line="143" selection-end-column="29" />
               <folding>
                 <element signature="e#6#84#0#PHP" expanded="true" />
                 <element signature="e#112#140#0#PHP" expanded="true" />
-                <marker date="1422360626754" expanded="true" signature="5562:5571" placeholder="..." />
-                <marker date="1422360626754" expanded="true" signature="6222:6231" placeholder="..." />
+                <marker date="1422364613736" expanded="true" signature="5562:5571" placeholder="..." />
+                <marker date="1422364613736" expanded="true" signature="6236:6245" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -91,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/common/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-7.7" vertical-offset="378" max-vertical-offset="1218">
-              <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+              <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -100,10 +94,10 @@
       <file leaf-file-name="FuellinguploadForm.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/models/FuellinguploadForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.2" vertical-offset="1008" max-vertical-offset="3444">
-              <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="77" selection-end-column="67" />
+            <state vertical-scroll-proportion="-15.4" vertical-offset="2079" max-vertical-offset="3444">
+              <caret line="129" column="34" selection-start-line="129" selection-start-column="34" selection-end-line="129" selection-end-column="34" />
               <folding>
-                <marker date="1422360311608" expanded="true" signature="5800:5809" placeholder="..." />
+                <marker date="1422364585758" expanded="true" signature="5814:5823" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -152,11 +146,11 @@
       <file leaf-file-name="Fuelling.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/models/Fuelling.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1751" max-vertical-offset="4431">
-              <caret line="97" column="55" selection-start-line="97" selection-start-column="55" selection-end-line="97" selection-end-column="55" />
+            <state vertical-scroll-proportion="-6.0333333" vertical-offset="869" max-vertical-offset="4431">
+              <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
               <folding>
-                <marker date="1421844388155" expanded="true" signature="4187:5324" placeholder="select * fro..ContractorName..." />
-                <marker date="1421844388155" expanded="true" signature="4202:5143" placeholder="SELECT sitel..." />
+                <marker date="1422364542369" expanded="true" signature="4188:5325" placeholder="select * fro..ContractorName..." />
+                <marker date="1422364542369" expanded="true" signature="4203:5144" placeholder="SELECT sitel..." />
               </folding>
             </state>
           </provider>
@@ -184,11 +178,12 @@
         <option value="$PROJECT_DIR$/backend/models/GensetReadingSearch.php" />
         <option value="$PROJECT_DIR$/console/controllers/Tanksize.php" />
         <option value="$PROJECT_DIR$/console/controllers/TanksizeController.php" />
-        <option value="$PROJECT_DIR$/common/config/main.php" />
         <option value="$PROJECT_DIR$/backend/views/upload/fuellingoutput.php" />
         <option value="$PROJECT_DIR$/backend/controllers/UploadController.php" />
         <option value="$PROJECT_DIR$/backend/views/upload/fuelling.php" />
         <option value="$PROJECT_DIR$/backend/views/layouts/adminNav.php" />
+        <option value="$PROJECT_DIR$/common/config/main.php" />
+        <option value="$PROJECT_DIR$/backend/models/Fuelling.php" />
         <option value="$PROJECT_DIR$/backend/models/FuellinguploadForm.php" />
         <option value="$PROJECT_DIR$/backend/models/FguploadForm.php" />
       </list>
@@ -800,7 +795,13 @@
       <option name="project" value="LOCAL" />
       <updated>1421924248432</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="mass fuelling upload and mass fgu fixes">
+      <created>1422360690217</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1422360690217</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -808,8 +809,9 @@
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328877" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25417203" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25417203" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3302139" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32486632" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -818,7 +820,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25733334" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3302139" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="115" y="90" width="545" height="379" />
@@ -858,7 +859,8 @@
     <MESSAGE value="mass upload&#10;" />
     <MESSAGE value="mass upload fixes&#10;" />
     <MESSAGE value="calendar fixes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="calendar fixes&#10;" />
+    <MESSAGE value="mass fuelling upload and mass fgu fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="mass fuelling upload and mass fgu fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1131,6 +1133,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1806">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1138,6 +1141,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.7" vertical-offset="252" max-vertical-offset="2016">
           <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+          <folding>
+            <element signature="e#120#146#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1152,25 +1158,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29217392" vertical-offset="525" max-vertical-offset="1743">
           <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/models/Fuelling.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1751" max-vertical-offset="4431">
-          <caret line="97" column="55" selection-start-line="97" selection-start-column="55" selection-end-line="97" selection-end-column="55" />
           <folding>
-            <marker date="1421844388155" expanded="true" signature="4187:5324" placeholder="select * fro..ContractorName..." />
-            <marker date="1421844388155" expanded="true" signature="4202:5143" placeholder="SELECT sitel..." />
+            <element signature="e#34#42#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/config/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.7" vertical-offset="378" max-vertical-offset="1218">
-          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1222,25 +1212,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common/config/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.7" vertical-offset="378" max-vertical-offset="1218">
+          <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/models/Fuelling.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0333333" vertical-offset="869" max-vertical-offset="4431">
+          <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
+          <folding>
+            <marker date="1422364542369" expanded="true" signature="4188:5325" placeholder="select * fro..ContractorName..." />
+            <marker date="1422364542369" expanded="true" signature="4203:5144" placeholder="SELECT sitel..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backend/models/FuellinguploadForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.2" vertical-offset="1008" max-vertical-offset="3444">
-          <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="77" selection-end-column="67" />
+        <state vertical-scroll-proportion="-15.4" vertical-offset="2079" max-vertical-offset="3444">
+          <caret line="129" column="34" selection-start-line="129" selection-start-column="34" selection-end-line="129" selection-end-column="34" />
           <folding>
-            <marker date="1422360311608" expanded="true" signature="5800:5809" placeholder="..." />
+            <marker date="1422364585758" expanded="true" signature="5814:5823" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/models/FguploadForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38650307" vertical-offset="1302" max-vertical-offset="3591">
-          <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.67846155" vertical-offset="2562" max-vertical-offset="3591">
+          <caret line="143" column="29" selection-start-line="143" selection-start-column="29" selection-end-line="143" selection-end-column="29" />
           <folding>
             <element signature="e#6#84#0#PHP" expanded="true" />
             <element signature="e#112#140#0#PHP" expanded="true" />
-            <marker date="1422360626754" expanded="true" signature="5562:5571" placeholder="..." />
-            <marker date="1422360626754" expanded="true" signature="6222:6231" placeholder="..." />
+            <marker date="1422364613736" expanded="true" signature="5562:5571" placeholder="..." />
+            <marker date="1422364613736" expanded="true" signature="6236:6245" placeholder="..." />
           </folding>
         </state>
       </provider>

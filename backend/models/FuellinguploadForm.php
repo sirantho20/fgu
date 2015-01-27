@@ -121,13 +121,13 @@ class FuellinguploadForm extends Model {
                         else {
                             //echo 'no site';
                             $output[] = [
-                                'site_id' => $data[array_search('site_id', $header)],
-                                'access_code' => "",
-                                'delivery_date' => '',
-                                'quantity_before_in_cm' => '',
-                                'quantity_after_in_cm' => '',
-                                'fuelling_type' => '',
-                                'error' => array('site_id' =>array('<span style="color:red">site not added in system</span>'))
+                               // 'site_id' => $data[array_search('site_id', $header)],
+                                //'access_code' => "",
+                                //'delivery_date' => '',
+                                //'quantity_before_in_cm' => '',
+                               // 'quantity_after_in_cm' => '',
+                                //'fuelling_type' => '',
+                                //'error' => array('site_id' =>array('<span style="color:red">site not added in system</span>'))
 
                             ];
                         }

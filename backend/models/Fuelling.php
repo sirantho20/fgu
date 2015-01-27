@@ -47,7 +47,7 @@ class Fuelling extends \yii\db\ActiveRecord
             [['delivery_date'], 'safe'],
             [['quantity_delivered_cm', 'quantity_delivered_lts', 'quantity_before_delivery_cm', 'quantity_before_delivery_lts', 'quantity_after_delivery_cm', 'quantity_after_delivery_lts'], 'number'],
             [['site_id', 'access_code', 'htg_fs_present'], 'string', 'max' => 50],
-            [['emergency_fuelling'], 'string', 'max' => 10],
+            [['emergency_fuelling'], 'string', 'max' => 100],
             [['genset_id', 'mc'], 'string', 'max' => 255],
             [['entry_by'], 'string', 'max' => 45],
             [['access_code'],'validateAccessCode'],
