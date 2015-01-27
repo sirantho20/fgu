@@ -30,11 +30,21 @@ class GensetReadingSearch extends GensetReading
 
     public function search($params)
     {
-        $query = GensetReading::find()->where([
-            'month(entry_date)'=>new Expression('month(now())'),
-            'year(entry_date)' => new Expression('year(now())'),
-            'mc'=>  \Yii::$app->user->identity->company,
-        ]);
+        if(Yii::$app->user->identity->role <2)
+        {
+            $query = GensetReading::find()->where([
+                'month(entry_date)'=>new Expression('month(now())'),
+                'year(entry_date)' => new Expression('year(now())'),
+            ]);
+        }
+        else {
+
+            $query = GensetReading::find()->where([
+                'month(entry_date)'=>new Expression('month(now())'),
+                'year(entry_date)' => new Expression('year(now())'),
+                'mc'=>  \Yii::$app->user->identity->company,
+            ]);
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

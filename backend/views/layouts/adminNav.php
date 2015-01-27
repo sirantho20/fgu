@@ -93,6 +93,9 @@
 								<a href="#"><i class="fa fa-lg fa-fw fa-tachometer"></i> <span class="menu-item-parent">Fueling</span></a>
                                                                 <ul>
                                                                     <li><a href="<?= Url::to(['fuelling/index']) ?>">Current Week</a></li>
+                                                                    <li>
+                                                                        <a href="<?= Url::to(['upload/fuelling']) ?>">Mass Upload</a>
+                                                                    </li>
                                                                     <li><a href="<?= Url::to(['fuelling/historic']) ?>">Historic</a></li>
                                                                 </ul>
 							</li>
