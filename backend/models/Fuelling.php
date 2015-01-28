@@ -50,7 +50,7 @@ class Fuelling extends \yii\db\ActiveRecord
             [['emergency_fuelling'], 'string', 'max' => 100],
             [['genset_id', 'mc'], 'string', 'max' => 255],
             [['entry_by'], 'string', 'max' => 45],
-            [['access_code'],'validateAccessCode'],
+            //[['access_code'],'validateAccessCode'],
         ];
     }
 

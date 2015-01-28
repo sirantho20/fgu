@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4bfd06-d3f9-41dd-a310-87b9a69d9b97" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/models/FguploadForm.php" afterPath="$PROJECT_DIR$/backend/models/FguploadForm.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/models/Fuelling.php" afterPath="$PROJECT_DIR$/backend/models/Fuelling.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/models/GensetReading.php" afterPath="$PROJECT_DIR$/backend/models/GensetReading.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/web/fuellinguploadtemplate.csv" afterPath="$PROJECT_DIR$/backend/web/fuellinguploadtemplate.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -54,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FguploadForm.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FguploadForm.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/models/FguploadForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.86725664" vertical-offset="2562" max-vertical-offset="3591">
-              <caret line="150" column="22" selection-start-line="150" selection-start-column="22" selection-end-line="150" selection-end-column="22" />
+            <state vertical-scroll-proportion="-88.2" vertical-offset="0" max-vertical-offset="3591">
+              <caret line="126" column="52" selection-start-line="126" selection-start-column="52" selection-end-line="126" selection-end-column="52" />
               <folding>
                 <element signature="e#6#84#0#PHP" expanded="true" />
                 <element signature="e#112#140#0#PHP" expanded="true" />
@@ -72,11 +73,11 @@
       <file leaf-file-name="GensetReading.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/models/GensetReading.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.0" vertical-offset="1197" max-vertical-offset="7077">
-              <caret line="70" column="53" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
+            <state vertical-scroll-proportion="-5.6" vertical-offset="1197" max-vertical-offset="7077">
+              <caret line="68" column="14" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
               <folding>
-                <marker date="1422442932322" expanded="true" signature="10615:11736" placeholder="select * fro..ContractorName..." />
-                <marker date="1422442932322" expanded="true" signature="10630:11571" placeholder="SELECT sitel..." />
+                <marker date="1422459671259" expanded="true" signature="10620:11741" placeholder="select * fro..ContractorName..." />
+                <marker date="1422459671259" expanded="true" signature="10635:11576" placeholder="SELECT sitel..." />
               </folding>
             </state>
           </provider>
@@ -92,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FuellinguploadForm.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FuellinguploadForm.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/models/FuellinguploadForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2079" max-vertical-offset="3444">
-              <caret line="129" column="34" selection-start-line="129" selection-start-column="34" selection-end-line="129" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.15486726" vertical-offset="2394" max-vertical-offset="3444">
+              <caret line="127" column="61" selection-start-line="127" selection-start-column="61" selection-end-line="127" selection-end-column="61" />
               <folding>
                 <marker date="1422364585758" expanded="true" signature="5814:5823" placeholder="..." />
               </folding>
@@ -147,11 +148,11 @@
       <file leaf-file-name="Fuelling.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/models/Fuelling.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="869" max-vertical-offset="4431">
+            <state vertical-scroll-proportion="-6.0333333" vertical-offset="869" max-vertical-offset="4431">
               <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
               <folding>
-                <marker date="1422364542369" expanded="true" signature="4188:5325" placeholder="select * fro..ContractorName..." />
-                <marker date="1422364542369" expanded="true" signature="4203:5144" placeholder="SELECT sitel..." />
+                <marker date="1422459688959" expanded="true" signature="4190:5327" placeholder="select * fro..ContractorName..." />
+                <marker date="1422459688959" expanded="true" signature="4205:5146" placeholder="SELECT sitel..." />
               </folding>
             </state>
           </provider>
@@ -184,10 +185,10 @@
         <option value="$PROJECT_DIR$/backend/views/upload/fuelling.php" />
         <option value="$PROJECT_DIR$/backend/views/layouts/adminNav.php" />
         <option value="$PROJECT_DIR$/common/config/main.php" />
-        <option value="$PROJECT_DIR$/backend/models/Fuelling.php" />
         <option value="$PROJECT_DIR$/backend/models/FuellinguploadForm.php" />
-        <option value="$PROJECT_DIR$/backend/models/GensetReading.php" />
         <option value="$PROJECT_DIR$/backend/models/FguploadForm.php" />
+        <option value="$PROJECT_DIR$/backend/models/GensetReading.php" />
+        <option value="$PROJECT_DIR$/backend/models/Fuelling.php" />
       </list>
     </option>
   </component>
@@ -815,7 +816,13 @@
       <option name="project" value="LOCAL" />
       <updated>1422442960893</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="mass fuelling upload and mass fgu fixes">
+      <created>1422443266975</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1422443266975</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1218,47 +1225,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/models/Fuelling.php">
+    <entry file="file://$PROJECT_DIR$/backend/models/FguploadForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="869" max-vertical-offset="4431">
-          <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
+        <state vertical-scroll-proportion="-88.2" vertical-offset="0" max-vertical-offset="3591">
+          <caret line="126" column="52" selection-start-line="126" selection-start-column="52" selection-end-line="126" selection-end-column="52" />
           <folding>
-            <marker date="1422364542369" expanded="true" signature="4188:5325" placeholder="select * fro..ContractorName..." />
-            <marker date="1422364542369" expanded="true" signature="4203:5144" placeholder="SELECT sitel..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/models/FuellinguploadForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2079" max-vertical-offset="3444">
-          <caret line="129" column="34" selection-start-line="129" selection-start-column="34" selection-end-line="129" selection-end-column="34" />
-          <folding>
-            <marker date="1422364585758" expanded="true" signature="5814:5823" placeholder="..." />
+            <element signature="e#6#84#0#PHP" expanded="true" />
+            <element signature="e#112#140#0#PHP" expanded="true" />
+            <marker date="1422443255779" expanded="true" signature="5562:5571" placeholder="..." />
+            <marker date="1422443255779" expanded="true" signature="6236:6245" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/models/GensetReading.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0" vertical-offset="1197" max-vertical-offset="7077">
-          <caret line="70" column="53" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
+        <state vertical-scroll-proportion="-5.6" vertical-offset="1197" max-vertical-offset="7077">
+          <caret line="68" column="14" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
           <folding>
-            <marker date="1422442932322" expanded="true" signature="10615:11736" placeholder="select * fro..ContractorName..." />
-            <marker date="1422442932322" expanded="true" signature="10630:11571" placeholder="SELECT sitel..." />
+            <marker date="1422459671259" expanded="true" signature="10620:11741" placeholder="select * fro..ContractorName..." />
+            <marker date="1422459671259" expanded="true" signature="10635:11576" placeholder="SELECT sitel..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/models/FguploadForm.php">
+    <entry file="file://$PROJECT_DIR$/backend/models/Fuelling.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86725664" vertical-offset="2562" max-vertical-offset="3591">
-          <caret line="150" column="22" selection-start-line="150" selection-start-column="22" selection-end-line="150" selection-end-column="22" />
+        <state vertical-scroll-proportion="-6.0333333" vertical-offset="869" max-vertical-offset="4431">
+          <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
           <folding>
-            <element signature="e#6#84#0#PHP" expanded="true" />
-            <element signature="e#112#140#0#PHP" expanded="true" />
-            <marker date="1422443255779" expanded="true" signature="5562:5571" placeholder="..." />
-            <marker date="1422443255779" expanded="true" signature="6236:6245" placeholder="..." />
+            <marker date="1422459688959" expanded="true" signature="4190:5327" placeholder="select * fro..ContractorName..." />
+            <marker date="1422459688959" expanded="true" signature="4205:5146" placeholder="SELECT sitel..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/models/FuellinguploadForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15486726" vertical-offset="2394" max-vertical-offset="3444">
+          <caret line="127" column="61" selection-start-line="127" selection-start-column="61" selection-end-line="127" selection-end-column="61" />
+          <folding>
+            <marker date="1422364585758" expanded="true" signature="5814:5823" placeholder="..." />
           </folding>
         </state>
       </provider>
