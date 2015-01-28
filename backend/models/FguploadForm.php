@@ -147,8 +147,8 @@ class FguploadForm extends Model {
                     }
                 }
                 catch( Exception $e){
-                    echo $e->getMessage();
-                    continue;
+                   // echo $e->getMessage();
+                    //continue;
                 }
 
             }
